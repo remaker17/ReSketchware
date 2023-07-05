@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.RSW.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:colorBackground">@color/rsw_color_white</item>
+        <item name="android:windowBackground">@color/rsw_color_white</item>
+        <item name="colorAccent">@color/rsw_color_orange_5</item>
+        <item name="colorOnPrimary">@color/rsw_color_white</item>
+        <item name="colorPrimary">@color/rsw_color_blue_5</item>
+        <item name="colorPrimaryDark">@color/rsw_color_blue_6</item>
+        <item name="colorSecondary">?attr/colorPrimary</item>
+        <item name="colorOnSecondary">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Theme.RSW.Dark" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:colorBackground">@color/rsw_color_graphite_9</item>
+        <item name="android:windowBackground">@color/rsw_color_graphite_9</item>
+        <item name="colorAccent">@color/rsw_color_orange_5</item>
+        <item name="colorOnPrimary">@color/rsw_color_white</item>
+        <item name="colorPrimary">@color/rsw_color_blue_5</item>
+        <item name="colorPrimaryDark">@color/rsw_color_graphite_8</item>
+        <item name="colorSecondary">?attr/colorPrimary</item>
+        <item name="colorOnSecondary">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Theme.RSW.DayNight" parent="Theme.RSW.Light" />
+
+</resources>

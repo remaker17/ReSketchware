@@ -1,0 +1,19 @@
+[versions]
+androidGradlePlugin = "8.2.0-alpha09"
+androidMaterial = "1.10.0-alpha04"
+
+androidxAppCompat = "1.7.0-alpha02"
+
+kotlin = "1.8.22"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-gradlePlugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+[libraries]
+android-material = { group = "com.google.android.material", name = "material", version.ref = "androidMaterial" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+
+[bundles]
+core = ["android-material", "androidx-appcompat"]

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ReSketchware</string>
+
+    <!-- Common words -->
+    <string name="common_word_accept">Accept</string>
+    <string name="common_word_decline">Decline</string>
+    <string name="common_word_projects">Projects</string>
+    <string name="common_word_settings">Settings</string>
+</resources>

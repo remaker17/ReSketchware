@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="rsw_text_size_special_body">16sp</dimen>
+    <dimen name="rsw_corner_radius_g">16dp</dimen>
+    <dimen name="rsw_corner_radius_l">8dp</dimen>
+    <dimen name="rsw_corner_radius_m">6dp</dimen>
+    <dimen name="rsw_corner_radius_s">4dp</dimen>
+    <dimen name="rsw_corner_radius_xl">10dp</dimen>
+    <dimen name="rsw_corner_radius_xs">2dp</dimen>
+    <dimen name="rsw_corner_radius_xxl">12dp</dimen>
+    <dimen name="rsw_elevation_tiny">2dp</dimen>
+    <dimen name="rsw_elevation_zero">0dp</dimen>
+</resources>

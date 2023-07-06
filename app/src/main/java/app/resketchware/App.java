@@ -1,5 +1,6 @@
 package app.resketchware;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Application;
 import android.app.PendingIntent;
@@ -12,6 +13,7 @@ import app.resketchware.ui.activities.CrashLogActivity;
 
 public class App extends Application {
 
+    @SuppressLint("StaticFieldLeak") // it is not a leak
     private static Context applicationContext;
 
     public static Context getContext() {

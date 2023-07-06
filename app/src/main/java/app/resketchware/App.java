@@ -10,10 +10,12 @@ import android.os.Process;
 import android.util.Log;
 
 import app.resketchware.ui.activities.CrashLogActivity;
+import app.resketchware.utils.LogWriter;
 
 public class App extends Application {
     @SuppressLint("StaticFieldLeak") // it is not a leak
     private static Context applicationContext;
+    private LogWriter logWriter;
 
     public static Context getContext() {
         return applicationContext;
@@ -23,7 +25,17 @@ public class App extends Application {
     public void onCreate() {
         applicationContext = getApplicationContext();
         setupUncaughtExceptionHandler();
+
         super.onCreate();
+
+        logWriter = new LogWriter(applicationContext);
+        logWriter.start();
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        logWriter.stop();
     }
 
     private void setupUncaughtExceptionHandler() {

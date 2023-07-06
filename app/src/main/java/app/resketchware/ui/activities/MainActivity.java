@@ -38,16 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     int id = item.getItemId();
                     if (id == R.id.menu_projects) {
-                        getSupportFragmentManager().beginTransaction()
-                                .hide(settingsFragment)
-                                .show(projectsFragment)
-                                .commit();
+                        switchToProjectsScreen();
                         return true;
                     } else if (id == R.id.menu_settings) {
-                        getSupportFragmentManager().beginTransaction()
-                                .hide(projectsFragment)
-                                .show(settingsFragment)
-                                .commit();
+                        switchToSettingsScreen();
                         return true;
                     } else {
                         return false;
@@ -64,20 +58,25 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, settingsFragment)
-                .hide(settingsFragment)
-                .commit();
-
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, projectsFragment)
-                .commit();
+        switchToProjectsScreen();
 
         bottomNav.setOnItemSelectedListener(onItemSelectedListener);
 
         if (!hasStoragePermissions()) {
             showPermissionDialog();
         }
+    }
+
+    private void switchToProjectsScreen() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, projectsFragment)
+                .commit();
+    }
+
+    private void switchToSettingsScreen() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, settingsFragment)
+                .commit();
     }
 
     private boolean hasStoragePermissions() {

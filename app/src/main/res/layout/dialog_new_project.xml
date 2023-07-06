@@ -3,27 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="?attr/dialogPreferredPadding"
-    android:paddingVertical="@dimen/abc_dialog_padding_top_material">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <!-- BottomSheetDragHandleView not working with MaterialComponents style -->
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/new_project"
-        android:textAppearance="?attr/textAppearanceHeadline6" />
+        android:layout_marginBottom="@dimen/rsw_margin_xsmall"
+        android:paddingTop="@dimen/rsw_margin_xsmall"
+        android:src="@drawable/rsw_bottomsheet_pin"
+        android:visibility="gone"
+        app:tint="?attr/colorControlHighlight" />
+
+    <androidx.appcompat.widget.DialogTitle
+        android:id="@+id/title"
+        style="?android:attr/windowTitleStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/dialogPreferredPadding"
+        android:layout_marginHorizontal="?attr/dialogPreferredPadding"
+        android:ellipsize="end"
+        android:text="@string/new_project" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:layout_marginVertical="@dimen/abc_dialog_padding_top_material"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="?attr/dialogPreferredPadding"
             android:orientation="vertical">
 
             <FrameLayout
@@ -43,20 +55,20 @@
             <TextView
                 android:layout_width="56dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/rsw_margin_xxxsmall"
                 android:text="@string/common_word_icon"
                 android:textAlignment="center"
                 android:textAppearance="?attr/textAppearanceCaption"
-                android:textSize="10sp" />
+                android:textSize="10sp" 
+                android:visibility="gone" />
 
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_app_name"
-            style="?attr/textInputOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginEnd="?attr/dialogPreferredPadding"
             android:hint="@string/application_name">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -70,7 +82,7 @@
         android:id="@+id/advanced_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:layout_marginHorizontal="?attr/dialogPreferredPadding"
         android:background="?attr/selectableItemBackground"
         android:focusable="true"
         android:clickable="true">
@@ -89,7 +101,8 @@
         android:id="@+id/hidden_advanced_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:layout_marginVertical="?attr/dialogPreferredPadding"
+        android:layout_marginHorizontal="?attr/dialogPreferredPadding"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -112,10 +125,9 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_package_name"
-            style="?attr/textInputOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/rsw_margin_xsmall"
             android:hint="@string/package_name">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -125,28 +137,28 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.appcompat.widget.ButtonBarLayout
+        style="?attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
-        android:gravity="end"
-        android:orientation="horizontal">
+        android:gravity="bottom|end"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/rsw_margin_medium_small"
+        android:paddingVertical="@dimen/rsw_margin_xxxsmall">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/cancel"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            style="?attr/buttonBarNegativeButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:text="@string/common_word_cancel" />
 
         <Button
             android:id="@+id/create"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            style="?attr/buttonBarPositiveButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:text="@string/common_word_create" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.ButtonBarLayout>
 </LinearLayout>

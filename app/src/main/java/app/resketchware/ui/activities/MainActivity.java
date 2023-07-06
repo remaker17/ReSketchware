@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showPermissionDialog() {
-        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.permission_ask_title)
                 .setMessage(R.string.permission_ask_message)
                 .setPositiveButton(android.R.string.ok, (d, which) -> {

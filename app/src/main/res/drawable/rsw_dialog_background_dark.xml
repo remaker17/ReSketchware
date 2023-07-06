@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="@dimen/rsw_margin_medium"
+    android:insetRight="@dimen/rsw_margin_medium"
+    android:insetTop="@dimen/rsw_margin_medium"
+    android:insetBottom="@dimen/rsw_margin_medium">
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/rsw_corner_radius_g" />
+        <solid android:color="@color/rsw_color_graphite_8" />
+    </shape>
+</inset>

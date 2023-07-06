@@ -17,8 +17,8 @@ import app.resketchware.ui.fragments.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomNav;
-    private Toolbar toolbar;
+    private final BottomNavigationView bottomNav;
+    private final Toolbar toolbar;
 
     private final Fragment projectsFragment = new ProjectsFragment();
     private final Fragment settingsFragment = new SettingsFragment();

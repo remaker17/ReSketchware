@@ -18,12 +18,8 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MaterialSharedAxis enterTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, false);
-        MaterialSharedAxis exitTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, true);
-        enterTransition.setDuration(200);
-        exitTransition.setDuration(200);
-        setEnterTransition(enterTransition);
-        setExitTransition(exitTransition);
+        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, false));
+        setExitTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, true));
     }
 
     @Nullable

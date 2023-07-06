@@ -8,22 +8,25 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import app.resketchware.R;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.transition.MaterialSharedAxis;
 
 public class ProjectsFragment extends Fragment {
 
+    private final FloatingActionButton fab;
+    private final RecyclerView recyclerView;
+    private final SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MaterialSharedAxis enterTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, false);
-        MaterialSharedAxis exitTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, true);
-        enterTransition.setDuration(200);
-        exitTransition.setDuration(200);
-        setEnterTransition(enterTransition);
-        setExitTransition(exitTransition);
+        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, false));
+        setExitTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, true));
     }
 
     @Nullable
@@ -35,8 +38,9 @@ public class ProjectsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((android.widget.TextView) view.findViewById(R.id.test)).setOnClickListener(v -> {
-            ((android.widget.TextView) v).setText("Clicked");
-        });
+
+        fab = view.findViewById(R.id.fab);
+        recyclerView = view.findViewById(R.id.recycler_view);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
     }
 }

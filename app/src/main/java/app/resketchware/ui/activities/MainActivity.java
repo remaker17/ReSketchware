@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     private final Fragment projectsFragment = new ProjectsFragment();
     private final Fragment settingsFragment = new SettingsFragment();
-    private Fragment activeFragment = projectsFragment;
 
     private final NavigationBarView.OnItemSelectedListener onItemSelectedListener =
             new NavigationBarView.OnItemSelectedListener() {
@@ -31,17 +30,15 @@ public class MainActivity extends AppCompatActivity {
                     int id = item.getItemId();
                     if (id == R.id.menu_projects) {
                         getSupportFragmentManager().beginTransaction()
-                                .hide(activeFragment)
+                                .hide(settingsFragment)
                                 .show(projectsFragment)
                                 .commit();
-                        activeFragment = projectsFragment;
                         return true;
                     } else if (id == R.id.menu_settings) {
                         getSupportFragmentManager().beginTransaction()
-                                .hide(activeFragment)
+                                .hide(projectsFragment)
                                 .show(settingsFragment)
                                 .commit();
-                        activeFragment = settingsFragment;
                         return true;
                     } else {
                         return false;

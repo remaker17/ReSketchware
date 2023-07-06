@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import app.resketchware.R;
+import app.resketchware.ui.dialogs.NewProjectDialog;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.transition.MaterialSharedAxis;
@@ -42,5 +43,9 @@ public class ProjectsFragment extends Fragment {
         fab = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.recycler_view);
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+
+        fab.setOnClickListener(v -> {
+            NewProjectDialog.newInstance().show(getParentFragmentManager(), null);
+        });
     }
 }

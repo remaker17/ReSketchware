@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="?attr/dialogPreferredPadding"
+    android:paddingVertical="@dimen/abc_dialog_padding_top_material">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_project"
+        android:textAppearance="?attr/textAppearanceHeadline6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/rsw_circle_highlight_background">
+
+                <ImageView
+                    android:id="@+id/app_icon"
+                    android:layout_width="@dimen/mtrl_min_touch_target_size"
+                    android:layout_height="@dimen/mtrl_min_touch_target_size"
+                    android:layout_gravity="center"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/rsw_android" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/common_word_icon"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_app_name"
+            style="?attr/textInputOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:hint="@string/application_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/advanced_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:background="?attr/selectableItemBackground"
+        android:focusable="true"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/advanced_options_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/rsw_drop_down"
+            android:text="@string/project_advanced_options"
+            android:gravity="center_vertical"
+            android:textAppearance="?attr/textAppearanceBody2" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/hidden_advanced_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rsw_outline"
+            android:fillViewport="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center"
+                android:text="Colors not yet added"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+        </HorizontalScrollView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_package_name"
+            style="?attr/textInputOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/package_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/common_word_cancel" />
+
+        <Button
+            android:id="@+id/create"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/common_word_create" />
+
+    </LinearLayout>
+</LinearLayout>

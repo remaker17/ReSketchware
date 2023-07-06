@@ -4,6 +4,9 @@
     <!-- Common words -->
     <string name="common_word_accept">Accept</string>
     <string name="common_word_decline">Decline</string>
+    <string name="common_word_cancel">Cancel</string>
+    <string name="common_word_create">Create</string>
+    <string name="common_word_icon">Icon</string>
     <string name="common_word_projects">Projects</string>
     <string name="common_word_settings">Settings</string>
 
@@ -15,4 +18,10 @@
     <!-- Permissions -->
     <string name="permission_ask_title">Storage Permission Needed</string>
     <string name="permission_ask_message">This app needs the storage permission to access external storage.</string>
+
+    <!-- New project dialog -->
+    <string name="application_name">Application name</string>
+    <string name="new_project">New project</string>
+    <string name="package_name">Package name</string>
+    <string name="project_advanced_options">Advanced options</string>
 </resources>

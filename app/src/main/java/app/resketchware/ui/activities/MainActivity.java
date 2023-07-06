@@ -20,9 +20,34 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNav;
     private Toolbar toolbar;
 
-    private final Fragment projectsFragment = ProjectsFragment.newInstance();
-    private final Fragment settingsFragment = SettingsFragment.newInstance();
+    private final Fragment projectsFragment = new ProjectsFragment();
+    private final Fragment settingsFragment = new SettingsFragment();
     private Fragment activeFragment = projectsFragment;
+
+    private final NavigationBarView.OnItemSelectedListener onItemSelectedListener =
+            new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    int id = item.getItemId();
+                    if (id == R.id.menu_projects) {
+                        getSupportFragmentManager().beginTransaction()
+                                .hide(activeFragment)
+                                .show(projectsFragment)
+                                .commit();
+                        activeFragment = projectsFragment;
+                        return true;
+                    } else if (id == R.id.menu_settings) {
+                        getSupportFragmentManager().beginTransaction()
+                                .hide(activeFragment)
+                                .show(settingsFragment)
+                                .commit();
+                        activeFragment = settingsFragment;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,36 +60,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportFragmentManager().beginTransaction()
-            .add(R.id.container, settingsFragment)
-            .hide(settingsFragment)
-            .commit();
+                .add(R.id.container, settingsFragment)
+                .hide(settingsFragment)
+                .commit();
 
         getSupportFragmentManager().beginTransaction()
-            .add(R.id.container, projectsFragment)
-            .commit();
+                .add(R.id.container, projectsFragment)
+                .commit();
 
-        bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.menu_projects) {
-                    getSupportFragmentManager().beginTransaction()
-                        .hide(activeFragment)
-                        .show(projectsFragment)
-                        .commit();
-                    activeFragment = projectsFragment;
-                    return true;
-                } else if (id == R.id.menu_settings) {
-                    getSupportFragmentManager().beginTransaction()
-                        .hide(activeFragment)
-                        .show(settingsFragment)
-                        .commit();
-                    activeFragment = settingsFragment;
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
+        bottomNav.setOnItemSelectedListener(onItemSelectedListener);
     }
 }

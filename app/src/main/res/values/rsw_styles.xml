@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.RSW.NotImplementedView" parent="">
+        <item name="titleTextAppearance">?attr/textAppearanceHeadline6</item>
+        <item name="messageTextAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+</resources>

@@ -4,23 +4,25 @@
     <style name="Theme.RSW.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:colorBackground">@color/rsw_color_white</item>
         <item name="android:windowBackground">@color/rsw_color_white</item>
-        <item name="colorAccent">@color/rsw_color_orange_5</item>
-        <item name="colorOnPrimary">@color/rsw_color_white</item>
+        <item name="colorSecondary">@color/rsw_color_orange_5</item>
+        <item name="colorOnSecondary">@color/rsw_color_orange_0</item>
         <item name="colorPrimary">@color/rsw_color_blue_5</item>
         <item name="colorPrimaryDark">@color/rsw_color_blue_6</item>
-        <item name="colorSecondary">?attr/colorPrimary</item>
-        <item name="colorOnSecondary">?attr/colorOnPrimary</item>
+        <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
+        <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
+        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Primary</item>
     </style>
 
     <style name="Theme.RSW.Dark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:colorBackground">@color/rsw_color_graphite_9</item>
         <item name="android:windowBackground">@color/rsw_color_graphite_9</item>
-        <item name="colorAccent">@color/rsw_color_orange_5</item>
-        <item name="colorOnPrimary">@color/rsw_color_white</item>
+        <item name="colorSecondary">@color/rsw_color_orange_5</item>
+        <item name="colorOnSecondary">@color/rsw_color_orange_0</item>
         <item name="colorPrimary">@color/rsw_color_blue_5</item>
         <item name="colorPrimaryDark">@color/rsw_color_graphite_8</item>
-        <item name="colorSecondary">?attr/colorPrimary</item>
-        <item name="colorOnSecondary">?attr/colorOnPrimary</item>
+        <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
+        <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
+        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar</item>
     </style>
 
     <style name="Theme.RSW.DayNight" parent="Theme.RSW.Light" />

@@ -15,17 +15,15 @@ import com.google.android.material.transition.MaterialSharedAxis;
 
 public class SettingsFragment extends Fragment {
 
-    public static SettingsFragment newInstance() {
-        SettingsFragment fragment = new SettingsFragment();
-        return fragment;
-    }
-
-    private SettingsFragment() {}
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, false));
+        MaterialSharedAxis enterTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, false);
+        MaterialSharedAxis exitTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, true);
+        enterTransition.setDuration(200);
+        exitTransition.setDuration(200);
+        setEnterTransition(enterTransition);
+        setExitTransition(exitTransition);
     }
 
     @Nullable

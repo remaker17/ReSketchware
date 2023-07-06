@@ -15,17 +15,15 @@ import com.google.android.material.transition.MaterialSharedAxis;
 
 public class ProjectsFragment extends Fragment {
 
-    public static ProjectsFragment newInstance() {
-        ProjectsFragment fragment = new ProjectsFragment();
-        return fragment;
-    }
-
-    private ProjectsFragment() {}
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, false));
+        MaterialSharedAxis enterTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, false);
+        MaterialSharedAxis exitTransition = new MaterialSharedAxis(MaterialSharedAxis.Y, true);
+        enterTransition.setDuration(200);
+        exitTransition.setDuration(200);
+        setEnterTransition(enterTransition);
+        setExitTransition(exitTransition);
     }
 
     @Nullable
@@ -37,5 +35,8 @@ public class ProjectsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ((android.widget.TextView) view.findViewById(R.id.test)).setOnClickListener(v -> {
+            ((android.widget.TextView) v).setText("Clicked");
+        });
     }
 }

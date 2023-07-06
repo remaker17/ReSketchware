@@ -8,6 +8,7 @@
     <string name="common_word_settings">Settings</string>
 
     <!-- Not implemented view -->
+    <!-- Do not translate/edit the word "GitHub", it breaks the application -->
     <string name="not_implemented_title">Not implemented yet</string>
     <string name="not_implemented_message">Follow the news in the GitHub repository.</string>
 </resources>

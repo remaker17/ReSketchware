@@ -18,9 +18,9 @@ import com.google.android.material.transition.MaterialSharedAxis;
 
 public class ProjectsFragment extends Fragment {
 
-    private final FloatingActionButton fab;
-    private final RecyclerView recyclerView;
-    private final SwipeRefreshLayout swipeRefreshLayout;
+    private FloatingActionButton fab;
+    private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

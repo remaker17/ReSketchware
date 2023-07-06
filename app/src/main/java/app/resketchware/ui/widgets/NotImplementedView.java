@@ -36,7 +36,7 @@ public class NotImplementedView extends LinearLayout {
     }
 
     public NotImplementedView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyle);
+        super(context, attrs, defStyleAttr);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.not_implemented_view, this, true);
@@ -47,8 +47,8 @@ public class NotImplementedView extends LinearLayout {
         messageTextView = findViewById(R.id.message);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.NotImplementedView, defStyleAttr, R.style.Widget_RSW_NotImplementedView);
-        titleTextAppearance = a.getResourceId(R.styleable.NotImplementedView_titleTextApperance, -1);
-        messageTextAppearance = a.getResourceId(R.styleable.NotImplementedView_messageTextApperance, -1);
+        titleTextAppearance = a.getResourceId(R.styleable.NotImplementedView_titleTextAppearance, -1);
+        messageTextAppearance = a.getResourceId(R.styleable.NotImplementedView_messageTextAppearance, -1);
         a.recycle();
 
         if (titleTextAppearance != -1) {

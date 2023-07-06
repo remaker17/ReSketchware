@@ -3,6 +3,7 @@ androidGradlePlugin = "8.2.0-alpha09"
 androidMaterial = "1.10.0-alpha04"
 
 androidxAppCompat = "1.7.0-alpha02"
+androidxSwipeRefreshLayout = "1.2.0-alpha01"
 
 kotlin = "1.8.22"
 
@@ -14,6 +15,11 @@ kotlin-gradlePlugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotl
 [libraries]
 android-material = { group = "com.google.android.material", name = "material", version.ref = "androidMaterial" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "androidxSwipeRefreshLayout" }
 
 [bundles]
-core = ["android-material", "androidx-appcompat"]
+core = [
+    "android-material",
+    "androidx-appcompat",
+    "androidx-swiperefreshlayout"
+]

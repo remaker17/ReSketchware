@@ -10,7 +10,6 @@ import app.resketchware.R;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class CrashLogActivity extends AppCompatActivity {
-
     public static final String ERROR_EXTRA = "error";
 
     @Override

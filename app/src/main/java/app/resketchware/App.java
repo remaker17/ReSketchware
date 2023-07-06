@@ -12,7 +12,6 @@ import android.util.Log;
 import app.resketchware.ui.activities.CrashLogActivity;
 
 public class App extends Application {
-
     @SuppressLint("StaticFieldLeak") // it is not a leak
     private static Context applicationContext;
 

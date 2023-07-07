@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.RSW.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.RSW.DesignLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:colorBackground">@color/rsw_color_white</item>
         <item name="android:windowBackground">@color/rsw_color_white</item>
+        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
+        <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
+    </style>
+
+    <style name="Theme.RSW.BaseApi.Light" parent="Theme.RSW.DesignLight">
         <item name="alertDialogTheme">@style/Theme.RSW.Dialog.Light.Alert</item>
         <item name="bottomSheetDialogTheme">@style/Theme.RSW.BottomSheetDialog.Light</item>
         <item name="colorSecondary">@color/rsw_color_orange_5</item>
@@ -13,12 +18,17 @@
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Light</item>
         <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Primary</item>
     </style>
 
-    <style name="Theme.RSW.Dark" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.RSW.DesignDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:colorBackground">@color/rsw_color_graphite_9</item>
         <item name="android:windowBackground">@color/rsw_color_graphite_9</item>
+        <item name="android:navigationBarColor">@color/rsw_color_graphite_9</item>
+        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
+        <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
+    </style>
+
+    <style name="Theme.RSW.BaseApi.Dark" parent="Theme.RSW.DesignDark">
         <item name="alertDialogTheme">@style/Theme.RSW.Dialog.Dark.Alert</item>
         <item name="bottomSheetDialogTheme">@style/Theme.RSW.BottomSheetDialog.Dark</item>
         <item name="colorSecondary">@color/rsw_color_orange_5</item>
@@ -28,9 +38,10 @@
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Dark</item>
         <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar</item>
     </style>
 
+    <style name="Theme.RSW.Dark" parent="Theme.RSW.BaseApi.Dark" />
+    <style name="Theme.RSW.Light" parent="Theme.RSW.BaseApi.Light" />
     <style name="Theme.RSW.DayNight" parent="Theme.RSW.Light" />
 
 </resources>

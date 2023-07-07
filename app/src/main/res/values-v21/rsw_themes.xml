@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.RSW.Light" parent="Theme.RSW.Api21.Light" />
+
+    <style name="Theme.RSW.Api21.Light" parent="Theme.RSW.BaseApi.Light">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/rsw_color_white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>

@@ -15,6 +15,7 @@
         <item name="android:windowTitleStyle">@style/Widget.RSW.NativeAlert.Title</item>
         <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
         <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:navigationBarColor">@color/rsw_color_graphite_9</item>
         <item name="android:listDivider">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
@@ -82,5 +83,19 @@
 
     <style name="Widget.RSW.NativeAlert.Title" parent="Base.DialogWindowTitle.AppCompat">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
+    </style>
+
+    <style name="Widget.RSW.AppBarLayout" parent="Widget.Design.AppBarLayout" />
+
+    <style name="Widget.RSW.AppBarLayout.AsBackground">
+        <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetLeft">72dp</item>
+        <item name="contentInsetStart">72dp</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
+        <item name="titleTextColor">?attr/colorPrimary</item>
     </style>
 </resources>

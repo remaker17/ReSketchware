@@ -27,7 +27,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:fillViewport="true">
 
         <LinearLayout
@@ -79,8 +80,8 @@
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/rsw_margin_medium"
-                    android:layout_marginStart="?attr/dialogPreferredPadding"
+                    android:layout_marginEnd="?attr/dialogPreferredPadding"
+                    android:layout_marginStart="@dimen/rsw_margin_medium"
                     android:hint="@string/application_name">
 
                     <com.google.android.material.textfield.TextInputEditText

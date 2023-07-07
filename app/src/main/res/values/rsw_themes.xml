@@ -6,6 +6,7 @@
         <item name="android:windowBackground">@color/rsw_color_white</item>
         <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
         <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
+        <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
         <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
     </style>
 
@@ -27,6 +28,7 @@
         <item name="android:navigationBarColor">@color/rsw_color_graphite_9</item>
         <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
         <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
+        <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
         <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
     </style>
 

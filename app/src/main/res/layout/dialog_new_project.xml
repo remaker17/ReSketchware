@@ -52,7 +52,8 @@
                     <FrameLayout
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:background="@drawable/rsw_circle_highlight_background">
+                        android:background="@drawable/rsw_circle_background"
+                        android:backgroundTint="?attr/colorControlHighlight">
 
                         <ImageView
                             android:id="@+id/app_icon"
@@ -77,7 +78,6 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_app_name"
-                    style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="?attr/dialogPreferredPadding"
@@ -120,7 +120,7 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rsw_bottom_line"
+                    android:background="@drawable/rsw_textfield_background"
                     android:fillViewport="true"
                     android:overScrollMode="never"
                     android:scrollbars="none">
@@ -135,7 +135,6 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_package_name"
-                    style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/rsw_margin_medium"

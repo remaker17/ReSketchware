@@ -27,8 +27,8 @@
     <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:background">@color/rsw_color_white</item>
         <item name="itemIconTint">@color/rsw_bottom_navigation_icon_text_tint</item>
-        <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.SpecialCaption.Dp.Brand</item>
-        <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.SpecialCaption.Dp.Secondary</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
         <item name="itemTextColor">@color/rsw_bottom_navigation_icon_text_tint</item>
     </style>
 
@@ -42,4 +42,23 @@
         <item name="titleTextColor">?attr/colorPrimary</item>
     </style>
 
+    <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorHint">@color/rsw_bottom_navigation_icon_text_tint</item>
+        <item name="boxBackgroundColor">@color/rsw_color_black_alpha4</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="hintTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
+        <item name="hintTextColor">@color/rsw_color_blue_5</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TextInputEditText.FilledBox</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.TextInputLayout</item>
+    </style>
+
+    <style name="ThemeOverlay.RSW.TextInputEditText.FilledBox" parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="editTextStyle">@style/Widget.RSW.TextInputEditText.FilledBox</item>
+    </style>
+
+    <style name="Widget.RSW.TextInputEditText.FilledBox" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
 </resources>

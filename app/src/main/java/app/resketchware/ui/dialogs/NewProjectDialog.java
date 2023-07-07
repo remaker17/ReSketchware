@@ -100,14 +100,15 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
 
         if (!hiddenAdvancedOptions.isShown()) {
             hiddenAdvancedOptions.setVisibility(View.VISIBLE);
-            AnimationUtil.animateViewHeight(hiddenAdvancedOptions, true, 300, null);
+            // AnimationUtil.animateViewHeight(hiddenAdvancedOptions, true, 300, null);
         } else {
-            AnimationUtil.animateViewHeight(hiddenAdvancedOptions, false, 300, new AnimatorListenerAdapter() {
+            hiddenAdvancedOptions.setVisibility(View.GONE);
+            /*AnimationUtil.animateViewHeight(hiddenAdvancedOptions, false, 300, new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     hiddenAdvancedOptions.setVisibility(View.GONE);
                 }
-            });
+            });*/
         }
     }
 }

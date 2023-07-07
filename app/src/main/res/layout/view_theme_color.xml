@@ -13,13 +13,14 @@
             android:id="@+id/color_view"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:background="@drawable/rsw_circle_highlight_background" />
+            android:background="@drawable/rsw_circle_background" />
 
         <TextView
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="10sp" />
 
     </LinearLayout>

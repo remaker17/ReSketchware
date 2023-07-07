@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="?attr/dialogPreferredPadding"
+            android:layout_marginStart="?attr/dialogPreferredPadding"
             android:orientation="vertical">
 
             <FrameLayout
@@ -69,7 +69,8 @@
             style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="?attr/dialogPreferredPadding"
+            android:layout_marginEnd="@dimen/rsw_margin_medium"
+            android:layout_marginStart="?attr/dialogPreferredPadding"
             android:hint="@string/application_name">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -83,6 +84,7 @@
         android:id="@+id/advanced_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
         android:layout_marginHorizontal="?attr/dialogPreferredPadding">
 
         <TextView
@@ -99,7 +101,7 @@
         android:id="@+id/hidden_advanced_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="?attr/dialogPreferredPadding"
+        android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
         android:layout_marginHorizontal="?attr/dialogPreferredPadding"
         android:orientation="vertical"
         android:visibility="gone">
@@ -126,7 +128,7 @@
             style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/rsw_margin_xsmall"
+            android:layout_marginTop="@dimen/rsw_margin_medium"
             android:hint="@string/package_name">
 
             <com.google.android.material.textfield.TextInputEditText

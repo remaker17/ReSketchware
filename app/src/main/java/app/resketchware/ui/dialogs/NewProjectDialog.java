@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.graphics.BlendMode;
 import android.graphics.BlendModeColorFilter;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
     private View advancedOptions;
     private View cancelButton;
     private View createButton;
+    private ViewGroup scrollContainer;
     private ViewGroup hiddenAdvancedOptions;
     private TextView advancedOptionsTextView;
 
@@ -82,6 +85,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         advancedOptions = view.findViewById(R.id.advanced_options);
         hiddenAdvancedOptions = view.findViewById(R.id.hidden_advanced_options);
         advancedOptionsTextView = view.findViewById(R.id.advanced_options_text);
+        scrollContainer = view.findViewById(R.id.scroll_container);
         cancelButton = view.findViewById(R.id.cancel);
         createButton = view.findViewById(R.id.create);
     }
@@ -97,6 +101,10 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
     private void toggleAdvancedOptions() {
         int dropDrawableResId = hiddenAdvancedOptions.isShown() ? R.drawable.rsw_drop_down : R.drawable.rsw_drop_up;
         advancedOptionsTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, dropDrawableResId, 0);
+
+        AutoTransition autoTransition = new AutoTransition();
+        autoTransition.setDuration(200);
+        TransitionManager.beginDelayedTransition(scrollContainer, autoTransition);
 
         if (!hiddenAdvancedOptions.isShown()) {
             hiddenAdvancedOptions.setVisibility(View.VISIBLE);

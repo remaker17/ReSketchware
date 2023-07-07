@@ -77,4 +77,6 @@
     <color name="rsw_color_white_alpha8">#14ffffff</color>
     <color name="rsw_color_white_alpha80">#ccffffff</color>
     <color name="rsw_color_white_transparent">#00ffffff</color>
+
+    <color name="rsw_textinput_default_stroke_color">#6B000000</color>
 </resources>

@@ -115,22 +115,21 @@
                 android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
                 android:layout_marginHorizontal="?attr/dialogPreferredPadding"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rsw_outline"
-                    android:fillViewport="true">
+                    android:background="@drawable/rsw_bottom_line"
+                    android:fillViewport="true"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/colors_container"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:gravity="center"
-                        android:text="Colors not yet added"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textAppearance="?attr/textAppearanceSubtitle1" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
 
                 </HorizontalScrollView>
 

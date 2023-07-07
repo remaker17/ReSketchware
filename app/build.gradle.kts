@@ -36,5 +36,4 @@ android {
 
 dependencies {
     implementation(libs.bundles.core)
-    implementation(libs.material.dialogs.bottomsheet)
 }

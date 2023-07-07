@@ -39,7 +39,7 @@ public class NotImplementedView extends LinearLayout {
         super(context, attrs, defStyleAttr);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        inflater.inflate(R.layout.not_implemented_view, this, true);
+        inflater.inflate(R.layout.view_not_implemented, this, true);
         setGravity(Gravity.CENTER);
         setOrientation(LinearLayout.VERTICAL);
 

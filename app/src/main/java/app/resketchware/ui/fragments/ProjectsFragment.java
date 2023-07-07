@@ -14,11 +14,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import app.resketchware.R;
 import app.resketchware.ui.dialogs.NewProjectDialog;
 
-import com.afollestad.materialdialogs.LayoutMode;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet;
-import com.afollestad.materialdialogs.customview.DialogCustomViewExtKt;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.transition.MaterialSharedAxis;
 
@@ -49,18 +44,8 @@ public class ProjectsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
 
-        fab.setOnLongClickListener(v -> {
-            NewProjectDialog.newInstance().show(getParentFragmentManager(), null);
-            return false;
-        });
-
         fab.setOnClickListener(v -> {
-            MaterialDialog dialog = new MaterialDialog(view.getContext(), new BottomSheet(LayoutMode.WRAP_CONTENT))
-                    .title(null, "New project")
-                    .positiveButton(null, "Create", null)
-                    .negativeButton(null, "Cancel", null);
-            MaterialDialog customDialog = DialogCustomViewExtKt.customView(dialog, R.layout.dialog_new_project, null, true, false, true, false);
-            customDialog.show();
+            NewProjectDialog.newInstance().show(getParentFragmentManager(), null);
         });
     }
 }

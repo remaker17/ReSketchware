@@ -2,10 +2,13 @@ package app.resketchware.ui.dialogs;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.graphics.BlendMode;
+import android.graphics.BlendModeColorFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,15 +18,33 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import app.resketchware.R;
+import app.resketchware.ui.widgets.ThemeColorView;
 import app.resketchware.utils.AnimationUtil;
 
 public class NewProjectDialog extends BottomSheetDialogFragment {
 
+    private LinearLayout themeColorsContainer;
     private View advancedOptions;
     private View cancelButton;
     private View createButton;
     private ViewGroup hiddenAdvancedOptions;
     private TextView advancedOptionsTextView;
+
+    private final String[] themeColorKeys = {
+            "color_accent",
+            "color_primary",
+            "color_primary_dark",
+            "color_control_highlight",
+            "color_control_normal"
+    };
+    private final String[] themeColorLabels = {
+            "colorAccent",
+            "colorPrimary",
+            "colorPrimaryDark",
+            "colorControlHighlight",
+            "colorControlNormal"
+    };
+    private final int[] projectThemeColors = new int[themeColorKeys.length];
 
     public static NewProjectDialog newInstance() {
         return new NewProjectDialog();
@@ -41,9 +62,23 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
 
         initViews(view);
         setListeners();
+
+        projectThemeColors[0] = getResources().getColor(R.color.rsw_color_orange_5);
+        projectThemeColors[1] = getResources().getColor(R.color.rsw_color_blue_5);
+        projectThemeColors[2] = getResources().getColor(R.color.rsw_color_blue_6);
+        projectThemeColors[3] = getResources().getColor(R.color.rsw_color_black_alpha12);
+        projectThemeColors[4] = getResources().getColor(R.color.rsw_color_gray_5);
+
+        for (int i = 0; i < themeColorKeys.length; i++) {
+            ThemeColorView colorView = new ThemeColorView(requireContext(), i);
+            colorView.getNameTextView().setText(themeColorLabels[i]);
+            colorView.getColorView().getBackground().setColorFilter(new BlendModeColorFilter(projectThemeColors[i], BlendMode.SRC_ATOP));
+            themeColorsContainer.addView(colorView);
+        }
     }
 
     private void initViews(View view) {
+        themeColorsContainer = view.findViewById(R.id.colors_container);
         advancedOptions = view.findViewById(R.id.advanced_options);
         hiddenAdvancedOptions = view.findViewById(R.id.hidden_advanced_options);
         advancedOptionsTextView = view.findViewById(R.id.advanced_options_text);
@@ -55,7 +90,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         advancedOptions.setOnClickListener(v -> toggleAdvancedOptions());
         cancelButton.setOnClickListener(v -> dismiss());
         createButton.setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -66,14 +101,13 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         if (!hiddenAdvancedOptions.isShown()) {
             hiddenAdvancedOptions.setVisibility(View.VISIBLE);
             AnimationUtil.animateViewHeight(hiddenAdvancedOptions, true, 300, null);
-            return;
+        } else {
+            AnimationUtil.animateViewHeight(hiddenAdvancedOptions, false, 300, new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    hiddenAdvancedOptions.setVisibility(View.GONE);
+                }
+            });
         }
-
-        AnimationUtil.animateViewHeight(hiddenAdvancedOptions, false, 300, new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                hiddenAdvancedOptions.setVisibility(View.GONE);
-            }
-        });
     }
 }

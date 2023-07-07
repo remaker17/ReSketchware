@@ -1,4 +1,4 @@
-<<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -25,118 +25,131 @@
         android:ellipsize="end"
         android:text="@string/new_project" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/abc_dialog_padding_top_material"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="?attr/dialogPreferredPadding"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="@drawable/rsw_circle_highlight_background">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/abc_dialog_padding_top_material"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/app_icon"
-                    android:layout_width="@dimen/mtrl_min_touch_target_size"
-                    android:layout_height="@dimen/mtrl_min_touch_target_size"
-                    android:layout_gravity="center"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/rsw_android" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="?attr/dialogPreferredPadding"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/rsw_circle_highlight_background">
+
+                        <ImageView
+                            android:id="@+id/app_icon"
+                            android:layout_width="@dimen/mtrl_min_touch_target_size"
+                            android:layout_height="@dimen/mtrl_min_touch_target_size"
+                            android:layout_gravity="center"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@drawable/rsw_android" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/rsw_margin_xxxsmall"
+                        android:text="@string/common_word_icon"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceCaption"
+                        android:textSize="10sp"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_app_name"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/rsw_margin_medium"
+                    android:layout_marginStart="?attr/dialogPreferredPadding"
+                    android:hint="@string/application_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/advanced_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
+                android:layout_marginHorizontal="?attr/dialogPreferredPadding">
+
+                <TextView
+                    android:id="@+id/advanced_options_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/rsw_drop_down"
+                    android:text="@string/project_advanced_options"
+                    android:gravity="center_vertical"
+                    android:textAppearance="?attr/textAppearanceBody2" />
             </FrameLayout>
 
-            <TextView
-                android:layout_width="56dp"
+            <LinearLayout
+                android:id="@+id/hidden_advanced_options"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/rsw_margin_xxxsmall"
-                android:text="@string/common_word_icon"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceCaption"
-                android:textSize="10sp" 
-                android:visibility="gone" />
+                android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
+                android:layout_marginHorizontal="?attr/dialogPreferredPadding"
+                android:orientation="vertical"
+                android:visibility="gone">
 
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rsw_outline"
+                    android:fillViewport="true">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:gravity="center"
+                        android:text="Colors not yet added"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textAppearance="?attr/textAppearanceSubtitle1" />
+
+                </HorizontalScrollView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_package_name"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/rsw_margin_medium"
+                    android:hint="@string/package_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_app_name"
-            style="@style/Widget.Design.TextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/rsw_margin_medium"
-            android:layout_marginStart="?attr/dialogPreferredPadding"
-            android:hint="@string/application_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/advanced_options"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
-        android:layout_marginHorizontal="?attr/dialogPreferredPadding">
-
-        <TextView
-            android:id="@+id/advanced_options_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/rsw_drop_down"
-            android:text="@string/project_advanced_options"
-            android:gravity="center_vertical"
-            android:textAppearance="?attr/textAppearanceBody2" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:id="@+id/hidden_advanced_options"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
-        android:layout_marginHorizontal="?attr/dialogPreferredPadding"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rsw_outline"
-            android:fillViewport="true">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:gravity="center"
-                android:text="Colors not yet added"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
-
-        </HorizontalScrollView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_package_name"
-            style="@style/Widget.Design.TextInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/rsw_margin_medium"
-            android:hint="@string/package_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
     <androidx.appcompat.widget.ButtonBarLayout
         style="?attr/buttonBarStyle"

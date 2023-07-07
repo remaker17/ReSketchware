@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/rsw_color_graphite_8</item>
+        <item name="itemIconTint">@color/rsw_bottom_navigation_icon_text_tint</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.SpecialCaption.Dp.Brand</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.SpecialCaption.Dp.Secondary</item>
+        <item name="itemTextColor">@color/rsw_bottom_navigation_icon_text_tint</item>
+    </style>
+
+    <style name="Widget.RSW.BottomNavigation.Secondary" parent="Widget.RSW.BottomNavigation">
+        <item name="android:background">@color/rsw_color_graphite_9</item>
+    </style>
+
+    <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
+        <item name="titleTextColor">?attr/colorOnSurface</item>
+    </style>
+
+</resources>

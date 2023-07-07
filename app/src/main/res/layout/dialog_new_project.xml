@@ -66,6 +66,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_app_name"
+            style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="?attr/dialogPreferredPadding"
@@ -82,10 +83,7 @@
         android:id="@+id/advanced_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="?attr/dialogPreferredPadding"
-        android:background="?attr/selectableItemBackground"
-        android:focusable="true"
-        android:clickable="true">
+        android:layout_marginHorizontal="?attr/dialogPreferredPadding">
 
         <TextView
             android:id="@+id/advanced_options_text"
@@ -125,6 +123,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_package_name"
+            style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/rsw_margin_xsmall"
@@ -144,7 +143,8 @@
         android:gravity="bottom|end"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/rsw_margin_medium_small"
-        android:paddingVertical="@dimen/rsw_margin_xxxsmall">
+        android:paddingTop="@dimen/rsw_margin_xxxsmall"
+        android:paddingBottom="@dimen/rsw_margin_xxsmall">
 
         <Button
             android:id="@+id/cancel"

@@ -5,6 +5,7 @@
         <item name="android:colorBackground">@color/rsw_color_white</item>
         <item name="android:windowBackground">@color/rsw_color_white</item>
         <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
+        <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
         <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
     </style>
 
@@ -25,6 +26,7 @@
         <item name="android:windowBackground">@color/rsw_color_graphite_9</item>
         <item name="android:navigationBarColor">@color/rsw_color_graphite_9</item>
         <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
+        <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
         <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
     </style>
 
@@ -43,5 +45,71 @@
     <style name="Theme.RSW.Dark" parent="Theme.RSW.BaseApi.Dark" />
     <style name="Theme.RSW.Light" parent="Theme.RSW.BaseApi.Light" />
     <style name="Theme.RSW.DayNight" parent="Theme.RSW.Light" />
+
+    <style name="Theme.RSW.Dialog.Dark" parent="Theme.RSW.Dark">
+        <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
+        <item name="android:windowBackground">@drawable/rsw_dialog_background_dark</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@style/Widget.RSW.NativeAlert.Title</item>
+        <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:navigationBarColor">@color/rsw_color_graphite_9</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowElevation">@dimen/abc_floating_window_z</item>
+    </style>
+
+    <style name="Theme.RSW.Dialog.Dark.Alert" parent="Theme.RSW.Dialog.Dark">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:letterSpacing">-0.023333333</item>
+    </style>
+
+    <style name="Theme.RSW.Dialog.Light" parent="Theme.RSW.Light">
+        <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
+        <item name="android:windowBackground">@drawable/rsw_dialog_background_light</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@style/Widget.RSW.NativeAlert.Title</item>
+        <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowElevation">@dimen/abc_floating_window_z</item>
+    </style>
+
+    <style name="Theme.RSW.Dialog.Light.Alert" parent="Theme.RSW.Dialog.Light">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:letterSpacing">-0.023333333</item>
+    </style>
+
+    <style name="Theme.RSW.BottomSheetDialog.Dark" parent="Theme.RSW.Dialog.Dark">
+        <item name="android:colorBackground">@color/rsw_color_graphite_8</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bottomSheetStyle">@style/Widget.RSW.BottomSheet.Dark</item>
+    </style>
+
+    <style name="Theme.RSW.BottomSheetDialog.Light" parent="Theme.RSW.Dialog.Light">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bottomSheetStyle">@style/Widget.RSW.BottomSheet.Light</item>
+    </style>
 
 </resources>

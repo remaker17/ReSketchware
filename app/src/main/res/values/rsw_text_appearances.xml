@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.RSW.SpecialCaption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColorHint">?android:attr/textColorSecondary</item>
+        <item name="android:letterSpacing">-0.07</item>
+    </style>
+    
+    <style name="TextAppearance.RSW.SpecialCaption.Dp" parent="TextAppearance.RSW.SpecialCaption">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="TextAppearance.RSW.SpecialCaption.Dp.Brand" parent="TextAppearance.RSW.SpecialCaption.Dp">
+        <item name="android:textColor">@color/rsw_color_blue_5</item>
+    </style>
+
+    <style name="TextAppearance.RSW.SpecialCaption.Dp.Secondary" parent="TextAppearance.RSW.SpecialCaption.Dp">
+        <item name="android:textColor">?android:attr/textColorTertiary</item>
+    </style>
+
+</resources>

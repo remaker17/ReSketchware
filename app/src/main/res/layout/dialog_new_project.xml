@@ -20,7 +20,9 @@
         style="?android:attr/windowTitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="?attr/dialogPreferredPadding"
+        android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
+        android:layout_marginTop="?attr/dialogPreferredPadding"
+        android:layout_marginStart="?attr/dialogPreferredPadding"
         android:ellipsize="end"
         android:text="@string/new_project" />
 
@@ -60,7 +62,8 @@
                             android:layout_height="@dimen/mtrl_min_touch_target_size"
                             android:layout_gravity="center"
                             android:scaleType="centerInside"
-                            app:srcCompat="@drawable/rsw_android" />
+                            app:srcCompat="@drawable/rsw_android"
+                            app:tint="?android:attr/textColorHint" />
                     </FrameLayout>
 
                     <TextView
@@ -111,10 +114,11 @@
                 android:id="@+id/hidden_advanced_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/rsw_margin_tiny"
                 android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
                 android:layout_marginHorizontal="?attr/dialogPreferredPadding"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -137,7 +141,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/rsw_margin_medium"
-                    android:hint="@string/package_name">
+                    android:hint="@string/package_name"
+                    app:placeholderText="com.my.newproject">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"

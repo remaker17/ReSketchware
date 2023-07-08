@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="rsw_color_black">#ff000000</color>
+    <color name="rsw_color_black_alpha03">#08000000</color>
     <color name="rsw_color_black_alpha12">#1f000000</color>
     <color name="rsw_color_black_alpha14">#24000000</color>
     <color name="rsw_color_black_alpha16">#29000000</color>
@@ -67,6 +68,7 @@
     <color name="rsw_color_orange_8_5">#ff291205</color>
     <color name="rsw_color_orange_9">#ff100904</color>
     <color name="rsw_color_white">#ffffffff</color>
+    <color name="rsw_color_white_alpha03">#08ffffff</color>
     <color name="rsw_color_white_alpha05">#0dffffff</color>
     <color name="rsw_color_white_alpha12">#1fffffff</color>
     <color name="rsw_color_white_alpha14">#24ffffff</color>

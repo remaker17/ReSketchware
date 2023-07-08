@@ -3,7 +3,7 @@
     <item android:gravity="bottom">
         <shape>
             <size android:height="1dp" />
-            <solid android:color="@color/rsw_textinput_default_stroke_color" />
+            <solid android:color="@android:color/white" />
         </shape>
     </item>
 </layer-list>

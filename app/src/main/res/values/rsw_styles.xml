@@ -25,15 +25,15 @@
     </style>
 
     <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="android:background">@color/rsw_color_white</item>
-        <item name="itemIconTint">@color/rsw_bottom_navigation_icon_text_tint</item>
+        <item name="android:background">?attr/rsw_background1</item>
+        <item name="itemIconTint">?attr/rsw_itemIconTint</item>
         <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
         <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
-        <item name="itemTextColor">@color/rsw_bottom_navigation_icon_text_tint</item>
+        <item name="itemTextColor">?attr/itemTextColor</item>
     </style>
 
     <style name="Widget.RSW.BottomNavigation.Secondary" parent="Widget.RSW.BottomNavigation">
-        <item name="android:background">@color/rsw_color_white</item>
+        <item name="android:background">?attr/rsw_background0</item>
     </style>
 
     <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
@@ -43,22 +43,24 @@
     </style>
 
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <item name="android:textColorHint">@color/rsw_bottom_navigation_icon_text_tint</item>
-        <item name="boxBackgroundColor">@color/rsw_color_black_alpha4</item>
+        <item name="android:textColorHint">?android:attr/textColorHint</item>
+        <item name="boxBackgroundColor">?attr/rsw_textFieldBackground</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="hintTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
-        <item name="hintTextColor">@color/rsw_color_blue_5</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TextInputEditText.FilledBox</item>
+        <item name="hintTextColor">?attr/rsw_textBrand</item>
+        <item name="placeholderTextColor">?android:attr/textColorHint</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TextInputEditText</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.TextInputLayout</item>
     </style>
 
-    <style name="ThemeOverlay.RSW.TextInputEditText.FilledBox" parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
-        <item name="editTextStyle">@style/Widget.RSW.TextInputEditText.FilledBox</item>
+    <style name="ThemeOverlay.RSW.TextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="editTextStyle">@style/Widget.RSW.TextInputEditText</item>
     </style>
 
-    <style name="Widget.RSW.TextInputEditText.FilledBox" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+    <style name="Widget.RSW.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">?attr/rsw_textColorPrimary</item>
     </style>
 </resources>

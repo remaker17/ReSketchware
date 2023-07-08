@@ -20,8 +20,7 @@
         style="?android:attr/windowTitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/dialogPreferredPadding"
-        android:layout_marginHorizontal="?attr/dialogPreferredPadding"
+        android:layout_margin="?attr/dialogPreferredPadding"
         android:ellipsize="end"
         android:text="@string/new_project" />
 
@@ -40,7 +39,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/abc_dialog_padding_top_material"
+                android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -53,8 +52,7 @@
                     <FrameLayout
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:background="@drawable/rsw_circle_background"
-                        android:backgroundTint="?attr/colorControlHighlight">
+                        android:background="@drawable/rsw_background_textfield">
 
                         <ImageView
                             android:id="@+id/app_icon"
@@ -121,7 +119,7 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/rsw_textfield_background"
+                    android:background="@drawable/rsw_background_textfield"
                     android:fillViewport="true"
                     android:overScrollMode="never"
                     android:scrollbars="none">

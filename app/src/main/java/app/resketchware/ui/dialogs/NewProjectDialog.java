@@ -21,7 +21,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import app.resketchware.R;
 import app.resketchware.ui.widgets.ThemeColorView;
-import app.resketchware.utils.AnimationUtil;
 
 public class NewProjectDialog extends BottomSheetDialogFragment {
 
@@ -108,15 +107,8 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
 
         if (!hiddenAdvancedOptions.isShown()) {
             hiddenAdvancedOptions.setVisibility(View.VISIBLE);
-            // AnimationUtil.animateViewHeight(hiddenAdvancedOptions, true, 300, null);
         } else {
             hiddenAdvancedOptions.setVisibility(View.GONE);
-            /*AnimationUtil.animateViewHeight(hiddenAdvancedOptions, false, 300, new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    hiddenAdvancedOptions.setVisibility(View.GONE);
-                }
-            });*/
         }
     }
 }

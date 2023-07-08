@@ -63,7 +63,7 @@
         <item name="rsw_textColorBrand">@color/rsw_text_color_brand</item>
         <item name="rsw_textColorPrimary">@color/rsw_text_color_primary</item>
         <item name="rsw_textColorSecondary">@color/rsw_text_color_secondary</item>
-        <item name="rsw_textFieldBackground">@color/rsw_color_white_alpha8</item>
+        <item name="rsw_textFieldBackground">@color/rsw_color_white_alpha03</item>
         <item name="rsw_textPrimary">@color/rsw_color_white</item>
         <item name="rsw_textSecondary">@color/rsw_color_white_alpha47</item>
 

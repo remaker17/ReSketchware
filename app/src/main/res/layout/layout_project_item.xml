@@ -16,9 +16,13 @@
         android:background="@drawable/rsw_background_icon">
 
         <ImageView
+            android:id="@+id/project_icon"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/rsw_android"
+            app:tint="?attr/colorOnSurface" />
     </FrameLayout>
 
     <LinearLayout
@@ -41,9 +45,19 @@
             android:id="@+id/project_package_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/rsw_margin_tiny"
             android:textAppearance="?attr/textAppearanceCaption"
             android:textColor="?android:attr/textColorSecondary"
             tools:text="com.android.application" />
+
+        <TextView
+            android:id="@+id/project_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/rsw_margin_tiny"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?android:attr/textColorSecondary"
+            tools:text="1.0 (1)" />
 
     </LinearLayout>
 

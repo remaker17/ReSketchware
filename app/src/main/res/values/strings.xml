@@ -23,6 +23,8 @@
     <!-- New project dialog -->
     <string name="application_name">Application name</string>
     <string name="new_project">New project</string>
+    <string name="version_name">Version name</string>
+    <string name="version_code">Version code</string>
     <string name="package_name">Package name</string>
     <string name="project_advanced_options">Advanced options</string>
 </resources>

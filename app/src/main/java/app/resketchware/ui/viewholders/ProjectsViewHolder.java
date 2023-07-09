@@ -45,7 +45,7 @@ public class ProjectsViewHolder extends ViewHolder {
     public void bind(HashMap<String, Object> project) {
         projectId.setText(SketchwareUtil.valueOrEmpty(project.get("sc_id")));
         projectTitle.setText(SketchwareUtil.valueOrEmpty(project.get("my_app_name")));
-        projectPackageName.setText(SketchwareUtil.valueOrEmpty(project.get("my_ws_name")));
+        projectPackageName.setText(SketchwareUtil.valueOrEmpty(project.get("my_sc_pkg_name")));
         projectVersion.setText(SketchwareUtil.valueOrEmpty(project.get("sc_ver_name")) + " (" + SketchwareUtil.valueOrEmpty(project.get("sc_ver_code")) + ")");
 
         boolean haveCustomIcon = (boolean) project.get("custom_icon");

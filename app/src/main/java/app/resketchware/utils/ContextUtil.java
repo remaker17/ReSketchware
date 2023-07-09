@@ -1,12 +1,16 @@
 package app.resketchware.utils;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.util.TypedValue;
 
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DimenRes;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 public class ContextUtil {
 
@@ -37,5 +41,12 @@ public class ContextUtil {
      */
     public static int getDimenFromResources(Context context, @DimenRes int dimen) {
         return context.getResources().getDimensionPixelSize(dimen);
+    }
+
+    public boolean hasStoragePermissions(@NonNull Context context) {
+        return ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED;
     }
 }

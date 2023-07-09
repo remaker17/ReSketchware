@@ -12,7 +12,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,6 +21,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import app.resketchware.R;
 import app.resketchware.ui.fragments.ProjectsFragment;
 import app.resketchware.ui.fragments.SettingsFragment;
+import app.resketchware.utils.ContextUtil;
 
 public class MainActivity extends AppCompatActivity {
     private static final int STORAGE_PERMISSION_CODE = 1;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNav.setOnItemSelectedListener(onItemSelectedListener);
 
-        if (!hasStoragePermissions()) {
+        if (!ContextUtil.hasStoragePermissions(this)) {
             showPermissionDialog();
         }
     }
@@ -77,13 +77,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, settingsFragment)
                 .commit();
-    }
-
-    private boolean hasStoragePermissions() {
-        return ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestStoragePermissions() {

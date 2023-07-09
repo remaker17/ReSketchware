@@ -28,7 +28,6 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
     private View advancedOptions;
     private View cancelButton;
     private View createButton;
-    private ViewGroup scrollContainer;
     private ViewGroup hiddenAdvancedOptions;
     private TextView advancedOptionsTextView;
 
@@ -84,7 +83,6 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         advancedOptions = view.findViewById(R.id.advanced_options);
         hiddenAdvancedOptions = view.findViewById(R.id.hidden_advanced_options);
         advancedOptionsTextView = view.findViewById(R.id.advanced_options_text);
-        scrollContainer = view.findViewById(R.id.scroll_container);
         cancelButton = view.findViewById(R.id.cancel);
         createButton = view.findViewById(R.id.create);
     }
@@ -103,7 +101,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
 
         AutoTransition autoTransition = new AutoTransition();
         autoTransition.setDuration(200);
-        TransitionManager.beginDelayedTransition(scrollContainer, autoTransition);
+        TransitionManager.beginDelayedTransition(((ViewGroup) hiddenAdvancedOptions.getParent()), autoTransition);
 
         if (!hiddenAdvancedOptions.isShown()) {
             hiddenAdvancedOptions.setVisibility(View.VISIBLE);

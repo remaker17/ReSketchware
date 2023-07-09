@@ -1,9 +1,15 @@
 package app.resketchware.ui.activities;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -65,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         if (!ContextUtil.hasStoragePermissions(this)) {
             showPermissionDialog();
         }
+        if (ContextUtil.hasStoragePermissions(this)) {
+            allFilesAccessCheck();
+        }
     }
 
     private void switchToProjectsScreen() {
@@ -85,6 +94,22 @@ public class MainActivity extends AppCompatActivity {
                 STORAGE_PERMISSION_CODE);
     }
 
+    private void requestAllFilesPermissions() {
+        if (Environment.isExternalStorageManager()) {
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+        intent.setData(Uri.parse("package:" + getPackageName()));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException ignored) {
+            // ignored
+        }
+    }
+
     public void showPermissionDialog() {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.permission_ask_title)
@@ -99,16 +124,32 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    public void allFilesAccessCheck() {
+        if (Build.VERSION.SDK_INT >= 30) {
+            if (Environment.isExternalStorageManager()) {
+                return;
+            }
+
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle(R.string.permission_ask_title)
+                    .setMessage(R.string.permission_all_files_ask_message)
+                    .setPositiveButton(android.R.string.ok, (d, which) -> {
+                        d.dismiss();
+                        requestAllFilesPermissions();
+                    })
+                    .setCancelable(false)
+                    .create();
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        }
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == STORAGE_PERMISSION_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permissions granted!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Permissions denied!", Toast.LENGTH_SHORT).show();
-            }
+            allFilesAccessCheck();
         }
     }
 }

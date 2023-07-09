@@ -2,18 +2,18 @@
 <resources>
 
     <style name="Theme.RSW.DesignLight" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="rsw_background0">@color/rsw_color_white</item>
-        <item name="rsw_background1">@color/rsw_color_white</item>
+        <item name="rsw_background0">@color/rsw_color_black_alpha4</item>
+        <item name="rsw_background1">@color/rsw_color_black_alpha4</item>
         <item name="rsw_background2">@color/rsw_color_gray_0</item>
         <item name="rsw_colorBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconSecondary">@color/rsw_color_black_alpha32</item>
         <item name="rsw_itemIconTint">@color/rsw_bottom_navigation_icon_tint</item>
+        <item name="rsw_surfaceBackground">@color/rsw_color_white</item>
         <item name="rsw_textBrand">@color/rsw_color_blue_6</item>
         <item name="rsw_textColorBrand">@color/rsw_text_color_brand</item>
         <item name="rsw_textColorPrimary">@color/rsw_text_color_primary</item>
         <item name="rsw_textColorSecondary">@color/rsw_text_color_secondary</item>
-        <item name="rsw_textFieldBackground">@color/rsw_color_black_alpha4</item>
         <item name="rsw_textPrimary">@color/rsw_color_black</item>
         <item name="rsw_textSecondary">@color/rsw_color_black_alpha55</item>
 
@@ -42,7 +42,7 @@
         <item name="colorBackgroundFloating">?attr/rsw_background1</item>
         <item name="colorControlActivated">?attr/rsw_colorBrand</item>
         <item name="colorControlHighlight">@color/rsw_color_gray_5</item>
-        <item name="colorControlNormal">@color/rsw_color_black_alpha12</item>
+        <!-- <item name="colorControlNormal">@color/rsw_color_black_alpha12</item> -->
         <item name="colorSecondary">@color/rsw_color_orange_5</item>
         <item name="colorOnSecondary">@color/rsw_color_orange_0</item>
         <item name="colorPrimary">?attr/rsw_colorBrand</item>
@@ -59,11 +59,11 @@
         <item name="rsw_iconBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconSecondary">@color/rsw_color_white_alpha47</item>
         <item name="rsw_itemIconTint">@color/rsw_bottom_navigation_icon_tint</item>
+        <item name="rsw_surfaceBackground">@color/rsw_color_white_alpha03</item>
         <item name="rsw_textBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_textColorBrand">@color/rsw_text_color_brand</item>
         <item name="rsw_textColorPrimary">@color/rsw_text_color_primary</item>
         <item name="rsw_textColorSecondary">@color/rsw_text_color_secondary</item>
-        <item name="rsw_textFieldBackground">@color/rsw_color_white_alpha03</item>
         <item name="rsw_textPrimary">@color/rsw_color_white</item>
         <item name="rsw_textSecondary">@color/rsw_color_white_alpha47</item>
 
@@ -93,7 +93,7 @@
         <item name="colorBackgroundFloating">?attr/rsw_background1</item>
         <item name="colorControlActivated">?attr/rsw_colorBrand</item>
         <item name="colorControlHighlight">@color/rsw_color_white_alpha16</item>
-        <item name="colorControlNormal">@color/rsw_color_white_alpha12</item>
+        <!-- <item name="colorControlNormal">@color/rsw_color_white_alpha12</item> -->
         <item name="colorSecondary">@color/rsw_color_orange_5</item>
         <item name="colorOnSecondary">@color/rsw_color_orange_0</item>
         <item name="colorPrimary">@color/rsw_color_blue_5</item>

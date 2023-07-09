@@ -44,7 +44,7 @@
 
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorHint">?android:attr/textColorHint</item>
-        <item name="boxBackgroundColor">?attr/rsw_textFieldBackground</item>
+        <item name="boxBackgroundColor">?attr/rsw_surfaceBackground</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="hintTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>

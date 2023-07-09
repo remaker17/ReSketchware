@@ -42,7 +42,7 @@
             <FrameLayout
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:background="@drawable/rsw_background_textfield">
+                android:background="@drawable/rsw_background_icon">
 
                 <ImageView
                     android:id="@+id/app_icon"

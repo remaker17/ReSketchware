@@ -1,12 +1,12 @@
 package app.resketchware.utils;
 
 import android.os.Environment;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +18,7 @@ public class SketchwareUtil {
         List<HashMap<String, Object>> projects = new ArrayList<>();
         File projectsDirectory = new File(Environment.getExternalStorageDirectory(), SKETCHWARE_PROJECTS_LIST_PATH);
         File[] files = projectsDirectory.listFiles();
+        Log.i("SketchwareUtil", "Project directory: " + projectsDirectory);
         if (files == null) {
             return projects;
         }
@@ -25,6 +26,7 @@ public class SketchwareUtil {
         for (File file : files) {
             try {
                 HashMap<String, Object> project = getProjectData(file);
+                Log.i("SketchwareUtil", new Gson().toJson(project));
 
                 if (project != null && valueOrEmpty(project.get("sc_id")).equals(file.getName())) {
                     projects.add(project);
@@ -43,7 +45,8 @@ public class SketchwareUtil {
         }
 
         String projectFileContent = FileUtil.readFile(projectFile);
-        String projectDataString = new String(SketchwareEncryptor.decrypt(projectFileContent), StandardCharsets.UTF_8);
+        String projectDataString = new String(SketchwareEncryptor.decrypt(projectFileContent));
+        Log.i("SketchwareUtil", "Decrypted data: " + projectDataString);
 
         return convertToSketchwareProject(projectDataString);
     }

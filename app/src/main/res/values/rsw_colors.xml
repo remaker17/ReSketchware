@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="rsw_color_black">#ff000000</color>
+    <color name="rsw_color_black_04">#fff0f0f0</color>
     <color name="rsw_color_black_alpha03">#08000000</color>
     <color name="rsw_color_black_alpha12">#1f000000</color>
     <color name="rsw_color_black_alpha14">#24000000</color>

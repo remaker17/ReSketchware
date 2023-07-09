@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="itemIconTint">?attr/rsw_itemIconTint</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
+        <item name="itemTextColor">?attr/itemTextColor</item>
+    </style>
+
     <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
         <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>

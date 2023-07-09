@@ -42,7 +42,8 @@
             <FrameLayout
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:background="@drawable/rsw_background_icon">
+                android:background="@drawable/rsw_background_icon"
+                android:backgroundTint="?attr/rsw_textFieldBackground">
 
                 <ImageView
                     android:id="@+id/app_icon"
@@ -121,6 +122,8 @@
                 android:id="@+id/colors_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/rsw_margin_xsmall"
                 android:orientation="horizontal" />
 
         </HorizontalScrollView>

@@ -2,22 +2,22 @@
 <resources>
 
     <style name="Theme.RSW.DesignLight" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="rsw_background0">@color/rsw_color_black_alpha4</item>
-        <item name="rsw_background1">@color/rsw_color_black_alpha4</item>
+        <item name="rsw_background0">@color/rsw_color_black_04</item>
+        <item name="rsw_background1">@color/rsw_color_white</item>
         <item name="rsw_background2">@color/rsw_color_gray_0</item>
         <item name="rsw_colorBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconSecondary">@color/rsw_color_black_alpha32</item>
         <item name="rsw_itemIconTint">@color/rsw_bottom_navigation_icon_tint</item>
-        <item name="rsw_surfaceBackground">@color/rsw_color_white</item>
         <item name="rsw_textBrand">@color/rsw_color_blue_6</item>
         <item name="rsw_textColorBrand">@color/rsw_text_color_brand</item>
         <item name="rsw_textColorPrimary">@color/rsw_text_color_primary</item>
         <item name="rsw_textColorSecondary">@color/rsw_text_color_secondary</item>
+        <item name="rsw_textFieldBackground">@color/rsw_color_white</item>
         <item name="rsw_textPrimary">@color/rsw_color_black</item>
         <item name="rsw_textSecondary">@color/rsw_color_black_alpha55</item>
 
-        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
+        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout</item>
         <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
         <item name="dialogCornerRadius">@dimen/rsw_corner_radius_g</item>
         <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
@@ -48,6 +48,7 @@
         <item name="colorPrimary">?attr/rsw_colorBrand</item>
         <item name="colorPrimaryDark">@color/rsw_color_blue_6</item>
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
+        <item name="colorSurface">?attr/rsw_background1</item>
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Light</item>
     </style>
 
@@ -59,15 +60,15 @@
         <item name="rsw_iconBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconSecondary">@color/rsw_color_white_alpha47</item>
         <item name="rsw_itemIconTint">@color/rsw_bottom_navigation_icon_tint</item>
-        <item name="rsw_surfaceBackground">@color/rsw_color_white_alpha03</item>
         <item name="rsw_textBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_textColorBrand">@color/rsw_text_color_brand</item>
         <item name="rsw_textColorPrimary">@color/rsw_text_color_primary</item>
         <item name="rsw_textColorSecondary">@color/rsw_text_color_secondary</item>
+        <item name="rsw_textFieldBackground">@color/rsw_color_white_alpha03</item>
         <item name="rsw_textPrimary">@color/rsw_color_white</item>
         <item name="rsw_textSecondary">@color/rsw_color_white_alpha47</item>
 
-        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.AsBackground</item>
+        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout</item>
         <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
         <item name="dialogCornerRadius">@dimen/rsw_corner_radius_g</item>
         <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
@@ -99,6 +100,7 @@
         <item name="colorPrimary">@color/rsw_color_blue_5</item>
         <item name="colorPrimaryDark">@color/rsw_color_graphite_8</item>
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
+        <item name="colorSurface">?attr/rsw_background1</item>
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Dark</item>
     </style>
 
@@ -146,6 +148,8 @@
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:windowElevation">@dimen/abc_floating_window_z</item>
+
+        <item name="rsw_textFieldBackground">@color/rsw_color_black_alpha4</item>
     </style>
 
     <style name="Theme.RSW.Dialog.Light.Alert" parent="Theme.RSW.Dialog.Light">

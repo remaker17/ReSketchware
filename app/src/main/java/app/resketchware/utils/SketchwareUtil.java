@@ -13,20 +13,22 @@ import java.util.List;
 
 public class SketchwareUtil {
     private static final String SKETCHWARE_PROJECTS_LIST_PATH = ".sketchware/mysc/list";
+    private static final String TAG = "SketchwareUtil";
 
     public static List<HashMap<String, Object>> getSketchwareProjects() {
         List<HashMap<String, Object>> projects = new ArrayList<>();
         File projectsDirectory = new File(Environment.getExternalStorageDirectory(), SKETCHWARE_PROJECTS_LIST_PATH);
         File[] files = projectsDirectory.listFiles();
-        Log.i("SketchwareUtil", "Project directory: " + projectsDirectory);
+        Log.i(TAG, "Projects directory: " + projectsDirectory);
         if (files == null) {
             return projects;
         }
 
         for (File file : files) {
             try {
+                Log.i(TAG, "Path of the found project: " + file);
                 HashMap<String, Object> project = getProjectData(file);
-                Log.i("SketchwareUtil", new Gson().toJson(project));
+                Log.i(TAG, "Found project details: " + new Gson().toJson(project));
 
                 if (project != null && valueOrEmpty(project.get("sc_id")).equals(file.getName())) {
                     projects.add(project);
@@ -44,9 +46,9 @@ public class SketchwareUtil {
             return null;
         }
 
-        String projectFileContent = FileUtil.readFile(projectFile);
-        String projectDataString = new String(SketchwareEncryptor.decrypt(projectFileContent));
-        Log.i("SketchwareUtil", "Decrypted data: " + projectDataString);
+        byte[] projectFileByteArray = FileUtil.readBytes(projectFile);
+        String projectDataString = new String(SketchwareEncryptor.decrypt(projectFileByteArray));
+        Log.i(TAG, "Decrypted data: " + projectDataString);
 
         return convertToSketchwareProject(projectDataString);
     }

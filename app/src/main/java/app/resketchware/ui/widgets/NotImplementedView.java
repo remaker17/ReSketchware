@@ -24,8 +24,8 @@ public class NotImplementedView extends LinearLayout {
     private final int titleTextAppearance;
     private final int messageTextAppearance;
 
-    private final TextView titleTextView;
-    private final TextView messageTextView;
+    public final TextView titleTextView;
+    public final TextView messageTextView;
 
     public NotImplementedView(@NonNull Context context) {
         this(context, null);

@@ -23,6 +23,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.transition.MaterialSharedAxis;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.HashMap;
 
@@ -98,7 +100,12 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
             }
         }
 
-        adapter.changeProjectsDataset(SketchwareUtil.getSketchwareProjects());
+        List<HashMap<String, Object>> projects = SketchwareUtil.getSketchwareProjects();
+        Collections.sort(projects, (o1, o2) -> Integer.compare(
+                Integer.parseInt(SketchwareUtil.valueOrEmpty(o2.get("sc_id"))),
+                Integer.parseInt(SketchwareUtil.valueOrEmpty(o1.get("sc_id")))
+        ));
+        adapter.changeProjectsDataset(projects);
         swipeRefreshLayout.setRefreshing(false);
     }
 }

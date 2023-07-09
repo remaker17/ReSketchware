@@ -19,16 +19,13 @@ public class SketchwareUtil {
         List<HashMap<String, Object>> projects = new ArrayList<>();
         File projectsDirectory = new File(Environment.getExternalStorageDirectory(), SKETCHWARE_PROJECTS_LIST_PATH);
         File[] files = projectsDirectory.listFiles();
-        Log.i(TAG, "Projects directory: " + projectsDirectory);
         if (files == null) {
             return projects;
         }
 
         for (File file : files) {
             try {
-                Log.i(TAG, "Path of the found project: " + file);
                 HashMap<String, Object> project = getProjectData(file);
-                Log.i(TAG, "Found project details: " + new Gson().toJson(project));
 
                 if (project != null && valueOrEmpty(project.get("sc_id")).equals(file.getName())) {
                     projects.add(project);

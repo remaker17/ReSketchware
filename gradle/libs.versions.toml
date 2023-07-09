@@ -1,11 +1,10 @@
 [versions]
 androidGradlePlugin = "8.2.0-alpha09"
 androidMaterial = "1.10.0-alpha04"
-
 androidxAppCompat = "1.7.0-alpha02"
 androidxSwipeRefreshLayout = "1.2.0-alpha01"
-
 kotlin = "1.8.22"
+gson = "2.10.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -16,10 +15,12 @@ kotlin-gradlePlugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotl
 android-material = { group = "com.google.android.material", name = "material", version.ref = "androidMaterial" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "androidxSwipeRefreshLayout" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [bundles]
 core = [
     "android-material",
     "androidx-appcompat",
-    "androidx-swiperefreshlayout"
+    "androidx-swiperefreshlayout",
+    "gson"
 ]

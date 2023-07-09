@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 STORAGE_PERMISSION_CODE);
     }
 
-    private void showPermissionDialog() {
+    public void showPermissionDialog() {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.permission_ask_title)
                 .setMessage(R.string.permission_ask_message)

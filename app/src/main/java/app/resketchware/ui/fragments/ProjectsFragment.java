@@ -14,8 +14,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import app.resketchware.R;
 import app.resketchware.ui.adapters.ProjectsAdapter;
+import app.resketchware.ui.activities.MainActivity;
 import app.resketchware.ui.dialogs.NewProjectDialog;
 import app.resketchware.utils.ContextUtil;
+import app.resketchware.utils.SketchwareUtil;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.transition.MaterialSharedAxis;
@@ -70,7 +72,16 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
             }
         });
 
-        refreshProjects();
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            if (ContextUtil.hasStoragePermissions(requireContext())) {
+                refreshProjects(false);
+            } else {
+                swipeRefreshLayout.setRefreshing(false);
+                ((MainActivity) requireActivity()).showPermissionDialog();
+            }
+        });
+
+        refreshProjects(true);
 
         fab.setOnClickListener(v -> {
             NewProjectDialog.newInstance().show(getParentFragmentManager(), null);
@@ -80,32 +91,14 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     @Override
     public void projectClicked(HashMap<String, Object> project) {}
 
-    private void refreshProjects() {
-        // TODO: Get projects and change adapter items with ProjectsAdapter#changeProjectsDataset(List<HashMap<String, Object>>)
-        addTestData();
-    }
+    private void refreshProjects(boolean checkPermission) {
+        if (checkPermission) {
+            if (!ContextUtil.hasStoragePermissions(requireContext())) {
+                return;
+            }
+        }
 
-    private void addTestData() {
-        List<HashMap<String, Object>> data = new ArrayList<HashMap<String, Object>>();
-
-        HashMap<String, Object> project1 = new HashMap<String, Object>();
-        project1.put("sc_id", "1");
-        project1.put("my_ws_name", "Project 1");
-        project1.put("my_app_name", "com.my.newproject1");
-        data.add(project1);
-
-        HashMap<String, Object> project2 = new HashMap<String, Object>();
-        project2.put("sc_id", "2");
-        project2.put("my_ws_name", "Project 2");
-        project2.put("my_app_name", "com.my.newproject2");
-        data.add(project2);
-
-        HashMap<String, Object> project3 = new HashMap<String, Object>();
-        project3.put("sc_id", "3");
-        project3.put("my_ws_name", "Project 3");
-        project3.put("my_app_name", "com.my.newproject3");
-        data.add(project3);
-
-        adapter.changeProjectsDataset(data);
+        adapter.changeProjectsDataset(SketchwareUtil.getSketchwareProjects());
+        swipeRefreshLayout.setRefreshing(false);
     }
 }

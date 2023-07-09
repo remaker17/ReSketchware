@@ -43,7 +43,7 @@ public class ContextUtil {
         return context.getResources().getDimensionPixelSize(dimen);
     }
 
-    public boolean hasStoragePermissions(@NonNull Context context) {
+    public static boolean hasStoragePermissions(@NonNull Context context) {
         return ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)

@@ -6,6 +6,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import app.resketchware.R;
+import app.resketchware.utils.SketchwareUtil;
 
 import java.util.HashMap;
 
@@ -24,15 +25,8 @@ public class ProjectsViewHolder extends ViewHolder {
     }
 
     public void bind(HashMap<String, Object> project) {
-        projectId.setText(valueOrEmpty(project.get("sc_id")));
-        projectTitle.setText(valueOrEmpty(project.get("my_ws_name")));
-        projectPackageName.setText(valueOrEmpty(project.get("my_app_name")));
-    }
-
-    /**
-     * TODO: Move the function to a separate class.
-     */
-    private String valueOrEmpty(Object value) {
-        return value == null ? "" : value.toString();
+        projectId.setText(SketchwareUtil.valueOrEmpty(project.get("sc_id")));
+        projectTitle.setText(SketchwareUtil.valueOrEmpty(project.get("my_ws_name")));
+        projectPackageName.setText(SketchwareUtil.valueOrEmpty(project.get("my_app_name")));
     }
 }

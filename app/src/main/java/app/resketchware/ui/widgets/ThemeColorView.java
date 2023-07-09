@@ -12,8 +12,8 @@ import app.resketchware.R;
 
 public class ThemeColorView extends LinearLayout {
 
-    private final View colorView;
-    private final TextView nameTextView;
+    public final View colorView;
+    public final TextView nameTextView;
 
     public ThemeColorView(Context context, int tag) {
         super(context);
@@ -31,13 +31,5 @@ public class ThemeColorView extends LinearLayout {
 
         colorView = findViewById(R.id.color_view);
         nameTextView = findViewById(R.id.name_text);
-    }
-
-    public View getColorView() {
-        return colorView;
-    }
-
-    public TextView getNameTextView() {
-        return nameTextView;
     }
 }

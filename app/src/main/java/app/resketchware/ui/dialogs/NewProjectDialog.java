@@ -72,8 +72,8 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
 
         for (int i = 0; i < themeColorKeys.length; i++) {
             ThemeColorView colorView = new ThemeColorView(requireContext(), i);
-            colorView.getNameTextView().setText(themeColorLabels[i]);
-            colorView.getColorView().getBackground().setColorFilter(new BlendModeColorFilter(projectThemeColors[i], BlendMode.SRC_ATOP));
+            colorView.nameTextView.setText(themeColorLabels[i]);
+            colorView.colorView.getBackground().setColorFilter(new BlendModeColorFilter(projectThemeColors[i], BlendMode.SRC_ATOP));
             themeColorsContainer.addView(colorView);
         }
     }

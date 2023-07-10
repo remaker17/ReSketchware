@@ -13,6 +13,7 @@ import android.provider.Settings;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,27 +28,26 @@ import com.google.android.material.navigation.NavigationBarView;
 import app.resketchware.R;
 import app.resketchware.ui.fragments.ProjectsFragment;
 import app.resketchware.ui.fragments.SettingsFragment;
+import app.resketchware.ui.interfaces.ScrollableToTop;
 import app.resketchware.utils.ContextUtil;
 
 public class MainActivity extends AppCompatActivity {
     private static final int STORAGE_PERMISSION_CODE = 1;
+    @IdRes private int currentNavId = R.id.menu_projects;
 
     private BottomNavigationView bottomNav;
     private Toolbar toolbar;
 
-    private final Fragment projectsFragment = new ProjectsFragment();
-    private final Fragment settingsFragment = new SettingsFragment();
+    private ProjectsFragment projectsFragment;
+    private SettingsFragment settingsFragment;
 
     private final NavigationBarView.OnItemSelectedListener onItemSelectedListener =
             new NavigationBarView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     int id = item.getItemId();
-                    if (id == R.id.menu_projects) {
-                        switchToProjectsScreen();
-                        return true;
-                    } else if (id == R.id.menu_settings) {
-                        switchToSettingsScreen();
+                    if (id == R.id.menu_projects && id == R.id.menu_settings) {
+                        onNavigationSelected(id);
                         return true;
                     } else {
                         return false;
@@ -64,7 +64,17 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        switchToProjectsScreen();
+        if (savedInstanceState == null) {
+            projectsFragment = new ProjectsFragment();
+            settingsFragment = new SettingsFragment();
+        }
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, projectsFragment)
+                    .add(R.id.container, settingsFragment).hide(settingsFragment)
+                    .commit();
+        }
 
         bottomNav.setOnItemSelectedListener(onItemSelectedListener);
 
@@ -76,16 +86,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void switchToProjectsScreen() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, projectsFragment)
-                .commit();
+    private Fragment getFragmentFor(@IdRes int navId) {
+        if (navId == R.id.menu_projects) {
+            return projectsFragment;
+        } else if (navId == R.id.menu_settings) {
+            return settingsFragment;
+        }
+        throw new IllegalArgumentException();
     }
 
-    private void switchToSettingsScreen() {
+    private void onNavigationSelected(@IdRes int navId) {
+        Fragment newFragment = getFragmentFor(navId);
+        if (navId == currentNavId) {
+            if (newFragment instanceof ScrollableToTop) {
+                ((ScrollableToTop) newFragment).scrollToTop();
+                return;
+            }
+        }
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, settingsFragment)
+                .hide(getFragmentFor(currentNavId))
+                .show(newFragment)
                 .commit();
+        currentNavId = navId;
     }
 
     private void requestStoragePermissions() {

@@ -16,6 +16,7 @@ import app.resketchware.R;
 import app.resketchware.ui.adapters.ProjectsAdapter;
 import app.resketchware.ui.activities.MainActivity;
 import app.resketchware.ui.dialogs.NewProjectDialog;
+import app.resketchware.ui.interfaces.ScrollableToTop;
 import app.resketchware.utils.ContextUtil;
 import app.resketchware.utils.SketchwareUtil;
 
@@ -28,7 +29,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.HashMap;
 
-public class ProjectsFragment extends Fragment implements ProjectsAdapter.ProjectSelectionCallback {
+public class ProjectsFragment extends Fragment implements ProjectsAdapter.ProjectSelectionCallback, ScrollableToTop {
 
     private ProjectsAdapter adapter;
 
@@ -53,12 +54,6 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
 
         adapter = new ProjectsAdapter(this);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
         int horizontalMargin = ContextUtil.getDimenFromResources(requireContext(), R.dimen.rsw_margin_medium);
         int verticalMargin = ContextUtil.getDimenFromResources(requireContext(), R.dimen.rsw_margin_xxsmall);
@@ -74,6 +69,14 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
             }
         });
 
+        refreshProjects(true);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         swipeRefreshLayout.setOnRefreshListener(() -> {
             if (ContextUtil.hasStoragePermissions(requireContext())) {
                 refreshProjects(false);
@@ -83,8 +86,6 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
             }
         });
 
-        refreshProjects(true);
-
         fab.setOnClickListener(v -> {
             NewProjectDialog.newInstance().show(getParentFragmentManager(), null);
         });
@@ -92,6 +93,11 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
 
     @Override
     public void projectClicked(HashMap<String, Object> project) {}
+
+    @Override
+    public void scrollToTop() {
+        recyclerView.smoothScrollToPosition(0);
+    }
 
     private void refreshProjects(boolean checkPermission) {
         if (checkPermission) {

@@ -14,7 +14,6 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class LogWriter {
-
     private static final String TAG = "LogWriter";
     private static final String LOG_FILE_NAME = "log.txt";
     private static final String LOG_DIR_NAME = "logs";

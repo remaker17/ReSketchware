@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,11 +15,10 @@ import java.io.File;
 import java.util.HashMap;
 
 import app.resketchware.R;
+import app.resketchware.utils.SketchwarePath;
 import app.resketchware.utils.SketchwareUtil;
 
 public class ProjectsViewHolder extends ViewHolder {
-
-    private static final String ICONS_PATH = ".sketchware" + File.separator + "resources" + File.separator + "icons";
 
     private final ImageView projectIcon;
     private final TextView projectId;
@@ -50,7 +48,7 @@ public class ProjectsViewHolder extends ViewHolder {
 
         boolean haveCustomIcon = (boolean) project.get("custom_icon");
         if (haveCustomIcon) {
-            String iconFolder = Environment.getExternalStorageDirectory() + ICONS_PATH + File.separator + SketchwareUtil.valueOrEmpty(project.get("sc_id")) + File.separator + "icon.png";
+            String iconFolder = SketchwarePath.RESOURCES_ICONS + File.separator + SketchwareUtil.valueOrEmpty(project.get("sc_id")) + File.separator + "icon.png";
             Uri uri = getUriForFile(iconFolder);
             projectIcon.setImageURI(uri);
         }

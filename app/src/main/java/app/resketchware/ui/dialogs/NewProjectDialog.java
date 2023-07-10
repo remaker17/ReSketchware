@@ -96,12 +96,13 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
     }
 
     private void toggleAdvancedOptions() {
+        ViewGroup dialogView = getDialog().findViewById(com.google.android.material.R.id.design_bottom_sheet);
         int dropDrawableResId = hiddenAdvancedOptions.isShown() ? R.drawable.rsw_drop_down : R.drawable.rsw_drop_up;
         advancedOptionsTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, dropDrawableResId, 0);
 
         AutoTransition autoTransition = new AutoTransition();
-        autoTransition.setDuration(200);
-        TransitionManager.beginDelayedTransition(((ViewGroup) hiddenAdvancedOptions.getParent()), autoTransition);
+        autoTransition.setDuration(300);
+        TransitionManager.beginDelayedTransition(dialogView, autoTransition);
 
         if (!hiddenAdvancedOptions.isShown()) {
             hiddenAdvancedOptions.setVisibility(View.VISIBLE);

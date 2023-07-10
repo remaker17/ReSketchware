@@ -11,13 +11,13 @@
 
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorHint">?android:attr/textColorHint</item>
-        <!-- In the textInputlayout source, the color is programmatically changing, idk why -->
-        <item name="boxBackgroundColor">#ff252525</item>
+        <item name="boxBackgroundColor">@color/rsw_textfield_selector</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="hintTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
         <item name="hintTextColor">?attr/rsw_textBrand</item>
         <item name="placeholderTextColor">?android:attr/textColorHint</item>
+        <item name="placeholderTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TextInputEditText</item>
         <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.TextInputLayout</item>

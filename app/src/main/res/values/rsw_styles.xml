@@ -54,12 +54,14 @@
         <item name="hintTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
         <item name="hintTextColor">?attr/rsw_textBrand</item>
         <item name="placeholderTextColor">?android:attr/textColorHint</item>
+        <item name="placeholderTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TextInputEditText</item>
         <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.TextInputLayout</item>
     </style>
 
     <style name="ThemeOverlay.RSW.TextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="colorSurface">?attr/rsw_textFieldBackground</item>
         <item name="editTextStyle">@style/Widget.RSW.TextInputEditText</item>
     </style>
 

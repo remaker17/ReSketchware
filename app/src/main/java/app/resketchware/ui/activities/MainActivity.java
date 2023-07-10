@@ -104,9 +104,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // idk why the fragment is no longer displayed after the reselect, so I comment, I return the old working method
+        // getSupportFragmentManager().beginTransaction()
+                // .hide(getFragmentFor(currentNavId))
+                // .show(newFragment)
+                // .commit();
         getSupportFragmentManager().beginTransaction()
-                .hide(getFragmentFor(currentNavId))
-                .show(newFragment)
+                .replace(R.id.container, newFragment)
                 .commit();
         currentNavId = navId;
     }

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     int id = item.getItemId();
-                    if (id == R.id.menu_projects && id == R.id.menu_settings) {
+                    if (id == R.id.menu_projects || id == R.id.menu_settings) {
                         onNavigationSelected(id);
                         return true;
                     } else {

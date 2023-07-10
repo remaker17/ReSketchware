@@ -2,6 +2,7 @@
 <resources>
 
     <style name="Theme.RSW.DesignLight" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- RSW attributes -->
         <item name="rsw_background0">@color/rsw_color_black_04</item>
         <item name="rsw_background1">@color/rsw_color_white</item>
         <item name="rsw_background2">@color/rsw_color_gray_0</item>
@@ -17,28 +18,7 @@
         <item name="rsw_textPrimary">@color/rsw_color_black</item>
         <item name="rsw_textSecondary">@color/rsw_color_black_alpha55</item>
 
-        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout</item>
-        <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
-        <item name="dialogCornerRadius">@dimen/rsw_corner_radius_g</item>
-        <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
-        <item name="itemTextColor">@color/rsw_text_color_checkable_brand</item>
-        <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
-        <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
-
-        <item name="android:colorBackground">?attr/rsw_background0</item>
-        <item name="android:windowBackground">?attr/rsw_background0</item>
-    </style>
-
-    <style name="Theme.RSW.BaseApi.Light" parent="Theme.RSW.DesignLight">
-        <item name="android:textColorPrimary">?attr/rsw_textColorPrimary</item>
-        <item name="android:textColorSecondary">?attr/rsw_textColorSecondary</item>
-        <item name="android:textColorHint">?attr/rsw_textColorSecondary</item>
-        <item name="android:textColorLink">?attr/rsw_textColorBrand</item>
-        <item name="android:colorEdgeEffect">?attr/rsw_colorBrand</item>
-        <item name="android:colorBackgroundFloating">?attr/rsw_background1</item>
-
-        <item name="alertDialogTheme">@style/Theme.RSW.Dialog.Light.Alert</item>
-        <item name="bottomSheetDialogTheme">@style/Theme.RSW.BottomSheetDialog.Light</item>
+        <!-- Other attributes -->
         <item name="colorBackgroundFloating">?attr/rsw_background1</item>
         <item name="colorControlActivated">?attr/rsw_colorBrand</item>
         <item name="colorControlHighlight">@color/rsw_color_gray_5</item>
@@ -49,10 +29,32 @@
         <item name="colorPrimaryDark">@color/rsw_color_blue_6</item>
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
         <item name="colorSurface">?attr/rsw_background1</item>
+
+        <!-- Components styles/themes -->
+        <item name="alertDialogTheme">@style/Theme.RSW.Dialog.Light.Alert</item>
+        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout</item>
+        <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
+        <item name="bottomSheetDialogTheme">@style/Theme.RSW.BottomSheetDialog.Light</item>
+        <item name="dialogCornerRadius">@dimen/rsw_corner_radius_g</item>
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Light</item>
+        <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
+        <item name="itemTextColor">@color/rsw_text_color_checkable_brand</item>
+        <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
+        <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
+
+        <!-- System attributes -->
+        <item name="android:colorBackground">?attr/rsw_background0</item>
+        <item name="android:colorBackgroundFloating">?attr/rsw_background1</item>
+        <item name="android:colorEdgeEffect">?attr/rsw_colorBrand</item>
+        <item name="android:textColorHint">?attr/rsw_textColorSecondary</item>
+        <item name="android:textColorLink">?attr/rsw_textColorBrand</item>
+        <item name="android:textColorPrimary">?attr/rsw_textColorPrimary</item>
+        <item name="android:textColorSecondary">?attr/rsw_textColorSecondary</item>
+        <item name="android:windowBackground">?attr/rsw_background0</item>
     </style>
 
     <style name="Theme.RSW.DesignDark" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- RSW attributes -->
         <item name="rsw_background0">@color/rsw_color_graphite_9</item>
         <item name="rsw_background1">@color/rsw_color_graphite_8</item>
         <item name="rsw_background2">@color/rsw_color_graphite_5</item>
@@ -68,29 +70,7 @@
         <item name="rsw_textPrimary">@color/rsw_color_white</item>
         <item name="rsw_textSecondary">@color/rsw_color_white_alpha47</item>
 
-        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout</item>
-        <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
-        <item name="dialogCornerRadius">@dimen/rsw_corner_radius_g</item>
-        <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
-        <item name="itemTextColor">@color/rsw_text_color_checkable_brand</item>
-        <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
-        <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
-
-        <item name="android:colorBackground">?attr/rsw_background0</item>
-        <item name="android:windowBackground">?attr/rsw_background0</item>
-        <item name="android:navigationBarColor">?attr/rsw_background0</item>
-    </style>
-
-    <style name="Theme.RSW.BaseApi.Dark" parent="Theme.RSW.DesignDark">
-        <item name="android:textColorPrimary">?attr/rsw_textColorPrimary</item>
-        <item name="android:textColorSecondary">?attr/rsw_textColorSecondary</item>
-        <item name="android:textColorHint">?attr/rsw_textColorSecondary</item>
-        <item name="android:textColorLink">?attr/rsw_textColorBrand</item>
-        <item name="android:colorEdgeEffect">@color/rsw_color_white_alpha80</item>
-        <item name="android:colorBackgroundFloating">?attr/rsw_background1</item>
-
-        <item name="alertDialogTheme">@style/Theme.RSW.Dialog.Dark.Alert</item>
-        <item name="bottomSheetDialogTheme">@style/Theme.RSW.BottomSheetDialog.Dark</item>
+        <!-- Other attributes -->
         <item name="colorBackgroundFloating">?attr/rsw_background1</item>
         <item name="colorControlActivated">?attr/rsw_colorBrand</item>
         <item name="colorControlHighlight">@color/rsw_color_white_alpha16</item>
@@ -101,11 +81,33 @@
         <item name="colorPrimaryDark">@color/rsw_color_graphite_8</item>
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
         <item name="colorSurface">?attr/rsw_background1</item>
+
+        <!-- Component styles/themes -->
+        <item name="alertDialogTheme">@style/Theme.RSW.Dialog.Dark.Alert</item>
+        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout</item>
+        <item name="bottomSheetDialogTheme">@style/Theme.RSW.BottomSheetDialog.Dark</item>
+        <item name="bottomNavigationStyle">@style/Widget.RSW.BottomNavigation</item>
+        <item name="dialogCornerRadius">@dimen/rsw_corner_radius_g</item>
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Dark</item>
+        <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
+        <item name="itemTextColor">@color/rsw_text_color_checkable_brand</item>
+        <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
+        <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
+
+        <!-- System attributes -->
+        <item name="android:colorBackground">?attr/rsw_background0</item>
+        <item name="android:colorBackgroundFloating">?attr/rsw_background1</item>
+        <item name="android:colorEdgeEffect">@color/rsw_color_white_alpha80</item>
+        <item name="android:navigationBarColor">?attr/rsw_background0</item>
+        <item name="android:textColorHint">?attr/rsw_textColorSecondary</item>
+        <item name="android:textColorLink">?attr/rsw_textColorBrand</item>
+        <item name="android:textColorPrimary">?attr/rsw_textColorPrimary</item>
+        <item name="android:textColorSecondary">?attr/rsw_textColorSecondary</item>
+        <item name="android:windowBackground">?attr/rsw_background0</item>
     </style>
 
-    <style name="Theme.RSW.Dark" parent="Theme.RSW.BaseApi.Dark" />
-    <style name="Theme.RSW.Light" parent="Theme.RSW.BaseApi.Light" />
+    <style name="Theme.RSW.Dark" parent="Theme.RSW.DesignDark" />
+    <style name="Theme.RSW.Light" parent="Theme.RSW.DesignLight" />
     <style name="Theme.RSW.DayNight" parent="Theme.RSW.Light" />
 
     <style name="Theme.RSW.Dialog.Dark" parent="Theme.RSW.Dark">

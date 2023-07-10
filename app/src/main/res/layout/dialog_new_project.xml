@@ -154,12 +154,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/rsw_margin_xxxsmall"
                 android:layout_weight="1"
-                android:hint="@string/version_name">
+                android:hint="@string/version_name"
+                app:placeholderText="1.0">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:digits="0123456789."
+                    android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -173,7 +176,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1" />
+                    android:digits="0123456789"
+                    android:maxLines="1"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

@@ -53,7 +53,6 @@ public class ProjectsViewHolder extends ViewHolder {
             String iconFolder = Environment.getExternalStorageDirectory() + ICONS_PATH + File.separator + SketchwareUtil.valueOrEmpty(project.get("sc_id")) + File.separator + "icon.png";
             Uri uri = getUriForFile(iconFolder);
             projectIcon.setImageURI(uri);
-            projectIcon.setImageTintList(null);
         }
     }
 

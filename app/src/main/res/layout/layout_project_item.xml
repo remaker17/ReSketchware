@@ -12,8 +12,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="@dimen/rsw_margin_medium"
-        android:layout_marginVertical="@dimen/rsw_margin_medium"
-        android:background="@drawable/rsw_background_icon">
+        android:layout_marginVertical="@dimen/rsw_margin_medium">
 
         <ImageView
             android:id="@+id/project_icon"
@@ -21,8 +20,7 @@
             android:layout_height="56dp"
             android:layout_gravity="center"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/rsw_android"
-            app:tint="?attr/colorOnSurface" />
+            app:srcCompat="@drawable/android_icon" />
     </FrameLayout>
 
     <LinearLayout

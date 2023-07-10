@@ -9,12 +9,6 @@
         <item name="itemTextColor">?attr/itemTextColor</item>
     </style>
 
-    <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
-        <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
-        <item name="titleTextColor">?attr/colorOnSurface</item>
-    </style>
-
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorHint">?android:attr/textColorHint</item>
         <!-- In the textInputlayout source, the color is programmatically changing, idk why -->

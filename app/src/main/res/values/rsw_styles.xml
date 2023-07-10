@@ -39,9 +39,11 @@
     </style>
 
     <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorSurface</item>
         <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
         <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
-        <item name="titleTextColor">?attr/colorPrimary</item>
+        <item name="titleTextColor">?attr/colorOnSurface</item>
+        <item name="android:theme">@style/ThemeOverlay.RSW.Toolbar</item>
     </style>
 
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">

@@ -61,8 +61,6 @@
     </style>
 
     <style name="ThemeOverlay.RSW.BottomNavigationView" parent="ThemeOverlay.MaterialComponents">
-        <item name="colorSurface">?attr/rsw_background1</item>
-        <item name="elevation">0dp</item>
         <item name="elevationOverlayEnabled">false</item>
     </style>
 

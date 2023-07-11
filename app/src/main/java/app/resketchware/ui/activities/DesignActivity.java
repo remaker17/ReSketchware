@@ -60,6 +60,12 @@ public class DesignActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(new DesignPagerAdapter(getSupportFragmentManager()));
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                currentTab.setValue(position);
+            }
+        });
 
         currentTab.observe(this, new Observer<Integer>() {
             @Override

@@ -1,5 +1,6 @@
 package app.resketchware.ui.fragments;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import app.resketchware.R;
 import app.resketchware.ui.adapters.ProjectsAdapter;
+import app.resketchware.ui.activities.DesignActivity;
 import app.resketchware.ui.activities.MainActivity;
 import app.resketchware.ui.dialogs.NewProjectDialog;
 import app.resketchware.ui.interfaces.ScrollableToTop;
@@ -85,7 +87,14 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     }
 
     @Override
-    public void projectClicked(HashMap<String, Object> project) {}
+    public void projectClicked(HashMap<String, Object> project) {
+        Bundle args = new Bundle();
+        args.putSerializable("project", project);
+
+        Intent intent = new Intent(requireContext(), DesignActivity.class);
+        intent.putExtra("project", args);
+        requireContext().startActivity(intent);
+    }
 
     @Override
     public void scrollToTop() {

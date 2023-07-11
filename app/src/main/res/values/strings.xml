@@ -19,6 +19,8 @@
     <string name="permission_all_files_ask_message">Starting with Android 11, this app needs a new permission to avoid taking ages to build projects.</string>
     <string name="permission_ask_title">Permission required</string>
     <string name="permission_ask_message">This app needs the storage permission to save and load projects.</string>
+    <string name="permission_no_title">No permissions</string>
+    <string name="permission_no_message">Please give storage permissions to load the projects.</string>
 
     <!-- New project dialog -->
     <string name="application_name">Application name</string>

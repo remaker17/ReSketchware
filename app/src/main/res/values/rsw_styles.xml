@@ -27,7 +27,7 @@
     </style>
 
     <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.BottomNavigationView</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.NotElevated</item>
         <item name="itemIconTint">?attr/rsw_itemIconTint</item>
         <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
         <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
@@ -43,7 +43,7 @@
         <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
         <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
         <item name="titleTextColor">?attr/colorOnSurface</item>
-        <item name="android:theme">@style/ThemeOverlay.RSW.Toolbar</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.Toolbar</item>
     </style>
 
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -60,15 +60,6 @@
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.TextInputLayout</item>
     </style>
 
-    <style name="ThemeOverlay.RSW.BottomNavigationView" parent="ThemeOverlay.MaterialComponents">
-        <item name="elevationOverlayEnabled">false</item>
-    </style>
-
-    <style name="ThemeOverlay.RSW.TextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
-        <item name="colorSurface">?attr/rsw_textFieldBackground</item>
-        <item name="editTextStyle">@style/Widget.RSW.TextInputEditText</item>
-    </style>
-
     <style name="Widget.RSW.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
         <item name="android:textColor">?attr/rsw_textColorPrimary</item>
@@ -76,7 +67,7 @@
 
     <style name="Widget.RSW.TabLayout" parent="Widget.Design.TabLayout">
         <item name="android:background">?attr/colorSurface</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TabLayout</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.NotElevated</item>
         <item name="tabIndicator">@drawable/rsw_tabs_line_indicator</item>
         <item name="tabIndicatorAnimationMode">elastic</item>
         <item name="tabIndicatorColor">?attr/rsw_colorBrand</item>
@@ -88,8 +79,13 @@
         <item name="tabUnboundedRipple">true</item>
     </style>
 
-    <style name="ThemeOverlay.RSW.TabLayout" parent="ThemeOverlay.MaterialComponents">
+    <style name="ThemeOverlay.RSW.NotElevated" parent="ThemeOverlay.MaterialComponents">
         <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <style name="ThemeOverlay.RSW.TextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="colorSurface">?attr/rsw_textFieldBackground</item>
+        <item name="editTextStyle">@style/Widget.RSW.TextInputEditText</item>
     </style>
 
     <style name="ThemeOverlay.RSW.Toolbar" parent="">

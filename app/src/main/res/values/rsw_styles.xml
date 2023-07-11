@@ -41,8 +41,9 @@
     <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?attr/colorSurface</item>
         <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="subtitleTextColor">?android:attr/textColorSecondary</item>
         <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
-        <item name="titleTextColor">?attr/colorOnSurface</item>
+        <item name="titleTextColor">?android:attr/textColorPrimary</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.Toolbar</item>
     </style>
 

@@ -52,6 +52,11 @@
         <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.Toolbar</item>
     </style>
 
+    <style name="Widget.RSW.Toolbar.NoInset">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+    </style>
+
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorHint">?android:attr/textColorHint</item>
         <item name="boxBackgroundColor">?attr/rsw_textFieldBackground</item>

@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -69,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
             settingsFragment = new SettingsFragment();
         }
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, projectsFragment)
-                    .add(R.id.container, settingsFragment).hide(settingsFragment)
-                    .commit();
-        }
+        // if (savedInstanceState == null) {
+            // getSupportFragmentManager().beginTransaction()
+                    // .add(R.id.container, projectsFragment)
+                    // .add(R.id.container, settingsFragment).hide(settingsFragment)
+                    // .commit();
+        // }
 
         bottomNav.setOnItemSelectedListener(onItemSelectedListener);
 
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 // .commit();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, newFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
         currentNavId = navId;
     }

@@ -2,28 +2,28 @@
 <resources>
     <string name="app_name">ReSketchware</string>
     <!-- Common words -->
-    <string name="common_word_accept">Accept</string>
-    <string name="common_word_decline">Decline</string>
-    <string name="common_word_cancel">Cancel</string>
-    <string name="common_word_create">Create</string>
-    <string name="common_word_icon">Icon</string>
-    <string name="common_word_projects">Projects</string>
-    <string name="common_word_settings">Settings</string>
+    <string name="common_word_accept">Принять</string>
+    <string name="common_word_decline">Отклонить</string>
+    <string name="common_word_cancel">Отменить</string>
+    <string name="common_word_create">Создать</string>
+    <string name="common_word_icon">Иконка</string>
+    <string name="common_word_projects">Проекты</string>
+    <string name="common_word_settings">Настройки</string>
     <!-- Not implemented view -->
     <!-- Do not translate/edit the word "GitHub", it breaks the application -->
-    <string name="not_implemented_title">Not implemented yet</string>
-    <string name="not_implemented_message">Follow the news in the GitHub repository.</string>
+    <string name="not_implemented_title">Еще не реализовано</string>
+    <string name="not_implemented_message">Следите за новостями в GitHub.</string>
     <!-- Permissions -->
-    <string name="permission_all_files_ask_message">Starting with Android 11, this app needs a new permission to avoid taking ages to build projects.</string>
-    <string name="permission_ask_title">Permission required</string>
-    <string name="permission_ask_message">This app needs the storage permission to save and load projects.</string>
-    <string name="permission_no_title">No permissions</string>
-    <string name="permission_no_message">Please give storage permissions to load the projects.</string>
+    <string name="permission_all_files_ask_message">Начиная с Android 11, этому приложению требуется новое разрешение, чтобы на сборку проектов не ушло много времени.</string>
+    <string name="permission_ask_title">Требуется разрешение</string>
+    <string name="permission_ask_message">Этому приложению требуется разрешение на хранение для сохранения и загрузки проектов.</string>
+    <string name="permission_no_title">Нет разрешений</string>
+    <string name="permission_no_message">Пожалуйста, предоставьте разрешение на загрузку проектов.</string>
     <!-- New project dialog -->
-    <string name="application_name">Application name</string>
-    <string name="new_project">New project</string>
-    <string name="version_name">Version name</string>
-    <string name="version_code">Version code</string>
-    <string name="package_name">Package name</string>
-    <string name="project_advanced_options">Advanced options</string>
+    <string name="application_name">Название приложения</string>
+    <string name="new_project">Новый проект</string>
+    <string name="version_name">Имя версии</string>
+    <string name="version_code">Код версии</string>
+    <string name="package_name">Название пакета</string>
+    <string name="project_advanced_options">Расширенные параметры</string>
 </resources>

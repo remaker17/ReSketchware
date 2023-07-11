@@ -79,7 +79,7 @@
         <item name="colorSecondary">@color/rsw_color_orange_5</item>
         <item name="colorOnSecondary">@color/rsw_color_orange_0</item>
         <item name="colorPrimary">@color/rsw_color_blue_5</item>
-        <item name="colorPrimaryDark">@color/rsw_color_graphite_8</item>
+        <item name="colorPrimaryDark">?attr/rsw_background1</item>
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
         <item name="colorSurface">?attr/rsw_background1</item>
 

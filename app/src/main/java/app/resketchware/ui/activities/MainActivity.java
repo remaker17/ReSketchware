@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
             settingsFragment = new SettingsFragment();
         }
 
-        // if (savedInstanceState == null) {
-            // getSupportFragmentManager().beginTransaction()
-                    // .add(R.id.container, projectsFragment)
-                    // .add(R.id.container, settingsFragment).hide(settingsFragment)
-                    // .commit();
-        // }
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, projectsFragment)
+                    .add(R.id.container, settingsFragment).hide(settingsFragment)
+                    .commit();
+        }
 
         bottomNav.setOnItemSelectedListener(onItemSelectedListener);
 
@@ -105,15 +105,15 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // idk why the fragment is no longer displayed after the reselect, so I comment, I return the old working method
-        // getSupportFragmentManager().beginTransaction()
-                // .hide(getFragmentFor(currentNavId))
-                // .show(newFragment)
-                // .commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, newFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .hide(getFragmentFor(currentNavId))
+                .show(newFragment)
                 .commit();
+        // getSupportFragmentManager().beginTransaction()
+                // .replace(R.id.container, newFragment)
+                // .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                // .commit();
         currentNavId = navId;
     }
 

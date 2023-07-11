@@ -51,6 +51,7 @@ public class DesignActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(SketchwareUtil.valueOrEmpty(project.get("my_app_name")));
         toolbar.setSubtitle(SketchwareUtil.valueOrEmpty(project.get("sc_id")));
+        toolbar.setNavigationOnClickListener(ignored -> onBackPressed());
 
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(new DesignPagerAdapter(getSupportFragmentManager()));

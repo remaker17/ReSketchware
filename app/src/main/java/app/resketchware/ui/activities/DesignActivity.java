@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +24,7 @@ import java.util.HashMap;
 public class DesignActivity extends AppCompatActivity {
 
     private HashMap<String, Object> project;
+    private MutableLiveData<Integer> currentTab = new MutableLiveData<>();
 
     private TabLayout tabLayout;
     private Toolbar toolbar;
@@ -58,7 +61,23 @@ public class DesignActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(new DesignPagerAdapter(getSupportFragmentManager()));
 
+        currentTab.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer newValue) {
+                viewPager.setCurrentItem(newValue);
+            }
+        });
+
         disableOverScroll();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (currentTab.getValue() > 0) {
+            currentTab.setValue(currentTab.getValue() - 1);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override

@@ -180,9 +180,4 @@
         <item name="bottomSheetStyle">@style/Widget.RSW.BottomSheet.Light</item>
     </style>
 
-    <style name="ThemeOverlay.RSW.Toolbar" parent="">
-        <item name="actionMenuTextColor">?attr/colorOnSurface</item>
-        <item name="colorControlNormal">?attr/rsw_colorBrand</item>
-    </style>
-
 </resources>

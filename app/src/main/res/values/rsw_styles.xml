@@ -73,4 +73,9 @@
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
         <item name="android:textColor">?attr/rsw_textColorPrimary</item>
     </style>
+
+    <style name="ThemeOverlay.RSW.Toolbar" parent="">
+        <item name="actionMenuTextColor">?attr/colorOnSurface</item>
+        <item name="colorControlNormal">?attr/rsw_colorBrand</item>
+    </style>
 </resources>

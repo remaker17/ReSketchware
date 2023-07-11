@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="android:background">?attr/rsw_background1</item>
-        <item name="itemIconTint">?attr/rsw_itemIconTint</item>
-        <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
-        <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
-        <item name="itemTextColor">?attr/itemTextColor</item>
-    </style>
-
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorHint">?android:attr/textColorHint</item>
         <item name="boxBackgroundColor">?attr/rsw_textFieldBackground</item>

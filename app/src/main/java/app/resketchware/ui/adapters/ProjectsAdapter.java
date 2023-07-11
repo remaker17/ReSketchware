@@ -45,7 +45,7 @@ public class ProjectsAdapter extends Adapter<ProjectsViewHolder> {
         holder.bind(project);
         holder.itemView.setOnClickListener(v -> listener.projectClicked(project));
 
-        // animateView(holder.itemView);
+        animateView(holder.itemView);
     }
 
     @Override

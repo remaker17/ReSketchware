@@ -55,9 +55,9 @@
 
     <style name="Theme.RSW.DesignDark" parent="Theme.MaterialComponents.NoActionBar">
         <!-- RSW attributes -->
-        <item name="rsw_background0">@color/rsw_color_graphite_9</item>
-        <item name="rsw_background1">@color/rsw_color_graphite_8</item>
-        <item name="rsw_background2">@color/rsw_color_graphite_5</item>
+        <item name="rsw_background0">@color/rsw_color_black</item>
+        <item name="rsw_background1">@color/rsw_color_graphite_9</item>
+        <item name="rsw_background2">@color/rsw_color_graphite_7</item>
         <item name="rsw_colorBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconBrand">@color/rsw_color_blue_5</item>
         <item name="rsw_iconSecondary">@color/rsw_color_white_alpha47</item>
@@ -73,7 +73,7 @@
         <!-- Other attributes -->
         <item name="colorBackgroundFloating">?attr/rsw_background1</item>
         <item name="colorControlActivated">?attr/rsw_colorBrand</item>
-        <item name="colorControlHighlight">@color/rsw_color_white_alpha16</item>
+        <item name="colorControlHighlight">@color/rsw_color_white_alpha8</item>
         <!-- <item name="colorControlNormal">@color/rsw_color_white_alpha12</item> -->
         <item name="colorSecondary">@color/rsw_color_orange_5</item>
         <item name="colorOnSecondary">@color/rsw_color_orange_0</item>
@@ -119,7 +119,7 @@
         <item name="android:windowTitleStyle">@style/Widget.RSW.NativeAlert.Title</item>
         <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
         <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
-        <item name="android:navigationBarColor">?attr/rsw_background0</item>
+        <item name="android:navigationBarColor">?attr/colorBackgroundFloating</item>
         <item name="android:listDivider">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
@@ -144,7 +144,7 @@
         <item name="android:windowTitleStyle">@style/Widget.RSW.NativeAlert.Title</item>
         <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
         <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
-        <item name="android:navigationBarColor">?attr/rsw_background1</item>
+        <item name="android:navigationBarColor">?attr/colorBackgroundFloating</item>
         <item name="android:listDivider">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
@@ -163,7 +163,7 @@
     </style>
 
     <style name="Theme.RSW.BottomSheetDialog.Dark" parent="Theme.RSW.Dialog.Dark">
-        <item name="android:colorBackground">?attr/rsw_background1</item>
+        <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowAnimationStyle">@style/Animation.MaterialComponents.BottomSheetDialog</item>

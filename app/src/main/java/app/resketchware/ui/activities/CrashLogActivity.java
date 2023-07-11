@@ -25,6 +25,7 @@ public class CrashLogActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle("An error occurred")
                         .setMessage(error)
+                        .setCancelable(false)
                         .show();
             }
         }

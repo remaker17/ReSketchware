@@ -2,11 +2,13 @@ package app.resketchware.ui.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -55,6 +57,8 @@ public class DesignActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(new DesignPagerAdapter(getSupportFragmentManager()));
+
+        disableOverScroll();
     }
 
     @Override
@@ -67,6 +71,13 @@ public class DesignActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_design, menu);
         return true;
+    }
+
+    private void disableOverScroll() {
+        View view = viewPager.getChildAt(0);
+        if (view instanceof RecyclerView rv) {
+            rv.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        }
     }
 
     private void showNoPermissionDialog() {

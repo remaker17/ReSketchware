@@ -26,6 +26,11 @@
         <item name="android:background">?attr/rsw_background0</item>
     </style>
 
+    <style name="Widget.RSW.AppBarLayout.Flat">
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+
     <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.NotElevated</item>
         <item name="itemIconTint">?attr/rsw_itemIconTint</item>

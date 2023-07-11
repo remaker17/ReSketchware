@@ -74,6 +74,24 @@
         <item name="android:textColor">?attr/rsw_textColorPrimary</item>
     </style>
 
+    <style name="Widget.RSW.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TabLayout</item>
+        <item name="tabIndicator">@drawable/rsw_tabs_line_indicator</item>
+        <item name="tabIndicatorAnimationMode">elastic</item>
+        <item name="tabIndicatorColor">?attr/rsw_colorBrand</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabPaddingEnd">0dp</item>
+        <item name="tabPaddingStart">0dp</item>
+        <item name="tabTextAppearance">@style/TextAppearance.RSW.Tab</item>
+        <item name="tabTextColor">@color/rsw_tabs_text_color</item>
+        <item name="tabUnboundedRipple">true</item>
+    </style>
+
+    <style name="ThemeOverlay.RSW.TabLayout" parent="ThemeOverlay.MaterialComponents">
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
     <style name="ThemeOverlay.RSW.Toolbar" parent="">
         <item name="actionMenuTextColor">?attr/colorOnSurface</item>
         <item name="colorControlNormal">?attr/rsw_colorBrand</item>

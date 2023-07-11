@@ -39,6 +39,7 @@
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Light</item>
         <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
         <item name="itemTextColor">@color/rsw_text_color_checkable_brand</item>
+        <item name="tabStyle">@style/Widget.RSW.TabLayout</item>
         <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
         <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
 
@@ -92,6 +93,7 @@
         <item name="dialogTheme">@style/Theme.RSW.Dialog.Dark</item>
         <item name="notImplementedViewStyle">@style/Widget.RSW.NotImplementedView</item>
         <item name="itemTextColor">@color/rsw_text_color_checkable_brand</item>
+        <item name="tabStyle">@style/Widget.RSW.TabLayout</item>
         <item name="textInputStyle">@style/Widget.RSW.TextInputLayout</item>
         <item name="toolbarStyle">@style/Widget.RSW.Toolbar</item>
 

@@ -112,14 +112,14 @@
 
     <style name="Theme.RSW.Dialog.Dark" parent="Theme.RSW.Dark">
         <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
-        <item name="android:windowBackground">@drawable/rsw_dialog_background_dark</item>
+        <item name="android:windowBackground">@drawable/rsw_dialog_bg_dark</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleStyle">@style/Widget.RSW.NativeAlert.Title</item>
         <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
         <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
-        <item name="android:navigationBarColor">@color/rsw_color_graphite_9</item>
+        <item name="android:navigationBarColor">?attr/rsw_background0</item>
         <item name="android:listDivider">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
@@ -137,13 +137,14 @@
 
     <style name="Theme.RSW.Dialog.Light" parent="Theme.RSW.Light">
         <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
-        <item name="android:windowBackground">@drawable/rsw_dialog_background_light</item>
+        <item name="android:windowBackground">@drawable/rsw_dialog_bg_light</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleStyle">@style/Widget.RSW.NativeAlert.Title</item>
         <item name="android:windowTitleBackgroundStyle">@style/Base.DialogWindowTitleBackground.AppCompat</item>
         <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:navigationBarColor">?attr/rsw_background1</item>
         <item name="android:listDivider">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowSoftInputMode">adjustPan</item>

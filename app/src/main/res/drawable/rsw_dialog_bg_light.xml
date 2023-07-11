@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/rsw_color_white" />
+            <corners android:radius="?attr/dialogCornerRadius" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <stroke
+                android:width="0.5dp"
+                android:color="@color/rsw_color_black_alpha55" />
+            <corners android:radius="?attr/dialogCornerRadius" />
+        </shape>
+    </item>
+</layer-list>

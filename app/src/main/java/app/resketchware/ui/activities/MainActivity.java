@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -86,7 +87,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private Fragment getFragmentFor(@IdRes int navId) {
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("selected_nav_id", currentNavId);
+        getSupportFragmentManager().putFragment(outState, "projectsFragment", projectsFragment);
+        getSupportFragmentManager().putFragment(outState, "settingsFragment", settingsFragment);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState == null || projectsFragment != null) {
+            return;
+        }
+
+        projectsFragment = (ProjectsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "projectsFragment");
+        settingsFragment = (SettingsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "settingsFragment");
+
+        currentNavId = savedInstanceState.getInt("selected_nav_id");
+        bottomNav.setSelectedItemId(currentNavId);
+
+        Fragment currentFragment = getFragment(currentNavId);
+        getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .hide(projectsFragment)
+                .hide(settingsFragment)
+                .show(currentFragment)
+                .commit();
+    }
+
+    private Fragment getFragment(@IdRes int navId) {
         if (navId == R.id.menu_projects) {
             return projectsFragment;
         } else if (navId == R.id.menu_settings) {
@@ -96,21 +127,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onNavigationSelected(@IdRes int navId) {
-        Fragment newFragment = getFragmentFor(navId);
+        Fragment newFragment = getFragment(navId);
         if (navId == currentNavId) {
             if (newFragment instanceof ScrollableToTop) {
                 ((ScrollableToTop) newFragment).scrollToTop();
-                return;
             }
+            return;
         }
 
-        // idk why the fragment is no longer displayed after the reselect, so I comment, I return the old working method
-        // getSupportFragmentManager().beginTransaction()
-                // .hide(getFragmentFor(currentNavId))
-                // .show(newFragment)
-                // .commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, newFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .hide(getFragment(currentNavId))
+                .show(newFragment)
                 .commit();
         currentNavId = navId;
     }

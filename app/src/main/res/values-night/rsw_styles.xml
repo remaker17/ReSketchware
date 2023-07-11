@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="android:background">?attr/colorSurface</item>
-        <item name="itemIconTint">?attr/rsw_itemIconTint</item>
-        <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
-        <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
-        <item name="itemTextColor">?attr/itemTextColor</item>
-    </style>
-
     <style name="Widget.RSW.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorHint">?android:attr/textColorHint</item>
-        <item name="boxBackgroundColor">@color/rsw_textfield_selector</item>
+        <item name="boxBackgroundColor">?attr/rsw_textFieldBackground</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="hintTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
         <item name="hintTextColor">?attr/rsw_textBrand</item>
         <item name="placeholderTextColor">?android:attr/textColorHint</item>
-        <item name="placeholderTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
+        <item name="placeholderTextAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TextInputEditText</item>
         <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.TextInputLayout</item>

@@ -27,7 +27,7 @@
     </style>
 
     <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="android:background">?attr/rsw_background1</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.BottomNavigationView</item>
         <item name="itemIconTint">?attr/rsw_itemIconTint</item>
         <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
         <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
@@ -54,10 +54,14 @@
         <item name="hintTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
         <item name="hintTextColor">?attr/rsw_textBrand</item>
         <item name="placeholderTextColor">?android:attr/textColorHint</item>
-        <item name="placeholderTextAppearance">@style/TextAppearance.RSW.Caption.Secondary</item>
+        <item name="placeholderTextAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.TextInputEditText</item>
         <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.TextInputLayout</item>
+    </style>
+
+    <style name="ThemeOverlay.RSW.BottomNavigationView" parent="ThemeOverlay.MaterialComponents">
+        <item name="elevationOverlayEnabled">false</item>
     </style>
 
     <style name="ThemeOverlay.RSW.TextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
@@ -68,5 +72,10 @@
     <style name="Widget.RSW.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
         <item name="android:textColor">?attr/rsw_textColorPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.RSW.Toolbar" parent="">
+        <item name="actionMenuTextColor">?attr/colorOnSurface</item>
+        <item name="colorControlNormal">?attr/rsw_colorBrand</item>
     </style>
 </resources>

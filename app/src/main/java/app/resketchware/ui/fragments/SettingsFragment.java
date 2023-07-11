@@ -15,13 +15,6 @@ import com.google.android.material.transition.MaterialSharedAxis;
 
 public class SettingsFragment extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, false));
-        setExitTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, true));
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

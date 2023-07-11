@@ -25,6 +25,11 @@ public class CrashLogActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle("An error occurred")
                         .setMessage(error)
+                        .setCancelable(false)
+                        .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+                            dialog.dismiss();
+                            finishAffinity();
+                        })
                         .show();
             }
         }

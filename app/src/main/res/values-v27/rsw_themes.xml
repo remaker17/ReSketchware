@@ -4,7 +4,7 @@
     <style name="Theme.RSW.Light" parent="Theme.RSW.Api27.Light" />
 
     <style name="Theme.RSW.Api27.Light" parent="Theme.RSW.Api21.Light">
-        <item name="android:navigationBarColor">@color/rsw_color_gray_0</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
         <item name="android:windowLightNavigationBar">true</item>
     </style>
 

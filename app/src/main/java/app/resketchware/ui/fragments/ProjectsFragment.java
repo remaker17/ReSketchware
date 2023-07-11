@@ -37,13 +37,6 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setEnterTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, false));
-        setExitTransition(new MaterialSharedAxis(MaterialSharedAxis.Y, true));
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

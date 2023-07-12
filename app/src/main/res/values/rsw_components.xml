@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="Widget.RSW.NotImplementedView" parent="">
         <item name="titleTextAppearance">?attr/textAppearanceHeadline6</item>
         <item name="messageTextAppearance">?attr/textAppearanceBody2</item>
@@ -39,7 +38,7 @@
         <item name="itemTextColor">?attr/itemTextColor</item>
     </style>
 
-    <style name="Widget.RSW.BottomNavigation.Secondary" parent="Widget.RSW.BottomNavigation">
+    <style name="Widget.RSW.BottomNavigation.Secondary">
         <item name="android:background">?attr/rsw_background0</item>
     </style>
 

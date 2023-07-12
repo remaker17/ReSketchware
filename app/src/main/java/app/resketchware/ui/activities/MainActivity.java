@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment currentFragment = getFragment(currentNavId);
         getSupportFragmentManager().beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
                 .hide(projectsFragment)
                 .hide(settingsFragment)
                 .show(currentFragment)
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         getSupportFragmentManager().beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
                 .hide(getFragment(currentNavId))
                 .show(newFragment)
                 .commit();

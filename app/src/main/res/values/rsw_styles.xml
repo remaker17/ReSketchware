@@ -82,7 +82,6 @@
         <item name="tabIndicator">@drawable/rsw_tabs_line_indicator</item>
         <item name="tabIndicatorAnimationMode">elastic</item>
         <item name="tabIndicatorColor">?attr/rsw_colorBrand</item>
-        <item name="tabIndicatorFullWidth">false</item>
         <item name="tabPaddingEnd">0dp</item>
         <item name="tabPaddingStart">0dp</item>
         <item name="tabTextAppearance">@style/TextAppearance.RSW.Tab</item>

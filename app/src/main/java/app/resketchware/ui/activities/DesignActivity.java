@@ -2,7 +2,6 @@ package app.resketchware.ui.activities;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -24,7 +22,7 @@ import java.util.HashMap;
 public class DesignActivity extends AppCompatActivity {
 
     private HashMap<String, Object> project;
-    private MutableLiveData<Integer> currentTab = new MutableLiveData<>();
+    private MutableLiveData<Integer> currentTab = new MutableLiveData<>(0);
 
     private TabLayout tabLayout;
     private Toolbar toolbar;
@@ -33,12 +31,13 @@ public class DesignActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_design);
 
         if (!ContextUtil.hasStoragePermissions(this)) {
             showNoPermissionDialog();
             return;
         }
+
+        setContentView(R.layout.activity_design);
 
         tabLayout = findViewById(R.id.tab_layout);
         toolbar = findViewById(R.id.toolbar);
@@ -73,8 +72,6 @@ public class DesignActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(newValue);
             }
         });
-
-        disableOverScroll();
     }
 
     @Override
@@ -96,13 +93,6 @@ public class DesignActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_design, menu);
         return true;
-    }
-
-    private void disableOverScroll() {
-        View view = viewPager.getChildAt(0);
-        if (view instanceof RecyclerView rv) {
-            rv.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        }
     }
 
     private void showNoPermissionDialog() {

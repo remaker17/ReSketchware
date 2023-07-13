@@ -10,21 +10,18 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import app.resketchware.R;
+import app.resketchware.ui.models.Project;
 import app.resketchware.ui.viewholders.ProjectsViewHolder;
 
-import java.util.HashMap;
 import java.util.List;
 
-/**
- * TODO: Change project model [HashMap<...>] to Project.java
- */
 public class ProjectsAdapter extends Adapter<ProjectsViewHolder> {
 
-    private List<HashMap<String, Object>> projects;
+    private List<Project> projects;
     private ProjectSelectionCallback listener;
 
     public interface ProjectSelectionCallback {
-        void projectClicked(HashMap<String, Object> project);
+        void projectClicked(Project project);
     }
 
     public ProjectsAdapter(ProjectSelectionCallback listener) {
@@ -41,7 +38,7 @@ public class ProjectsAdapter extends Adapter<ProjectsViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ProjectsViewHolder holder, int position) {
-        HashMap<String, Object> project = projects.get(position);
+        Project project = projects.get(position);
         holder.bind(project);
         holder.itemView.setOnClickListener(v -> listener.projectClicked(project));
 
@@ -53,7 +50,7 @@ public class ProjectsAdapter extends Adapter<ProjectsViewHolder> {
         return projects == null ? 0 : projects.size();
     }
 
-    public void changeProjectsDataset(List<HashMap<String, Object>> newProjects) {
+    public void changeProjectsDataset(List<Project> newProjects) {
         this.projects = newProjects;
         notifyDataSetChanged();
     }

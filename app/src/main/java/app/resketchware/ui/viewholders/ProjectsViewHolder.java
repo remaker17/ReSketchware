@@ -12,9 +12,9 @@ import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import java.io.File;
-import java.util.HashMap;
 
 import app.resketchware.R;
+import app.resketchware.ui.models.Project;
 import app.resketchware.utils.SketchwarePath;
 import app.resketchware.utils.SketchwareUtil;
 
@@ -40,15 +40,14 @@ public class ProjectsViewHolder extends ViewHolder {
         projectVersion = view.findViewById(R.id.project_version);
     }
 
-    public void bind(HashMap<String, Object> project) {
-        projectId.setText(SketchwareUtil.valueOrEmpty(project.get("sc_id")));
-        projectTitle.setText(SketchwareUtil.valueOrEmpty(project.get("my_app_name")));
-        projectPackageName.setText(SketchwareUtil.valueOrEmpty(project.get("my_sc_pkg_name")));
-        projectVersion.setText(SketchwareUtil.valueOrEmpty(project.get("sc_ver_name")) + " (" + SketchwareUtil.valueOrEmpty(project.get("sc_ver_code")) + ")");
+    public void bind(Project project) {
+        projectId.setText(project.getId());
+        projectTitle.setText(project.getApplicationName());
+        projectPackageName.setText(project.getPackageName());
+        projectVersion.setText(project.getCombinedVersion());
 
-        boolean haveCustomIcon = (boolean) project.get("custom_icon");
-        if (haveCustomIcon) {
-            String iconFolder = SketchwarePath.RESOURCES_ICONS + File.separator + SketchwareUtil.valueOrEmpty(project.get("sc_id")) + File.separator + "icon.png";
+        if (project.hasCustomIcon()) {
+            String iconFolder = SketchwarePath.RESOURCES_ICONS + File.separator + project.getId() + File.separator + "icon.png";
             Uri uri = getUriForFile(iconFolder);
             projectIcon.setImageURI(uri);
         }

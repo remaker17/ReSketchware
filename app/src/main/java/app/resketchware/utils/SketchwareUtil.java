@@ -5,16 +5,17 @@ import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 
+import app.resketchware.ui.models.Project;
+
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class SketchwareUtil {
     private static final String TAG = "SketchwareUtil";
 
-    public static List<HashMap<String, Object>> getSketchwareProjects() {
-        List<HashMap<String, Object>> projects = new ArrayList<>();
+    public static List<Project> getSketchwareProjects() {
+        List<Project> projects = new ArrayList<>();
         File projectsDirectory = new File(SketchwarePath.MYSC_LIST);
         File[] files = projectsDirectory.listFiles();
         if (files == null) {
@@ -23,9 +24,9 @@ public class SketchwareUtil {
 
         for (File file : files) {
             try {
-                HashMap<String, Object> project = getProjectData(file);
+                Project project = getProjectData(file);
 
-                if (project != null && valueOrEmpty(project.get("sc_id")).equals(file.getName())) {
+                if (project != null && project.getId().equals(file.getName())) {
                     projects.add(project);
                 }
             } catch (Exception ignored) {
@@ -35,7 +36,7 @@ public class SketchwareUtil {
         return projects;
     }
 
-    private static HashMap<String, Object> getProjectData(File file) throws Exception {
+    private static Project getProjectData(File file) throws Exception {
         File projectFile = new File(file, "project");
         if (!projectFile.exists()) {
             return null;
@@ -48,12 +49,8 @@ public class SketchwareUtil {
         return convertToSketchwareProject(projectDataString);
     }
 
-    private static HashMap<String, Object> convertToSketchwareProject(String hash) {
-        TypeToken<HashMap<String, Object>> typeToken = new TypeToken<HashMap<String, Object>>() {};
+    private static Project convertToSketchwareProject(String hash) {
+        TypeToken<Project> typeToken = new TypeToken<Project>() {};
         return GsonHelper.fromJson(hash, typeToken.getType());
-    }
-
-    public static String valueOrEmpty(Object value) {
-        return value == null ? "" : value.toString();
     }
 }

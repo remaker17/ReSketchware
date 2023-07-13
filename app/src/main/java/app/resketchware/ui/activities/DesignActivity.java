@@ -14,14 +14,13 @@ import com.google.android.material.tabs.TabLayout;
 
 import app.resketchware.R;
 import app.resketchware.ui.adapters.DesignPagerAdapter;
+import app.resketchware.ui.models.Project;
 import app.resketchware.utils.ContextUtil;
 import app.resketchware.utils.SketchwareUtil;
 
-import java.util.HashMap;
-
 public class DesignActivity extends AppCompatActivity {
 
-    private HashMap<String, Object> project;
+    private Project project;
     private MutableLiveData<Integer> currentTab = new MutableLiveData<>(0);
 
     private TabLayout tabLayout;
@@ -47,14 +46,14 @@ public class DesignActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             Bundle args = new Bundle();
             args = getIntent().getBundleExtra("project");
-            project = (HashMap<String, Object>) args.getSerializable("project");
+            project = (Project) args.getSerializable("project");
         } else {
-            project = (HashMap<String, Object>) savedInstanceState.getSerializable("project");
+            project = (Project) savedInstanceState.getSerializable("project");
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(SketchwareUtil.valueOrEmpty(project.get("my_app_name")));
-        toolbar.setSubtitle(SketchwareUtil.valueOrEmpty(project.get("sc_id")));
+        getSupportActionBar().setTitle(project.getApplicationName());
+        toolbar.setSubtitle(project.getId());
         toolbar.setNavigationOnClickListener(ignored -> onBackPressed());
 
         tabLayout.setupWithViewPager(viewPager);

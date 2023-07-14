@@ -86,10 +86,11 @@ public class PickerFragment extends Fragment {
 
         for (Map.Entry<Slider, TextView> entry : sliders.entrySet()) {
             final Slider slider = entry.getKey();
-            final TextView value = entry.getValue();
+            final TextView valueText = entry.getValue();
 
             slider.addOnChangeListener((sliderView, valueFloat, fromUser) -> {
-                value.setText(String.valueOf(valueFloat));
+                int value = Math.round(valueFloat);
+                valueText.setText(String.format("%03d", value));
 
                 if (fromUser) {
                     pickerUpdateListener.invoke(sliderR.getValue(), sliderG.getValue(), sliderB.getValue());

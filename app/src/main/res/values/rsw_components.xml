@@ -13,6 +13,12 @@
         <item name="android:background">@drawable/rsw_bottomsheet_background_light</item>
     </style>
 
+    <style name="Widget.RSW.CardView" parent="Widget.MaterialComponents.CardView" />
+
+    <style name="Widget.RSW.CardView.ColorPicker">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.CardView.ColorPicker</item>
+    </style>
+
     <style name="Widget.RSW.NativeAlert.Title" parent="Base.DialogWindowTitle.AppCompat">
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
     </style>

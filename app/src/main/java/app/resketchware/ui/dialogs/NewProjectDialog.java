@@ -70,7 +70,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         projectThemeColors[0] = getResources().getColor(R.color.rsw_color_orange_5);
         projectThemeColors[1] = getResources().getColor(R.color.rsw_color_blue_5);
         projectThemeColors[2] = getResources().getColor(R.color.rsw_color_blue_6);
-        projectThemeColors[3] = getResources().getColor(R.color.rsw_color_black_alpha12);
+        projectThemeColors[3] = getResources().getColor(R.color.rsw_color_gray_1);
         projectThemeColors[4] = getResources().getColor(R.color.rsw_color_gray_5);
 
         for (int i = 0; i < themeColorKeys.length; i++) {

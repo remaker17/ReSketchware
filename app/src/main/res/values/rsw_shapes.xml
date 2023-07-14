@@ -6,4 +6,12 @@
         <item name="cornerSize">@dimen/rsw_corner_radius_l</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.RSW.CardView.ColorPicker" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">?attr/dialogCornerRadius</item>
+        <item name="cornerSizeTopRight">?attr/dialogCornerRadius</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
 </resources>

@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.graphics.ColorUtils;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -36,6 +37,7 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
     private TextView title;
     private MaterialCardView colorPreview;
     private ViewPager2 viewPager;
+    private View resetButton;
 
     private int backupColor = -1;
     private int selectedColor = -1;
@@ -86,7 +88,7 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
 
         View cancelButton = view.findViewById(R.id.cancel);
         View positiveButton = view.findViewById(R.id.ok);
-        View resetButton = view.findViewById(R.id.reset);
+        resetButton = view.findViewById(R.id.reset);
 
         cancelButton.setOnClickListener(v -> dismissAllowingStateLoss());
         positiveButton.setOnClickListener(v -> {
@@ -116,6 +118,7 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
         }).attach();
 
         updateColors(selectedColor);
+        disableOverScroll();
     }
 
     private Fragment handleOnNavigationItemSelected(int itemId) {
@@ -134,8 +137,8 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
                 pickerFragment.setOnPickerUpdateListener((r, g, b) -> {
                     int color = Color.rgb(r, g, b);
                     if (selectedColor != color) {
-                        selectedColor = color;
                         updateColors(color);
+                        selectedColor = color;
                     }
                 });
                 pickerFragment.setOnResetPaletteListener(() -> {
@@ -168,10 +171,21 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
 
         title.setTextColor(contrastColor);
 
+        if (resetButton != null && resetButton.getVisibility() == View.GONE) {
+            resetButton.setVisibility(View.VISIBLE);
+        }
+
         colorPreview.setCardBackgroundColor(color);
 
         if (pickerFragment != null) {
             pickerFragment.updateColor(color);
+        }
+    }
+
+    private void disableOverScroll() {
+        View view = viewPager.getChildAt(0);
+        if (view instanceof RecyclerView rv) {
+            rv.setOverScrollMode(View.OVER_SCROLL_NEVER);
         }
     }
 

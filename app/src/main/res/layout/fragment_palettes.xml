@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/rsw_margin_medium">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/palettes"
@@ -13,8 +14,8 @@
         android:clipToPadding="false"
         android:orientation="horizontal"
         android:overScrollMode="never"
-        android:paddingHorizontal="?attr/dialogPreferredPadding"
         android:paddingBottom="@dimen/rsw_margin_medium"
+        android:paddingVertical="?attr/dialogPreferredPadding"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.recyclerview.widget.RecyclerView

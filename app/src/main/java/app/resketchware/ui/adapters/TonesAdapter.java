@@ -25,6 +25,7 @@ public class TonesAdapter extends RecyclerView.Adapter<TonesViewHolder> {
     }
 
     public void swapColors(int selection) {
+        resetColor();
         selectedPalette = selection;
         colors = ColorPickerUtil.colorsMap.get(selection);
         notifyDataSetChanged();
@@ -59,5 +60,9 @@ public class TonesAdapter extends RecyclerView.Adapter<TonesViewHolder> {
 
     public void setOnToneClickListener(ToneClickListener listener) {
         toneClickListener = listener;
+    }
+
+    public void resetColor() {
+        selectedColor = RecyclerView.NO_POSITION;
     }
 }

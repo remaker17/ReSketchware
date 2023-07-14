@@ -32,9 +32,14 @@ public class PickerFragment extends Fragment {
     private TextView valueB;
 
     private PickerUpdateListener pickerUpdateListener;
+    private ResetPaletteListener resetPaletteListener;
 
     public interface PickerUpdateListener {
         void invoke(float r, float g, float b);
+    }
+
+    public interface ResetPaletteListener {
+        void invoke();
     }
 
     public static PickerFragment newInstance(int selectedColor) {
@@ -43,10 +48,6 @@ public class PickerFragment extends Fragment {
         args.putInt("selected_color", selectedColor);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public void setOnPickerUpdateListener(PickerUpdateListener listener) {
-        pickerUpdateListener = listener;
     }
 
     @Override
@@ -94,7 +95,25 @@ public class PickerFragment extends Fragment {
                     pickerUpdateListener.invoke(sliderR.getValue(), sliderG.getValue(), sliderB.getValue());
                 }
             });
+
+            slider.addOnSliderTouchListener(new Slider.OnSliderTouchListener() {
+                @Override
+                public void onStartTrackingTouch(Slider slider) {}
+
+                @Override
+                public void onStopTrackingTouch(Slider slider) {
+                    resetPaletteListener.invoke();
+                }
+            });
         }
+    }
+
+    public void setOnPickerUpdateListener(PickerUpdateListener listener) {
+        pickerUpdateListener = listener;
+    }
+
+    public void setOnResetPaletteListener(ResetPaletteListener listener) {
+        resetPaletteListener = listener;
     }
 
     public void updateColor(int color) {

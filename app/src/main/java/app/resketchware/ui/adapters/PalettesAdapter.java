@@ -16,7 +16,7 @@ import java.util.List;
 public class PalettesAdapter extends RecyclerView.Adapter<PalettesViewHolder> {
 
     private final List<Integer> colors;
-    private int selectedAccent = Color.WHITE;
+    private int selectedAccent = 0;
     private PaletteClickListener paletteClickListener;
 
     public interface PaletteClickListener {
@@ -56,5 +56,9 @@ public class PalettesAdapter extends RecyclerView.Adapter<PalettesViewHolder> {
 
     public void setOnPaletteClickListener(PaletteClickListener listener) {
         paletteClickListener = listener;
+    }
+
+    public void resetSelectedPalette() {
+        paletteClickListener.invoke(colors.get(selectedAccent));
     }
 }

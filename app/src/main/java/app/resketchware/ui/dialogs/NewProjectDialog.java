@@ -130,7 +130,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
     }
 
     private void pickColor(View v, int colorIndex) {
-        ColorPickerDialog dialog = ColorPickerDialog.newInstance((int) v.getTag());
+        ColorPickerDialog dialog = ColorPickerDialog.newInstance(projectThemeColors[(int) v.getTag()]);
         dialog.setOnPositiveClickListener(color -> {
             projectThemeColors[colorIndex] = color;
             syncThemeColors();

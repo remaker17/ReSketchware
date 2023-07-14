@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
-                android:textAppearance="?attr/textAppearanceCaption"
+                android:textAppearance="?attr/textAppearanceOverline"
                 android:textAllCaps="true" />
 
             <com.google.android.material.tabs.TabLayout
@@ -56,11 +56,23 @@
         style="?attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom|end"
+        android:gravity="bottom"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/rsw_margin_medium_small"
         android:paddingTop="@dimen/rsw_margin_xxxsmall"
         android:paddingBottom="@dimen/rsw_margin_xxsmall">
+
+        <Button
+            android:id="@+id/reset"
+            style="?attr/buttonBarNeutralButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common_word_reset" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/cancel"

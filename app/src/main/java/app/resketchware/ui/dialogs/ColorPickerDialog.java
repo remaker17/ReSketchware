@@ -37,7 +37,8 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
     private MaterialCardView colorPreview;
     private ViewPager2 viewPager;
 
-    private int selectedColor = Color.WHITE;
+    private int backupColor = -1;
+    private int selectedColor = -1;
     private PositiveClickListener positiveClickListener;
 
     public interface PositiveClickListener {
@@ -60,7 +61,8 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            selectedColor = getArguments().getInt("selected_color", Color.WHITE);
+            backupColor = getArguments().getInt("selected_color", -1);
+            selectedColor = getArguments().getInt("selected_color", -1);
         }
     }
 
@@ -84,6 +86,7 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
 
         View cancelButton = view.findViewById(R.id.cancel);
         View positiveButton = view.findViewById(R.id.ok);
+        View resetButton = view.findViewById(R.id.reset);
 
         cancelButton.setOnClickListener(v -> dismissAllowingStateLoss());
         positiveButton.setOnClickListener(v -> {
@@ -91,6 +94,16 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
                 positiveClickListener.invoke(selectedColor);
             }
             dismissAllowingStateLoss();
+        });
+        resetButton.setOnClickListener(v -> {
+            if (backupColor != selectedColor) {
+                v.setVisibility(View.GONE);
+                selectedColor = backupColor;
+                updateColors(selectedColor);
+                if (palettesFragment != null) {
+                    palettesFragment.resetPalette();
+                }
+            }
         });
 
         ColorPickerPagerAdapter adapter = new ColorPickerPagerAdapter(requireActivity());
@@ -125,6 +138,11 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
                         updateColors(color);
                     }
                 });
+                pickerFragment.setOnResetPaletteListener(() -> {
+                    if (palettesFragment != null) {
+                        palettesFragment.resetPalette();
+                    }
+                });
                 return pickerFragment;
             default:
                 palettesFragment = PalettesFragment.newInstance();
@@ -143,7 +161,7 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
 
         tabLayout.setSelectedTabIndicatorColor(contrastColor);
         tabLayout.setTabIconTint(ColorStateList.valueOf(contrastColor));
-        tabLayout.setTabRippleColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(contrastColor, Math.round(0.25f * 255))));
+        tabLayout.setTabRippleColor(ColorStateList.valueOf(ColorUtils.setAlphaComponent(contrastColor, 25)));
 
         hexValue.setText(String.format("#FF%06X", 0xFFFFFF & color));
         hexValue.setTextColor(contrastColor);

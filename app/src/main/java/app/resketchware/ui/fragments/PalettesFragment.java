@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,7 +49,9 @@ public class PalettesFragment extends Fragment {
         palettesAdapter = new PalettesAdapter(list);
 
         palettesRecyclerView.setAdapter(palettesAdapter);
+        palettesRecyclerView.setHasFixedSize(true);
         selectedPaletteRecyclerView.setAdapter(tonesAdapter);
+        selectedPaletteRecyclerView.setHasFixedSize(true);
 
         return view;
     }
@@ -68,9 +71,20 @@ public class PalettesFragment extends Fragment {
                 tonesAdapter.swapColors(position);
             }
         });
+
+        selectedPaletteRecyclerView.getViewTreeObserver().addOnPreDrawListener(() -> {
+            ViewCompat.setPaddingRelative(palettesRecyclerView, selectedPaletteRecyclerView.getPaddingLeft(), palettesRecyclerView.getPaddingTop(), selectedPaletteRecyclerView.getPaddingRight(), palettesRecyclerView.getPaddingBottom());
+            ((LinearLayoutManager) palettesRecyclerView.getLayoutManager()).scrollToPositionWithOffset(0, 0);
+            return true;
+        });
     }
 
     public void setOnColorSelectListener(ColorSelectListener listener) {
         colorSelectListener = listener;
+    }
+
+    public void resetPalette() {
+        palettesAdapter.resetSelectedPalette();
+        tonesAdapter.resetColor();
     }
 }

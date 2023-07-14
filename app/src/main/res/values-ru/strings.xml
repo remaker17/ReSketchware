@@ -8,6 +8,7 @@
     <string name="common_word_create">Создать</string>
     <string name="common_word_icon">Иконка</string>
     <string name="common_word_projects">Проекты</string>
+    <string name="common_word_reset">Reset</string>
     <string name="common_word_settings">Настройки</string>
     <!-- Not implemented view -->
     <!-- Do not translate/edit the word "GitHub", it breaks the application -->

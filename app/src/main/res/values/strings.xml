@@ -8,6 +8,7 @@
     <string name="common_word_create">Create</string>
     <string name="common_word_icon">Icon</string>
     <string name="common_word_projects">Projects</string>
+    <string name="common_word_reset">Reset</string>
     <string name="common_word_settings">Settings</string>
 
     <!-- Not implemented view -->

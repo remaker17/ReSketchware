@@ -4,6 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.graphics.BlendMode;
 import android.graphics.BlendModeColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -71,9 +74,15 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         projectThemeColors[4] = getResources().getColor(R.color.rsw_color_gray_5);
 
         for (int i = 0; i < themeColorKeys.length; i++) {
-            ThemeColorView colorView = new ThemeColorView(requireContext(), i);
+            ThemeColorView colorView = new ThemeColorView(view.getContext(), i);
             colorView.nameTextView.setText(themeColorLabels[i]);
-            colorView.colorView.getBackground().setColorFilter(new BlendModeColorFilter(projectThemeColors[i], BlendMode.SRC_ATOP));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                BlendModeColorFilter colorFilter = new BlendModeColorFilter(projectThemeColors[i], BlendMode.SRC_ATOP);
+                colorView.getBackground().setColorFilter(colorFilter);
+            } else {
+                PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(projectThemeColors[i], PorterDuff.Mode.SRC_ATOP);
+                colorView.getBackground().setColorFilter(colorFilter);
+            }
             themeColorsContainer.addView(colorView);
         }
     }

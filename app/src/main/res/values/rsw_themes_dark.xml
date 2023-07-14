@@ -46,7 +46,7 @@
         <item name="android:colorBackground">?attr/rsw_background0</item>
         <item name="android:colorBackgroundFloating">?attr/rsw_background1</item>
         <item name="android:colorEdgeEffect">@color/rsw_color_white_alpha80</item>
-        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/rsw_background0</item>
         <item name="android:textColorHint">?attr/rsw_textColorSecondary</item>
         <item name="android:textColorLink">?attr/rsw_textColorBrand</item>
         <item name="android:textColorPrimary">?attr/rsw_textColorPrimary</item>

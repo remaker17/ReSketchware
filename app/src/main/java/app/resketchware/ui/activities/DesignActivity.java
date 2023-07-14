@@ -8,9 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import app.resketchware.R;
 import app.resketchware.ui.adapters.DesignPagerAdapter;
@@ -25,7 +26,7 @@ public class DesignActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private Toolbar toolbar;
-    private ViewPager viewPager;
+    private ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +57,20 @@ public class DesignActivity extends AppCompatActivity {
         toolbar.setSubtitle(project.getId());
         toolbar.setNavigationOnClickListener(ignored -> onBackPressed());
 
-        tabLayout.setupWithViewPager(viewPager);
-        viewPager.setAdapter(new DesignPagerAdapter(getSupportFragmentManager()));
-        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        viewPager.setAdapter(new DesignPagerAdapter(this));
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
+                super.onPageSelected(position);
                 currentTab.setValue(position);
             }
         });
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            int[] tabTitles = {R.string.view, R.string.event, R.string.component};
+            tab.setText(tabTitles[position]);
+        }).attach();
 
         currentTab.observe(this, new Observer<Integer>() {
             @Override

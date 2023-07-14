@@ -1,29 +1,26 @@
 package app.resketchware.ui.adapters;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import app.resketchware.ui.fragments.BlankFragment;
 
-public class DesignPagerAdapter extends FragmentStatePagerAdapter {
+public class DesignPagerAdapter extends FragmentStateAdapter {
 
-    public DesignPagerAdapter(FragmentManager fm) {
-        super(fm);
+    public DesignPagerAdapter(FragmentActivity fa) {
+        super(fa);
     }
 
+    @NonNull
     @Override
-    public Fragment getItem(int i) {
+    public Fragment createFragment(int position) {
         return new BlankFragment();
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return 3;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return "Page " + (position + 1);
     }
 }

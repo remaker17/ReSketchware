@@ -15,7 +15,7 @@ public class ThemeColorView extends LinearLayout {
     public final View colorView;
     public final TextView nameTextView;
 
-    public ThemeColorView(Context context) {
+    public ThemeColorView(Context context, int tag) {
         super(context);
 
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -27,6 +27,7 @@ public class ThemeColorView extends LinearLayout {
         setBackgroundResource(outValue.resourceId);
         setGravity(Gravity.CENTER);
         setOrientation(LinearLayout.VERTICAL);
+        setTag(tag);
 
         colorView = findViewById(R.id.color_view);
         nameTextView = findViewById(R.id.name_text);

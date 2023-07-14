@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:overScrollMode="never"
         android:paddingBottom="@dimen/rsw_margin_medium"
-        android:paddingVertical="?attr/dialogPreferredPadding"
+        android:paddingHorizontal="?attr/dialogPreferredPadding"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.recyclerview.widget.RecyclerView

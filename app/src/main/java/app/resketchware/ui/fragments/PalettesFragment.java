@@ -71,12 +71,6 @@ public class PalettesFragment extends Fragment {
                 tonesAdapter.swapColors(position);
             }
         });
-
-        selectedPaletteRecyclerView.getViewTreeObserver().addOnPreDrawListener(() -> {
-            ViewCompat.setPaddingRelative(palettesRecyclerView, selectedPaletteRecyclerView.getPaddingLeft(), palettesRecyclerView.getPaddingTop(), selectedPaletteRecyclerView.getPaddingRight(), palettesRecyclerView.getPaddingBottom());
-            ((LinearLayoutManager) palettesRecyclerView.getLayoutManager()).scrollToPositionWithOffset(0, 0);
-            return true;
-        });
     }
 
     public void setOnColorSelectListener(ColorSelectListener listener) {

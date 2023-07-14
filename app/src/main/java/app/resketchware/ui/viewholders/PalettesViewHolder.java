@@ -39,7 +39,7 @@ public class PalettesViewHolder extends ViewHolder {
         colorName.setText(name);
 
         if (getAbsoluteAdapterPosition() != selectedAccent) {
-            int colorDisabled = ContextUtil.getThemeColor(context, R.attr.rsw_background2);
+            int colorDisabled = ContextUtil.getThemeColor(context, android.R.attr.colorButtonNormal);
             cardView.setStrokeColor(colorDisabled);
 
             Drawable drawable = ContextCompat.getDrawable(context, R.drawable.rsw_checked);

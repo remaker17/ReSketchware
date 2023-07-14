@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.slider.Slider;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import app.resketchware.R;
@@ -84,13 +85,19 @@ public class PickerFragment extends Fragment {
 
         updateSliders();
 
-        for (Map.Entry<Slider, TextView> entry : sliders.entrySet()) {
-            final Slider slider = entry.getKey();
-            final TextView valueText = entry.getValue();
+        Iterator<Map.Entry<Slider, TextView>> iterator = sliders.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Slider, TextView> item = iterator.next();
+
+            final Slider slider = item.getKey();
+            final TextView valueText = item.getValue();
+
+            int value = Math.round(slider.getValue());
+            valueText.setText(String.format("%03d", value));
 
             slider.addOnChangeListener((sliderView, valueFloat, fromUser) -> {
-                int value = Math.round(valueFloat);
-                valueText.setText(String.format("%03d", value));
+                int slideValue = Math.round(valueFloat);
+                valueText.setText(String.format("%03d", slideValue));
 
                 if (fromUser) {
                     pickerUpdateListener.invoke(sliderR.getValue(), sliderG.getValue(), sliderB.getValue());

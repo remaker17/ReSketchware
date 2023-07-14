@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red_500">#f44336</color>
+    <color name="pink_500">#e91e63</color>
+    <color name="purple_500">#9c27b0</color>
+    <color name="deep_purple_500">#673ab7</color>
+    <color name="indigo_500">#3f51b5</color>
+    <color name="blue_500">#2196f3</color>
+    <color name="light_blue_500">#03a9f4</color>
+    <color name="cyan_500">#00bcd4</color>
+    <color name="teal_500">#009688</color>
+    <color name="green_500">#4caf50</color>
+    <color name="light_green_500">#8bc34a</color>
+    <color name="lime_500">#cddc39</color>
+    <color name="yellow_500">#ffeb3b</color>
+    <color name="amber_500">#ffc107</color>
+    <color name="orange_500">#ff9800</color>
+    <color name="deep_orange_500">#ff5722</color>
+    <color name="brown_500">#795548</color>
+    <color name="grey_500">#9e9e9e</color>
+    <color name="blue_grey_500">#607d8b</color>
+</resources>

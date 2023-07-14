@@ -74,16 +74,25 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         projectThemeColors[4] = getResources().getColor(R.color.rsw_color_gray_5);
 
         for (int i = 0; i < themeColorKeys.length; i++) {
-            ThemeColorView colorView = new ThemeColorView(view.getContext(), i);
+            final int index = i;
+            ThemeColorView colorView = new ThemeColorView(view.getContext());
             colorView.nameTextView.setText(themeColorLabels[i]);
+            themeColorsContainer.addView(colorView);
+            colorView.setOnClickListener(v -> pickColor(index));
+        }
+
+        syncThemeColors();
+    }
+
+    private void syncThemeColors() {
+        for (int i = 0; i < projectThemeColors.length; i++) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 BlendModeColorFilter colorFilter = new BlendModeColorFilter(projectThemeColors[i], BlendMode.SRC_ATOP);
-                colorView.getBackground().setColorFilter(colorFilter);
+                ((ThemeColorView) themeColorsContainer.getChildAt(i)).colorView.getBackground().setColorFilter(colorFilter);
             } else {
                 PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(projectThemeColors[i], PorterDuff.Mode.SRC_ATOP);
-                colorView.getBackground().setColorFilter(colorFilter);
+                ((ThemeColorView) themeColorsContainer.getChildAt(i)).colorView.getBackground().setColorFilter(colorFilter);
             }
-            themeColorsContainer.addView(colorView);
         }
     }
 
@@ -118,5 +127,14 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         } else {
             hiddenAdvancedOptions.setVisibility(View.GONE);
         }
+    }
+
+    private void pickColor(int colorIndex) {
+        ColorPickerDialog dialog = ColorPickerDialog.newInstance(0);
+        dialog.setOnPositiveClickListener(color -> {
+            projectThemeColors[colorIndex] = color;
+            syncThemeColors();
+        });
+        dialog.show(getChildFragmentManager(), null);
     }
 }

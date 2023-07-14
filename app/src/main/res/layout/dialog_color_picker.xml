@@ -46,15 +46,10 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <app.resketchware.ui.views.NestedScrollableHost
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </app.resketchware.ui.views.NestedScrollableHost>
+        android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.ButtonBarLayout
         style="?attr/buttonBarStyle"
@@ -71,7 +66,8 @@
             style="?attr/buttonBarNeutralButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/common_word_reset" />
+            android:text="@string/common_word_reset"
+            android:visibility="gone" />
 
         <Space
             android:layout_width="0dp"

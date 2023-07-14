@@ -49,7 +49,7 @@ public class PalettesFragment extends Fragment {
         palettesAdapter = new PalettesAdapter(list);
 
         palettesRecyclerView.setAdapter(palettesAdapter);
-        palettesRecyclerView.setHasFixedSize(true);
+
         selectedPaletteRecyclerView.setAdapter(tonesAdapter);
         selectedPaletteRecyclerView.setHasFixedSize(true);
 

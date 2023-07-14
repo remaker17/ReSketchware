@@ -18,6 +18,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -33,10 +34,10 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
     private TabLayout tabLayout;
     private TextView hexValue;
     private TextView title;
-    private View colorPreview;
+    private MaterialCardView colorPreview;
     private ViewPager2 viewPager;
 
-    private int selectedColor = 0;
+    private int selectedColor = Color.WHITE;
     private PositiveClickListener positiveClickListener;
 
     public interface PositiveClickListener {
@@ -59,7 +60,7 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            selectedColor = getArguments().getInt("selected_color", 0);
+            selectedColor = getArguments().getInt("selected_color", Color.WHITE);
         }
     }
 
@@ -149,7 +150,7 @@ public class ColorPickerDialog extends BottomSheetDialogFragment {
 
         title.setTextColor(contrastColor);
 
-        colorPreview.setBackgroundColor(color);
+        colorPreview.setCardBackgroundColor(color);
 
         if (pickerFragment != null) {
             pickerFragment.updateColor(color);

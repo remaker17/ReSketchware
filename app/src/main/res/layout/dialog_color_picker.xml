@@ -5,46 +5,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/color_preview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="?attr/dialogPreferredPadding">
+        android:elevation="0dp"
+        app:cardElevation="1dp">
 
-        <androidx.appcompat.widget.DialogTitle
-            android:id="@+id/title"
-            style="?android:attr/windowTitleStyle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
-            android:ellipsize="end"
-            android:text="@string/bg_color" />
+            android:orientation="vertical"
+            android:paddingHorizontal="?attr/dialogPreferredPadding">
 
-        <TextView
-            android:id="@+id/hex_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
-            android:textAppearance="?attr/textAppearanceCaption"
-            android:textAllCaps="true" />
+            <androidx.appcompat.widget.DialogTitle
+                android:id="@+id/title"
+                style="?android:attr/windowTitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+                android:ellipsize="end"
+                android:text="@string/bg_color" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:tabGravity="center"
-            app:tabPaddingStart="16dp"
-            app:tabPaddingEnd="16dp" />
+            <TextView
+                android:id="@+id/hex_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textAllCaps="true" />
 
-    </LinearLayout>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:tabGravity="center"
+                app:tabPaddingStart="16dp"
+                app:tabPaddingEnd="16dp" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="?attr/dialogPreferredPadding" />
+        android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.ButtonBarLayout
         style="?attr/buttonBarStyle"

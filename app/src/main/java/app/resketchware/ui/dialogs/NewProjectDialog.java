@@ -78,7 +78,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
             ThemeColorView colorView = new ThemeColorView(view.getContext());
             colorView.nameTextView.setText(themeColorLabels[i]);
             themeColorsContainer.addView(colorView);
-            colorView.setOnClickListener(v -> pickColor(index));
+            colorView.setOnClickListener(v -> pickColor(v, index));
         }
 
         syncThemeColors();
@@ -129,8 +129,8 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         }
     }
 
-    private void pickColor(int colorIndex) {
-        ColorPickerDialog dialog = ColorPickerDialog.newInstance(0);
+    private void pickColor(View v, int colorIndex) {
+        ColorPickerDialog dialog = ColorPickerDialog.newInstance(v.getBackgroundColor());
         dialog.setOnPositiveClickListener(color -> {
             projectThemeColors[colorIndex] = color;
             syncThemeColors();

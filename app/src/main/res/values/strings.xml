@@ -29,4 +29,9 @@
     <string name="version_code">Version code</string>
     <string name="package_name">Package name</string>
     <string name="project_advanced_options">Advanced options</string>
+
+    <!-- Design Activity -->
+    <string name="view">View</string>
+    <string name="event">Event</string>
+    <string name="component">Component</string>
 </resources>

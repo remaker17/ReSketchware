@@ -7,6 +7,7 @@ androidxRecyclerView = "1.3.1-rc01"
 androidxSwipeRefreshLayout = "1.2.0-alpha01"
 kotlin = "1.9.0"
 gson = "2.10.1"
+leakCanary = "2.12"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -20,6 +21,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerView" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "androidxSwipeRefreshLayout" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakCanary" }
 
 [bundles]
 core = [

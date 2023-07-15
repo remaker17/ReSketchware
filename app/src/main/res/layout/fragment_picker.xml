@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif-medium"
-            android:text="G"
+            android:text="B"
             android:textAlignment="center"
             android:textColor="?android:attr/textColorPrimary" />
 

@@ -2,6 +2,7 @@
 androidGradlePlugin = "8.2.0-alpha12"
 androidMaterial = "1.10.0-alpha05"
 androidxAppCompat = "1.7.0-alpha02"
+androidxCoreKtx = "1.10.1"
 androidxRecyclerView = "1.3.1-rc01"
 androidxSwipeRefreshLayout = "1.2.0-alpha01"
 kotlin = "1.9.0"
@@ -15,6 +16,7 @@ kotlin-gradlePlugin = { id = "org.jetbrains.kotlin.android", version.ref = "kotl
 [libraries]
 android-material = { group = "com.google.android.material", name = "material", version.ref = "androidMaterial" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "androidxRecyclerView" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "androidxSwipeRefreshLayout" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
@@ -23,6 +25,7 @@ gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 core = [
     "android-material",
     "androidx-appcompat",
+    "androidx-core-ktx",
     "androidx-recyclerview",
     "androidx-swiperefreshlayout",
     "gson"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/rsw_margin_medium">
+    android:paddingVertical="@dimen/rsw_margin_medium">
 
     <app.resketchware.ui.views.NestedScrollableHost
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/palettes"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:orientation="horizontal"
@@ -23,8 +23,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/selected_palette"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:clipToPadding="false"
         android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

@@ -26,7 +26,7 @@ object ColorPickerUtil {
     var colorsMap = mapOf(
         0 to RED, 1 to PINK, 2 to PURPLE, 3 to DEEP_PURPLE, 4 to INDIGO,
         5 to BLUE, 6 to LIGHT_BLUE, 7 to CYAN, 8 to TEAL, 9 to GREEN, 10 to LIGHT_GREEN,
-        11 to LIME, 12 to YELLOW, 13 to AMBER, 14 to ORANGE, 15 to DEEP_PURPLE, 16 to BROWN,
+        11 to LIME, 12 to YELLOW, 13 to AMBER, 14 to ORANGE, 15 to DEEP_ORANGE, 16 to BROWN,
         17 to GREY, 18 to BLUE_GREY, 19 to BLACK, 20 to WHITE
     )
 }

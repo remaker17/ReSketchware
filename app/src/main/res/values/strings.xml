@@ -31,6 +31,9 @@
     <string name="package_name">Package name</string>
     <string name="project_advanced_options">Advanced options</string>
 
+    <!-- Main Activity -->
+    <string name="search_projects">Search projects</string>
+
     <!-- Design Activity -->
     <string name="view">View</string>
     <string name="event">Event</string>

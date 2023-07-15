@@ -46,4 +46,10 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="TextAppearance.RSW.SearchBar" parent="">
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColorHint">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">17sp</item>
+    </style>
 </resources>

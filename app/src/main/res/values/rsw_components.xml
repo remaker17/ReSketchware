@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.RSW.NotImplementedView" parent="">
+    <style name="Widget.RSW.NotImplementedView" parent="android:Widget">
         <item name="titleTextAppearance">?attr/textAppearanceHeadline6</item>
         <item name="messageTextAppearance">?attr/textAppearanceBody2</item>
     </style>
 
-    <style name="Widget.RSW.BottomSheet.Dark" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/rsw_bottomsheet_background_dark</item>
+    <style name="Widget.RSW.BottomSheet.Dark" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="backgroundTint">@color/rsw_color_graphite_9</item>
+        <item name="elevation">0dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.BottomSheet</item>
+        <item name="shouldRemoveExpandedCorners">false</item>
     </style>
 
-    <style name="Widget.RSW.BottomSheet.Light" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/rsw_bottomsheet_background_light</item>
+    <style name="Widget.RSW.BottomSheet.Light" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="backgroundTint">@color/rsw_color_white</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.BottomSheet</item>
+        <item name="shouldRemoveExpandedCorners">false</item>
     </style>
 
     <style name="Widget.RSW.CardView" parent="Widget.MaterialComponents.CardView" />
@@ -23,8 +28,8 @@
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
     </style>
 
-    <style name="Widget.RSW.AppBarLayout" parent="Widget.Design.AppBarLayout">
-        <item name="android:background">?attr/colorSurface</item>
+    <style name="Widget.RSW.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.NotElevated</item>
     </style>
 
     <style name="Widget.RSW.AppBarLayout.AsBackground">
@@ -48,13 +53,31 @@
         <item name="android:background">?attr/rsw_background0</item>
     </style>
 
-    <style name="Widget.RSW.Toolbar" parent="Widget.AppCompat.Toolbar">
+    <style name="Widget.RSW.SearchBar" parent="android:Widget">
+        <item name="android:minHeight">@dimen/rsw_search_bar_height</item>
+        <item name="android:outlineAmbientShadowColor">@android:color/transparent</item>
+        <item name="android:outlineSpotShadowColor">@android:color/transparent</item>
+        <item name="android:textAppearance">@style/TextAppearance.RSW.SearchBar</item>
+        <item name="android:theme">@style/ThemeOverlay.RSW.SearchBar</item>
+        <item name="backgroundTint">?attr/colorSurface</item>
+        <item name="hideNavigationIcon">false</item>
+        <item name="navigationIconTint">?attr/colorControlNormal</item>
+        <item name="maxButtonHeight">@dimen/rsw_search_bar_height</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.SearchBar</item>
+    </style>
+
+    <style name="Widget.RSW.SearchBar.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:minWidth">@dimen/mtrl_min_touch_target_size</item>
+    </style>
+
+    <style name="Widget.RSW.SearchBar.Button.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">@dimen/mtrl_min_touch_target_size</item>
+    </style>
+
+    <style name="Widget.RSW.Toolbar" parent="Widget.MaterialComponents.Toolbar">
         <item name="android:background">?attr/colorSurface</item>
-        <item name="subtitleTextAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
-        <item name="subtitleTextColor">?android:attr/textColorSecondary</item>
-        <item name="titleTextAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
-        <item name="titleTextColor">?android:attr/textColorPrimary</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.Toolbar</item>
+        <item name="android:theme">@style/ThemeOverlay.RSW.Toolbar</item>
     </style>
 
     <style name="Widget.RSW.Toolbar.NoInset">
@@ -96,6 +119,13 @@
 
     <style name="ThemeOverlay.RSW.NotElevated" parent="ThemeOverlay.MaterialComponents">
         <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <style name="ThemeOverlay.RSW.SearchBar" parent="">
+        <item name="actionMenuTextColor">?android:attr/textColorSecondary</item>
+        <item name="colorControlNormal">?android:attr/textColorSecondary</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.RSW.SearchBar.ActionButton.Overflow</item>
+        <item name="toolbarNavigationButtonStyle">@style/Widget.RSW.SearchBar.Button.Navigation</item>
     </style>
 
     <style name="ThemeOverlay.RSW.TextInputEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText">

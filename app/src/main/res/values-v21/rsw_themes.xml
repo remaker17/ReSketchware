@@ -5,7 +5,7 @@
 
     <style name="Theme.RSW.Api21.Light" parent="Theme.RSW.DesignLight">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:statusBarColor">?attr/rsw_background0</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 

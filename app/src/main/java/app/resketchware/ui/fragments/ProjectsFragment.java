@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -20,6 +21,7 @@ import app.resketchware.ui.activities.MainActivity;
 import app.resketchware.ui.dialogs.NewProjectDialog;
 import app.resketchware.ui.interfaces.ScrollableToTop;
 import app.resketchware.ui.models.Project;
+import app.resketchware.ui.widgets.SearchBar;
 import app.resketchware.utils.ContextUtil;
 import app.resketchware.utils.SketchwareUtil;
 
@@ -38,6 +40,7 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private SearchBar searchBar;
 
     @Nullable
     @Override
@@ -47,6 +50,9 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
         fab = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.recycler_view);
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        searchBar = view.findViewById(R.id.search_bar);
+
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(searchBar);
 
         adapter = new ProjectsAdapter(this);
 

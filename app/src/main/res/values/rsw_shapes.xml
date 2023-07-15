@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="ShapeAppearanceOverlay.RSW.BottomSheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">?attr/dialogCornerRadius</item>
+        <item name="cornerSizeTopRight">?attr/dialogCornerRadius</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
     <style name="ShapeAppearanceOverlay.RSW.TextInputLayout" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">@dimen/rsw_corner_radius_l</item>
@@ -12,6 +20,11 @@
         <item name="cornerSizeTopRight">?attr/dialogCornerRadius</item>
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.RSW.SearchBar" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/rsw_corner_radius_l</item>
     </style>
 
 </resources>

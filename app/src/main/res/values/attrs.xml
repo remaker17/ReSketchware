@@ -8,4 +8,16 @@
         <attr name="messageTextAppearance" />
     </declare-styleable>
 
+    <attr name="searchBarStyle" format="reference " />
+
+    <declare-styleable name="SearchBar">
+        <attr name="android:textAppearance" />
+        <attr name="android:text" />
+        <attr name="android:hint" />
+        <attr name="backgroundTint" />
+        <attr name="hideNavigationIcon" />
+        <attr name="tintNavigationIcon" format="boolean" />
+        <attr name="navigationIconTint" />
+    </declare-styleable>
+
 </resources>

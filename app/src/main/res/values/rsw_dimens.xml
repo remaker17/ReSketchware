@@ -32,4 +32,6 @@
     <dimen name="rsw_margin_xxxmedium_large">28dp</dimen>
     <dimen name="rsw_margin_xxxsmall">4dp</dimen>
     <dimen name="rsw_margin_xxxxlarge">68dp</dimen>
+    <dimen name="rsw_search_bar_height">56dp</dimen>
+    <dimen name="rsw_searchbar_text_margin_start_no_navigation_icon">16dp</dimen>
 </resources>

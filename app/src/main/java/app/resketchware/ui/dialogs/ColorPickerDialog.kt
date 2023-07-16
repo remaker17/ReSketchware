@@ -98,6 +98,17 @@ class ColorPickerDialog : BottomSheetDialogFragment() {
         disableOverScroll()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        pickerFragment?.let {
+            it.onPickerUpdate = null
+            it.onResetPalette = null
+        }
+        palettesFragment?.let {
+            it.onColorSelect = null
+        }
+    }
+
     private fun handleOnNavigationItemSelected(itemId: Int) = when (itemId) {
         0 -> pickerFragment ?: initFragmentAt(itemId)
         else -> palettesFragment ?: initFragmentAt(itemId)

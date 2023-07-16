@@ -17,7 +17,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,12 +36,11 @@ public class MainActivity extends AppCompatActivity {
     @IdRes private int currentNavId = R.id.menu_projects;
 
     private BottomNavigationView bottomNav;
-    private Toolbar toolbar;
 
     private ProjectsFragment projectsFragment;
     private SettingsFragment settingsFragment;
 
-    private final NavigationBarView.OnItemSelectedListener onItemSelectedListener =
+    private NavigationBarView.OnItemSelectedListener onItemSelectedListener =
             new NavigationBarView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -62,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNav = findViewById(R.id.bottom_nav);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
             projectsFragment = new ProjectsFragment();
@@ -115,6 +111,15 @@ public class MainActivity extends AppCompatActivity {
                 .hide(settingsFragment)
                 .show(currentFragment)
                 .commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bottomNav = null;
+        onItemSelectedListener = null;
+        projectsFragment = null;
+        settingsFragment = null;
     }
 
     private Fragment getFragment(@IdRes int navId) {

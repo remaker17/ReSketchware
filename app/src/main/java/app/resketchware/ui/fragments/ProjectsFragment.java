@@ -93,6 +93,16 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        adapter = null;
+        recyclerView = null;
+        fab = null;
+        searchBar = null;
+        swipeRefreshLayout = null;
+    }
+
+    @Override
     public void projectClicked(Project project) {
         Bundle args = new Bundle();
         args.putSerializable("project", project);
@@ -104,7 +114,9 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
 
     @Override
     public void scrollToTop() {
-        recyclerView.smoothScrollToPosition(0);
+        if (recyclerView != null) {
+            recyclerView.smoothScrollToPosition(0);
+        }
     }
 
     private void refreshProjects(boolean checkPermission) {

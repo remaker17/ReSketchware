@@ -87,6 +87,12 @@ class PickerFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        onPickerUpdate = null
+        onResetPalette = null
+    }
+
     fun updateColor(color: Int) {
         if (selectedColor != color) {
             selectedColor = color

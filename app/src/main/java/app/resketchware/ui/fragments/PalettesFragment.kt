@@ -61,6 +61,12 @@ class PalettesFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        palettesAdapter = null
+        tonesAdapter = null
+    }
+
     fun resetPalette() {
         palettesAdapter?.resetSelectedPalette()
         tonesAdapter?.resetColor()

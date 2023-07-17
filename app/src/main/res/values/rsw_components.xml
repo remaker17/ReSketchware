@@ -5,17 +5,12 @@
         <item name="messageTextAppearance">?attr/textAppearanceBody2</item>
     </style>
 
-    <style name="Widget.RSW.BottomSheet.Dark" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="backgroundTint">@color/rsw_color_graphite_9</item>
-        <item name="elevation">0dp</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.BottomSheet</item>
-        <item name="shouldRemoveExpandedCorners">false</item>
+    <style name="Widget.RSW.BottomSheet.Dark" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rsw_bottomsheet_bg_dark</item>
     </style>
 
-    <style name="Widget.RSW.BottomSheet.Light" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="backgroundTint">@color/rsw_color_white</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.RSW.BottomSheet</item>
-        <item name="shouldRemoveExpandedCorners">false</item>
+    <style name="Widget.RSW.BottomSheet.Light" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rsw_bottomsheet_bg_light</item>
     </style>
 
     <style name="Widget.RSW.CardView" parent="Widget.MaterialComponents.CardView" />

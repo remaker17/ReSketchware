@@ -14,10 +14,11 @@
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="@dimen/rsw_margin_xsmall"
+            android:layout_marginBottom="@dimen/rsw_margin_xxsmall"
+            android:layout_marginHorizontal="@dimen/rsw_margin_medium"
             android:text="@string/search_projects"
-            app:layout_scrollFlags="scroll|enterAlways|snap|snapMargins" />
+            app:layout_scrollFlags="scroll|snap|snapMargins" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -31,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingVertical="@dimen/rsw_margin_xxsmall"
+            android:paddingBottom="@dimen/rsw_margin_xxsmall"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

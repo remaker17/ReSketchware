@@ -10,7 +10,10 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
+
+import app.resketchware.App;
 
 public class ContextUtil {
 
@@ -48,5 +51,9 @@ public class ContextUtil {
                 == PackageManager.PERMISSION_GRANTED
                 && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public static String getString(@StringRes int stringRes) {
+        return App.getContext().getString(stringRes);
     }
 }

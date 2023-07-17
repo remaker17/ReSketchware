@@ -36,5 +36,6 @@ android {
 
 dependencies {
     implementation(libs.bundles.core)
+    implementation(libs.android.r8)
     debugImplementation(libs.leakcanary)
 }

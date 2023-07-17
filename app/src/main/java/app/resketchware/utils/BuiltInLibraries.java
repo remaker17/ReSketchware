@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import app.resketchware.App;
+import app.resketchware.builder.listeners.ProgressListener;
 import app.resketchware.ui.models.BuiltInLibraryModel;
 
 import java.io.File;

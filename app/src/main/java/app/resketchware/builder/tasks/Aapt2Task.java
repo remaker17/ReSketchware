@@ -47,7 +47,7 @@ public class Aapt2Task extends Task {
 
     @Override
     public void prepare() throws IOException {
-        aaptBinary = new File(App.getContext().getFilesDir(), "aapt2");
+        aaptBinary = new File(App.getContext().getCacheDir(), "aapt2");
         outputPath = project.getBinDirectory().getAbsolutePath() + File.separator + "res";
         libraryManager = new BuiltInLibraryManager();
         compiledBuiltInLibraryResourcesDirectory = new File(App.getContext().getCacheDir(), "compiledLibs");
@@ -109,7 +109,7 @@ public class Aapt2Task extends Task {
                 File cachedCompiledResources = new File(compiledBuiltInLibraryResourcesDirectory, library.getName() + ".zip");
                 String libraryResources = BuiltInLibraries.getLibraryResourcesPath(library.getName());
 
-                checkForExist(libraryResources);
+                checkForExist(new File(libraryResources));
 
                 if (isBuiltInLibraryRecompilingNeeded(cachedCompiledResources)) {
                     ArrayList<String> commands = new ArrayList<>();
@@ -193,7 +193,7 @@ public class Aapt2Task extends Task {
 
         for (BuiltInLibraryModel library : libraryManager.getLibraries()) {
             if (library.hasAssets()) {
-                String assetsPath = BuiltInLibraries.getLibraryAssetPath(library.getName());
+                String assetsPath = BuiltInLibraries.getLibraryAssetsPath(library.getName());
 
                 checkForExist(new File(assetsPath));
                 args.add("-A");
@@ -203,7 +203,7 @@ public class Aapt2Task extends Task {
 
         checkForExist(project.getAssetsDirectory());
         args.add("-A");
-        args.ads(project.getAssetsDirectory().getAbsolutePath());
+        args.add(project.getAssetsDirectory().getAbsolutePath());
 
         File projectArchive = new File(project.getResourceDirectory().getAbsolutePath(), "project.zip");
         if (FileUtil.isExists(projectArchive)) {

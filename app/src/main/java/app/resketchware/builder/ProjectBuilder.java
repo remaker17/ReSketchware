@@ -27,8 +27,8 @@ public class ProjectBuilder extends BuilderImpl {
         ProgressListener listener = getProgressListener();
 
         List<Task> tasks = new ArrayList<>();
-        tasks.add(new Aapt2Task(project, listener));
         tasks.add(new ExtractBuiltInLibrariesTask(project, listener));
+        tasks.add(new Aapt2Task(project, listener));
         tasks.add(new JavaTask(project, listener));
         tasks.add(new D8Task(project, listener));
         return tasks;

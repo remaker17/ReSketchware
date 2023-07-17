@@ -1,14 +1,8 @@
 package app.resketchware.builder.tasks;
 
-import static android.system.OsConstants.S_IRUSR;
-import static android.system.OsConstants.S_IWUSR;
-import static android.system.OsConstants.S_IXUSR;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.system.ErrnoException;
-import android.system.Os;
 import android.util.Log;
 
 import app.resketchware.App;
@@ -34,7 +28,6 @@ public class Aapt2Task extends Task {
     private File aaptBinary;
     private File compiledBuiltInLibraryResourcesDirectory;
     private String outputPath;
-    private BuiltInLibraryManager libraryManager;
 
     public Aapt2Task(Project project, ProgressListener listener) {
         super(project, listener);
@@ -47,40 +40,18 @@ public class Aapt2Task extends Task {
 
     @Override
     public void prepare() throws IOException {
-        aaptBinary = new File(App.getContext().getFilesDir(), "aapt2");
+        aaptBinary = new File(App.getContext().getCacheDir(), "aapt2");
         outputPath = project.getBinDirectory().getAbsolutePath() + File.separator + "res";
-        libraryManager = new BuiltInLibraryManager();
         compiledBuiltInLibraryResourcesDirectory = new File(App.getContext().getCacheDir(), "compiledLibs");
         FileUtil.createDirectory(outputPath);
     }
 
     @Override
     public void run() throws IOException, CompilationFailedException {
-        maybeExtractAapt2();
         compileBuiltInLibraryResources();
         compileProjectResources();
         compileImportedResources();
         linkResources();
-    }
-
-    private void maybeExtractAapt2() throws IOException {
-        String aapt2PathInAssets = "aapt" + File.separator;
-        if (getAbi().toLowerCase().contains("x86")) {
-            aapt2PathInAssets += "aapt2-x86";
-        } else {
-            aapt2PathInAssets += "aapt2-arm";
-        }
-        try {
-            if (FileUtil.hasFileChanged(aapt2PathInAssets, aaptBinary.getAbsolutePath())) {
-                Os.chmod(aaptBinary.getAbsolutePath(), S_IRUSR | S_IWUSR | S_IXUSR);
-            }
-        } catch (ErrnoException e) {
-            Log.d("Aapt2Task", "Failed to extract AAPT2 binary");
-            throw new IOException(e);
-        } catch (Exception e) {
-            Log.d("Aapt2Task", "Failed to extract AAPT2 binary");
-            throw new IOException(e);
-        }
     }
 
     private void compileProjectResources() throws CompilationFailedException {
@@ -94,7 +65,7 @@ public class Aapt2Task extends Task {
         commands.add("-o");
         commands.add(outputPath + File.separator + "project.zip");
 
-        Log.d("Aapt2Task" + ":projectResources", commands.toString());
+        Log.d("Aapt2Task" + ":projectResources", "Now executing: " + commands);
         BinaryExecutor executor = new BinaryExecutor();
         executor.setCommands(commands);
         if (!executor.execute().isEmpty()) {
@@ -103,13 +74,13 @@ public class Aapt2Task extends Task {
     }
 
     private void compileBuiltInLibraryResources() throws CompilationFailedException {
-        compiledBuiltInLibraryResourcesDirectory.mkdirs();
-        for (BuiltInLibraryModel library : libraryManager.getLibraries()) {
+        FileUtil.createDirectory(compiledBuiltInLibraryResourcesDirectory);
+        for (BuiltInLibraryModel library : BuiltInLibraryManager.getLibraries()) {
             if (library.hasResources()) {
                 File cachedCompiledResources = new File(compiledBuiltInLibraryResourcesDirectory, library.getName() + ".zip");
                 String libraryResources = BuiltInLibraries.getLibraryResourcesPath(library.getName());
 
-                checkForExist(libraryResources);
+                checkForExist(new File(libraryResources));
 
                 if (isBuiltInLibraryRecompilingNeeded(cachedCompiledResources)) {
                     ArrayList<String> commands = new ArrayList<>();
@@ -120,7 +91,7 @@ public class Aapt2Task extends Task {
                     commands.add("-o");
                     commands.add(cachedCompiledResources.getAbsolutePath());
 
-                    Log.d("Aapt2Task" + ":builtInLibraryResources", commands.toString());
+                    Log.d("Aapt2Task" + ":builtInLibraryResources", "Now executing: " + commands);
                     BinaryExecutor executor = new BinaryExecutor();
                     executor.setCommands(commands);
                     if (!executor.execute().isEmpty()) {
@@ -162,7 +133,7 @@ public class Aapt2Task extends Task {
         commands.add("-o");
         commands.add(outputPath + File.separator + "project-imported.zip");
 
-        Log.d("Aapt2Task" + ":importedResources", commands.toString());
+        Log.d("Aapt2Task" + ":importedResources", "Now executing: " + commands);
         BinaryExecutor executor = new BinaryExecutor();
         executor.setCommands(commands);
         if (!executor.execute().isEmpty()) {
@@ -171,6 +142,7 @@ public class Aapt2Task extends Task {
     }
 
     private void linkResources() throws CompilationFailedException {
+        String resourcesPath = project.getBinDirectory().getAbsolutePath() + File.separator + "res";
         listener.post(ContextUtil.getString(R.string.compiler_aapt2_linking_message));
 
         ArrayList<String> args = new ArrayList<>();
@@ -191,9 +163,13 @@ public class Aapt2Task extends Task {
         args.add("-I");
         args.add(SketchwareUtil.getBootstrapFile().getAbsolutePath());
 
-        for (BuiltInLibraryModel library : libraryManager.getLibraries()) {
+        checkForExist(project.getAssetsDirectory());
+        args.add("-A");
+        args.add(project.getAssetsDirectory().getAbsolutePath());
+
+        for (BuiltInLibraryModel library : BuiltInLibraryManager.getLibraries()) {
             if (library.hasAssets()) {
-                String assetsPath = BuiltInLibraries.getLibraryAssetPath(library.getName());
+                String assetsPath = BuiltInLibraries.getLibraryAssetsPath(library.getName());
 
                 checkForExist(new File(assetsPath));
                 args.add("-A");
@@ -201,17 +177,32 @@ public class Aapt2Task extends Task {
             }
         }
 
-        checkForExist(project.getAssetsDirectory());
-        args.add("-A");
-        args.ads(project.getAssetsDirectory().getAbsolutePath());
+        for (BuiltInLibraryModel library : BuiltInLibraryManager.getLibraries()) {
+            if (library.hasResources()) {
+                args.add("-R");
+                args.add(new File(compiledBuiltInLibraryResourcesDirectory, library.getName() + ".zip").getAbsolutePath());
+            }
+        }
 
-        File projectArchive = new File(project.getResourceDirectory().getAbsolutePath(), "project.zip");
+        File[] filesInCompiledResourcesPath = new File(resourcesPath).listFiles();
+        if (filesInCompiledResourcesPath != null) {
+            for (File file : filesInCompiledResourcesPath) {
+                if (file.isFile()) {
+                    if (!file.getName().equals("project.zip") || !file.getName().equals("project-imported.zip")) {
+                        args.add("-R");
+                        args.add(file.getAbsolutePath());
+                    }
+                }
+            }
+        }
+
+        File projectArchive = new File(resourcesPath, "project.zip");
         if (FileUtil.isExists(projectArchive)) {
             args.add("-R");
             args.add(projectArchive.getAbsolutePath());
         }
 
-        File importedArchive = new File(project.getResourceDirectory().getAbsolutePath(), "project-imported.zip");
+        File importedArchive = new File(resourcesPath, "project-imported.zip");
         if (FileUtil.isExists(importedArchive)) {
             args.add("-R");
             args.add(importedArchive.getAbsolutePath());
@@ -228,7 +219,7 @@ public class Aapt2Task extends Task {
         args.add("-o");
         args.add(project.getResourcesApkDirectory().getAbsolutePath());
 
-        Log.d("Aapt2Task" + ":link", args.toString());
+        Log.d("Aapt2Task" + ":link", "Now executing: " + args);
         BinaryExecutor executor = new BinaryExecutor();
         executor.setCommands(args);
         if (!executor.execute().isEmpty()) {
@@ -240,15 +231,5 @@ public class Aapt2Task extends Task {
         if (!FileUtil.isExists(file)) {
             throw new CompilationFailedException("No such file or directory: " + file.getAbsolutePath());
         }
-    }
-
-    private String getAbi() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            String[] supportedAbis = Build.SUPPORTED_ABIS;
-            if (supportedAbis != null) {
-                return supportedAbis[0];
-            }
-        }
-        return Build.CPU_ABI;
     }
 }

@@ -2,10 +2,12 @@ package app.resketchware.utils;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import app.resketchware.App;
+import app.resketchware.builder.listeners.ProgressListener;
 import app.resketchware.ui.models.BuiltInLibraryModel;
 
 import java.io.File;
@@ -431,29 +433,32 @@ public class BuiltInLibraries {
 
         if (FileUtil.hasFileChanged(baseAssetsPath + dexsArchiveName, dexsArchivePath)) {
             for (ProgressListener listener : progressListeners) {
+                Log.v("BuiltInLibraries", "Extracting built-in libraries' DEX files...");
                 listener.post("Extracting built-in libraries' DEX files...");
             }
 
-            // FileUtil.createDirectory(dexsDirectoryPath, true);
+            FileUtil.createDirectory(dexsDirectoryPath, true);
             Decompress.unzipFromAssets(baseAssetsPath + dexsArchiveName, dexsDirectoryPath);
         }
 
         if (FileUtil.hasFileChanged(baseAssetsPath + libsArchiveName, libsArchivePath)) {
             for (ProgressListener listener : progressListeners) {
+                Log.v("BuiltInLibraries", "Extracting built-in libraries' resources...");
                 listener.post("Extracting built-in libraries' resources...");
             }
 
-            // FileUtil.createDirectory(libsDirectoryPath, true);
+            FileUtil.createDirectory(libsDirectoryPath, true);
             Decompress.unzipFromAssets(baseAssetsPath + libsArchiveName, libsDirectoryPath);
         }
 
         FileUtil.hasFileChanged(baseAssetsPath + coreLambdaStubsJarName, coreLambdaStubsJarPath);
         if (FileUtil.hasFileChanged(baseAssetsPath + testkeyArchiveName, testkeyArchivePath)) {
             for (ProgressListener listener : progressListeners) {
+                Log.v("BuiltInLibraries", "Extracting built-in signing keys...");
                 listener.post("Extracting built-in signing keys...");
             }
 
-            // FileUtil.createDirectory(testkeyDirectoryPath, true);
+            FileUtil.createDirectory(testkeyDirectoryPath, true);
             Decompress.unzipFromAssets(baseAssetsPath + testkeyArchiveName, testkeyDirectoryPath);
         }
     }

@@ -3,9 +3,11 @@ package app.resketchware.builder;
 import app.resketchware.builder.exceptions.CompilationFailedException;
 import app.resketchware.builder.listeners.ProgressListener;
 import app.resketchware.builder.tasks.Aapt2Task;
+import app.resketchware.builder.tasks.ExtractAapt2Task;
 import app.resketchware.builder.tasks.ExtractBuiltInLibrariesTask;
 import app.resketchware.builder.tasks.D8Task;
 import app.resketchware.builder.tasks.JavaTask;
+import app.resketchware.builder.tasks.SetupTask;
 import app.resketchware.ui.models.Project;
 
 import java.util.ArrayList;
@@ -27,8 +29,10 @@ public class ProjectBuilder extends BuilderImpl {
         ProgressListener listener = getProgressListener();
 
         List<Task> tasks = new ArrayList<>();
-        tasks.add(new Aapt2Task(project, listener));
+        tasks.add(new SetupTask(project, listener));
+        tasks.add(new ExtractAapt2Task(project, listener));
         tasks.add(new ExtractBuiltInLibrariesTask(project, listener));
+        tasks.add(new Aapt2Task(project, listener));
         tasks.add(new JavaTask(project, listener));
         tasks.add(new D8Task(project, listener));
         return tasks;

@@ -47,8 +47,8 @@ public class CompilerServiceConnection implements ServiceConnection {
     @Override
     public void onServiceDisconnected(ComponentName name) {
         service = null;
-        compilerViewModel.setMessage(null);
-        compilerViewModel.setCompiling(false);
+        // compilerViewModel.setMessage(null);
+        // compilerViewModel.setCompiling(false);
         isCompiling = false;
     }
 }

@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class ExtractBuiltInLibrariesTask extends Task {
 
-    private BuiltInLibraryManager libraryManager;
-
     public ExtractBuiltInLibrariesTask(Project project, ProgressListener listener) {
         super(project, listener);
     }
@@ -25,17 +23,15 @@ public class ExtractBuiltInLibrariesTask extends Task {
     }
 
     @Override
-    public void prepare() throws IOException {
-        libraryManager = new BuiltInLibraryManager();
-    }
+    public void prepare() throws IOException {}
 
     @Override
     public void run() throws IOException, CompilationFailedException {
         BuiltInLibraries.extractCompileAssets(listener);
 
         // Temporary add these libraries
-        libraryManager.addLibrary(BuiltInLibraries.ANDROIDX_APPCOMPAT);
-        libraryManager.addLibrary(BuiltInLibraries.ANDROIDX_COORDINATORLAYOUT);
-        libraryManager.addLibrary(BuiltInLibraries.MATERIAL);
+        BuiltInLibraryManager.addLibrary(BuiltInLibraries.ANDROIDX_APPCOMPAT);
+        BuiltInLibraryManager.addLibrary(BuiltInLibraries.ANDROIDX_COORDINATORLAYOUT);
+        BuiltInLibraryManager.addLibrary(BuiltInLibraries.MATERIAL);
     }
 }

@@ -50,7 +50,7 @@ public class Decompress {
             ZipEntry ze;
 
             while ((ze = zin.getNextEntry()) != null) {
-                Log.v(TAG, "Unzipping " + ze.getName());
+                Log.v(TAG, "Unzipping " + ze.getName() + " to: " + destination);
 
                 if (ze.isDirectory()) {
                     dirChecker(destination, ze.getName());

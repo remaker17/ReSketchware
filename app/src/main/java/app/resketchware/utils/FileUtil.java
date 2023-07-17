@@ -8,6 +8,7 @@ import app.resketchware.App;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -31,6 +32,16 @@ public class FileUtil {
 
     public static String readFile(String path) {
         return readFile(new File(path));
+    }
+
+    public static void saveFile(String name, String content) {
+        try {
+            FileWriter writer = new FileWriter(name);
+            writer.write(content);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void createDirectory(String path) {
@@ -139,19 +150,28 @@ public class FileUtil {
         }
     }
 
-    public static boolean hasFileChanged(String assetPath, String targetFilePath) throws IOException {
+    public static boolean hasFileChanged(String assetPath, String targetFilePath) {
         return hasFileChanged(App.getContext(), assetPath, targetFilePath);
     }
 
-    public static boolean hasFileChanged(Context context, String assetPath, String targetFilePath) throws IOException {
+    public static boolean hasFileChanged(Context context, String assetPath, String targetFilePath) {
         File targetFile = new File(targetFilePath);
-        long lengthOfAssetFile = getAssetFileLength(context, assetPath);
+        long lengthOfAssetFile;
+        try {
+            lengthOfAssetFile = getAssetFileLength(context, assetPath);
+        } catch (IOException io) {
+            lengthOfAssetFile = 0;
+        }
 
         if (targetFile.exists() && targetFile.length() == lengthOfAssetFile) {
             return false;
         } else {
-            Files.deleteIfExists(Paths.get(targetFilePath));
-            copyFromAssets(context, assetPath, targetFilePath);
+            deleteFile(targetFilePath);
+            try {
+                copyFromAssets(context, assetPath, targetFilePath);
+            } catch (IOException io) {
+                // hmmm
+            }
             return true;
         }
     }

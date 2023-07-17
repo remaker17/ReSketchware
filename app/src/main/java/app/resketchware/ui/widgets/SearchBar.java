@@ -202,7 +202,7 @@ public class SearchBar extends Toolbar {
         backgroundShape.initializeElevationOverlay(getContext());
         backgroundShape.setFillColor(ColorStateList.valueOf(backgroundColor));
 
-        int rippleColor = ContextUtil.getThemeColor(getContext(), com.google.android.material.R.attr.colorControlNormal);
+        int rippleColor = ContextUtil.getThemeColor(getContext(), com.google.android.material.R.attr.colorControlHighlight);
         RippleDrawable background = new RippleDrawable(ColorStateList.valueOf(rippleColor), backgroundShape, backgroundShape);
 
         ViewCompat.setBackground(this, background);

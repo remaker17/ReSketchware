@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="compiler_aapt_message">Compiling resources with AAPT2...</string>
-    <string name="compiler_dex_message">Dx is running...</string>
+    <string name="compiler_aapt2_message">Compiling resources with AAPT2...</string>
+    <string name="compiler_aapt2_linking_message">Linking resources with AAPT2...</string>
+    <string name="compiler_d8_message">D8 is running...</string>
     <string name="compiler_java_message">Java is compiling...</string>
+    <string name="compiler_title">Your project is compiling...</string>
 </resources>

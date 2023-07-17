@@ -1,10 +1,12 @@
 package app.resketchware.utils;
 
+import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 
+import app.resketchware.App;
 import app.resketchware.ui.models.Project;
 
 import java.io.File;
@@ -13,6 +15,20 @@ import java.util.List;
 
 public class SketchwareUtil {
     private static final String TAG = "SketchwareUtil";
+
+    private static File androidJar;
+
+    public static File getBootstrapFile() {
+        if (androidJar == null) {
+            Context context = App.getContext();
+            androidJar = new File(context.getFilesDir(), "rt.jar");
+
+            if (!androidJar.exists()) {
+                Decompress.unzipFromAssets(context, "rt.zip", androidJar.getParentFile().getAbsolutePath());
+            }
+        }
+        return androidJar;
+    }
 
     public static List<Project> getSketchwareProjects() {
         List<Project> projects = new ArrayList<>();

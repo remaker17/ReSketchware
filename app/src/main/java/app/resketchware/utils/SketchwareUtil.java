@@ -21,7 +21,7 @@ public class SketchwareUtil {
     public static File getBootstrapFile() {
         if (androidJar == null) {
             Context context = App.getContext();
-            androidJar = new File(context.getFilesDir(), "rt.jar");
+            androidJar = new File(context.getCacheDir(), "rt.jar");
 
             if (!androidJar.exists()) {
                 Decompress.unzipFromAssets(context, "rt.zip", androidJar.getParentFile().getAbsolutePath());

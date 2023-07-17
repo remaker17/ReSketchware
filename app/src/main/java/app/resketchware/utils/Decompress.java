@@ -3,6 +3,8 @@ package app.resketchware.utils;
 import android.content.Context;
 import android.util.Log;
 
+import app.resketchware.App;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,6 +16,10 @@ import java.util.zip.ZipInputStream;
 public class Decompress {
     private static final int BUFFER_SIZE = 1024 * 10;
     private static final String TAG = "Decompress";
+
+    public static void unzipFromAssets(String zipFile, String destination) {
+        unzipFromAssets(App.getContext(), zipFile, destination);
+    }
 
     public static void unzipFromAssets(Context context, String zipFile, String destination) {
         try {

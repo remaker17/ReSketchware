@@ -64,7 +64,11 @@ public final class Project implements Serializable {
         return hasCustomIcon;
     }
 
-    public File getJavaDirectory() {
+    public File getAssetsDirectory() {
+        return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "app" + File.separator + "src" + File.separator + "main" + File.separator + "assets");
+    }
+
+    public File getRJavaDirectory() {
         return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "gen");
     }
 

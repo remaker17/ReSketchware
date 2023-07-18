@@ -13,32 +13,26 @@ import androidx.annotation.Nullable;
 import app.resketchware.builder.ProjectBuilder;
 import app.resketchware.builder.listeners.ProgressListener;
 import app.resketchware.ui.models.Project;
+
 import java.lang.ref.WeakReference;
 
 public class CompilerService extends Service {
 
     private final CompilerBinder mBinder = new CompilerBinder(this);
-    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private final Handler mMainHandler = new Handler(Looper.getMainLooper());
 
-    private ProjectBuilder.OnResultListener onResultListener;
-    private ProgressListener listener;
-    private Project project;
+    private ProjectBuilder.OnResultListener mOnResultListener;
 
     public static class CompilerBinder extends Binder {
-        private final WeakReference<CompilerService> serviceReference;
+        private final WeakReference<CompilerService> mServiceReference;
 
         public CompilerBinder(CompilerService service) {
-            serviceReference = new WeakReference<>(service);
+            mServiceReference = new WeakReference<>(service);
         }
 
         public CompilerService getCompilerService() {
-            return serviceReference.get();
+            return mServiceReference.get();
         }
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
     }
 
     @Nullable
@@ -47,26 +41,18 @@ public class CompilerService extends Service {
         return mBinder;
     }
 
-    public void setListener(ProgressListener listener) {
-        this.listener = listener;
-    }
-
     public void setOnResultListener(ProjectBuilder.OnResultListener onResultListener) {
-        this.onResultListener = onResultListener;
+        mOnResultListener = onResultListener;
     }
 
-    public void compile(Project project) {
-        this.project = project;
+    public void compile(Project project, ProgressListener listener) {
         if (project == null) {
-            if (onResultListener != null) {
-                mainHandler.post(() -> onResultListener.onComplete(false, "Unable to open project"));
+            if (mOnResultListener != null) {
+                mMainHandler.post(() -> mOnResultListener.onComplete(false, "Unable to compile project"));
             }
             return;
         }
-        buildProject(project, listener);
-    }
 
-    private void buildProject(Project project, ProgressListener listener) {
         boolean success = true;
 
         try {
@@ -74,7 +60,7 @@ public class CompilerService extends Service {
             projectBuilder.build();
         } catch (Throwable e) {
             String message = Log.getStackTraceString(e);
-            mainHandler.post(() -> onResultListener.onComplete(false, message));
+            mMainHandler.post(() -> mOnResultListener.onComplete(false, message));
             success = false;
         }
 
@@ -83,7 +69,7 @@ public class CompilerService extends Service {
 
     private void report(boolean success) {
         if (success) {
-            mainHandler.post(() -> onResultListener.onComplete(true, "Success"));
+            mMainHandler.post(() -> mOnResultListener.onComplete(true, "Success"));
         }
 
         stopSelf();

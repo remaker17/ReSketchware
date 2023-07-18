@@ -129,10 +129,6 @@ public final class Project implements Serializable {
     }
 
     public void deleteTemporaryFiles() {
-        File file = new File(getResDirectory().getAbsolutePath() + File.separator + "values-v21");
-        if (FileUtil.isExists(file)) {
-            FileUtil.deleteFile(file);
-        }
         FileUtil.deleteFile(getBinDirectory());
         FileUtil.deleteFile(getMyscDirectory());
         FileUtil.deleteFile(getRJavaDirectory());
@@ -193,5 +189,13 @@ public final class Project implements Serializable {
 
     public File getCompiledClassesDirectory() {
         return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + "classes");
+    }
+
+    public File getUnsignedUnalignedApkDirectory() {
+        return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + projectName + ".apk.unsigned");
+    }
+
+    public File getClassesDexDirectory() {
+        return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + "classes.dex");
     }
 }

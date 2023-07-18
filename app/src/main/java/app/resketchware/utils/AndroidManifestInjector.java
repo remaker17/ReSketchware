@@ -1,21 +1,25 @@
 package app.resketchware.utils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.List;
 
 public class AndroidManifestInjector {
+    private AndroidManifestInjector() {}
 
-    public static String mHolder(String m, String projectId) {
-        ArrayList<String> manifestLines = new ArrayList<>(Arrays.asList(m.split("\n")));
-        StringBuilder returnValue = new StringBuilder();
+    public static String mHolder(String manifest) {
+        List<String> manifestLines = new ArrayList<>(Arrays.asList(manifest.split("\n")));
+        StringBuilder result = new StringBuilder();
 
-        for (String manifestLine : manifestLines) {
-            returnValue.append("\n");
-            returnValue.append(manifestLine);
+        for (String line : manifestLines) {
+            if (result.length() == 0) {
+                result.append(line);
+                continue;
+            }
+            result.append('\n');
+            result.append(line);
         }
 
-        return returnValue.toString();
+        return result.toString();
     }
 }

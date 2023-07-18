@@ -22,14 +22,8 @@ public class CompilerDialog extends BaseBottomSheetDialogFragment {
 
     private String message;
 
-    public static CompilerDialog newInstance(String msg) {
-        CompilerDialog fragment = new CompilerDialog();
-        if (msg != null) {
-            Bundle args = new Bundle();
-            args.putString("message", msg);
-            fragment.setArguments(args);
-        }
-        return fragment;
+    public static CompilerDialog newInstance() {
+        return new CompilerDialog();
     }
 
     @Override

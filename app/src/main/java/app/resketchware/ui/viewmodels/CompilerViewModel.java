@@ -1,5 +1,7 @@
 package app.resketchware.ui.viewmodels;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -8,12 +10,12 @@ import app.resketchware.ui.models.Project;
 
 public class CompilerViewModel extends ViewModel {
 
-    private final MutableLiveData<String> message = new MutableLiveData<>();
+    private MutableLiveData<String> message;
     private final MutableLiveData<Project> project = new MutableLiveData<>();
 
     private MutableLiveData<Boolean> isCompiling;
 
-    public void setMessage(String value) {
+    public void setMessage(@Nullable String value) {
         message.setValue(value);
     }
 
@@ -26,6 +28,9 @@ public class CompilerViewModel extends ViewModel {
     }
 
     public LiveData<String> getMessage() {
+        if (message == null) {
+            message = new MutableLiveData<>(null);
+        }
         return message;
     }
 
@@ -35,7 +40,7 @@ public class CompilerViewModel extends ViewModel {
 
     public MutableLiveData<Boolean> isCompiling() {
         if (isCompiling == null) {
-            isCompiling = new MutableLiveData<>();
+            isCompiling = new MutableLiveData<>(false);
         }
         return isCompiling;
     }

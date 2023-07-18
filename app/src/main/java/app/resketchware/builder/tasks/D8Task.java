@@ -26,11 +26,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class D8Task extends Task {
 
-    private Collection<Path> libraryFiles;
-    private Collection<Path> programFiles;
+    private final Collection<Path> libraryFiles = new LinkedList<>();
+    private final Collection<Path> programFiles = new LinkedList<>();
 
     public D8Task(Project project, ProgressListener listener) {
         super(project, listener);
@@ -44,15 +46,13 @@ public class D8Task extends Task {
     @Override
     public void prepare() throws IOException {
         FileUtil.createDirectory(new File(project.getBinDirectory().getAbsolutePath(), "dex"));
-        programFiles = new LinkedList<>();
-        libraryFiles = new LinkedList<>();
 
         for (File file : FileUtil.listFilesRecursively(new File(project.getCompiledClassesDirectory().getAbsolutePath()), ".class")) {
             Log.d("D8Task:prepare", "Adding file to program files: " + file.getAbsolutePath());
             programFiles.add(file.toPath());
         }
 
-        for (String jarPath : getClasspath().split(":")) {
+        for (String jarPath : SketchwareUtil.getClasspath().split(":")) {
             Log.d("D8Task:prepare", "Adding jar file to library files: " + jarPath);
             libraryFiles.add(Paths.get(jarPath));
         }
@@ -64,6 +64,11 @@ public class D8Task extends Task {
             throw new CompilationFailedException("Can't use D8 as API level " + Build.VERSION.SDK_INT + " < 26");
         }
 
+        createDexFilesFromClasses();
+        getDexFilesReady();
+    }
+
+    private void createDexFilesFromClasses() throws CompilationFailedException {
         try {
             D8.run(D8Command.builder()
                     .setMode(CompilationMode.RELEASE)
@@ -78,16 +83,20 @@ public class D8Task extends Task {
         }
     }
 
-    private String getClasspath() {
-        StringBuilder classpath = new StringBuilder();
-        classpath.append(SketchwareUtil.getBootstrapFile().getAbsolutePath());
-        classpath.append(":").append(new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, "core-lambda-stubs.jar").getAbsolutePath());
+    private void getDexFilesReady() {
+        listener.post(ContextUtil.getString(R.string.compiler_merge_dex_message));
+
+        List<File> dexes = new ArrayList<>();
 
         for (BuiltInLibraryModel library : BuiltInLibraryManager.getLibraries()) {
-            Log.d("D8Task" + ":getClasspath", library.getName());
-            classpath.append(":").append(BuiltInLibraries.getLibraryClassesJarPathString(library.getName()));
+            dexes.add(BuiltInLibraries.getLibraryDexFile(library.getName()));
         }
-        Log.d("D8Task" + ":getClasspath:return", classpath.toString());
-        return classpath.toString();
+
+        for (String file : FileUtil.listFiles(project.getBinDirectory().getAbsolutePath() + File.separator + "dex", "dex")) {
+            dexes.add(new File(file));
+        }
+
+        // TODO: do merge if release build or min sdk < 21
+        PackageTask.addDexesToAddButNotMerge(dexes);
     }
 }

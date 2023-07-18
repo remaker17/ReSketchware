@@ -7,6 +7,7 @@ import app.resketchware.builder.tasks.ExtractAapt2Task;
 import app.resketchware.builder.tasks.ExtractBuiltInLibrariesTask;
 import app.resketchware.builder.tasks.D8Task;
 import app.resketchware.builder.tasks.JavaTask;
+import app.resketchware.builder.tasks.PackageTask;
 import app.resketchware.builder.tasks.SetupTask;
 import app.resketchware.ui.models.Project;
 
@@ -35,6 +36,7 @@ public class ProjectBuilder extends BuilderImpl {
         tasks.add(new Aapt2Task(project, listener));
         tasks.add(new JavaTask(project, listener));
         tasks.add(new D8Task(project, listener));
+        tasks.add(new PackageTask(project, listener));
         return tasks;
     }
 }

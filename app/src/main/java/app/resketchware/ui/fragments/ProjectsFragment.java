@@ -96,10 +96,6 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     public void onDestroyView() {
         super.onDestroyView();
         adapter = null;
-        recyclerView = null;
-        fab = null;
-        searchBar = null;
-        swipeRefreshLayout = null;
     }
 
     @Override
@@ -126,12 +122,17 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
             }
         }
 
-        List<Project> projects = SketchwareUtil.getSketchwareProjects();
-        Collections.sort(projects, (o1, o2) -> Integer.compare(
-                Integer.parseInt(o2.getId()),
-                Integer.parseInt(o1.getId())
-        ));
-        adapter.changeProjectsDataset(projects);
-        swipeRefreshLayout.setRefreshing(false);
+        new Thread(() -> {
+            List<Project> projects = SketchwareUtil.getSketchwareProjects();
+            Collections.sort(projects, (o1, o2) -> Integer.compare(
+                    Integer.parseInt(o2.getId()),
+                    Integer.parseInt(o1.getId())
+            ));
+
+            getActivity().runOnUiThread(() -> {
+                adapter.changeProjectsDataset(projects);
+                swipeRefreshLayout.setRefreshing(false);
+            });
+        });
     }
 }

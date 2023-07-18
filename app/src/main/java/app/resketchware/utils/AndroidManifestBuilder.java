@@ -48,6 +48,6 @@ public class AndroidManifestBuilder {
         }
 
         xmlBuilder.addChildElement(applicationTag);
-        return AndroidManifestInjector.mHolder(xmlBuilder.toCode(), project.getId()).replaceAll("\\$\\{applicationId\\}", packageName);
+        return AndroidManifestInjector.mHolder(xmlBuilder.toCode()).replaceAll("\\$\\{applicationId\\}", packageName);
     }
 }

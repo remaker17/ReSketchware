@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        bottomNav = null;
         onItemSelectedListener = null;
         projectsFragment = null;
         settingsFragment = null;
@@ -194,8 +193,8 @@ public class MainActivity extends AppCompatActivity {
                     .setTitle(R.string.permission_ask_title)
                     .setMessage(R.string.permission_all_files_ask_message)
                     .setPositiveButton(android.R.string.ok, (d, which) -> {
-                        d.dismiss();
                         requestAllFilesPermissions();
+                        d.dismiss();
                     })
                     .setCancelable(false)
                     .create();

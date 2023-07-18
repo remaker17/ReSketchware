@@ -90,10 +90,6 @@ public class DesignActivity extends AppCompatActivity {
             tab.setText(tabTitles[position]);
         }).attach();
 
-        compilerViewModel.getMessage().observe(this, message -> {
-            compilerDialog.getMessage().setText(message);
-        });
-
         compilerViewModel.isCompiling().observe(this, isCompiling -> {
             if (isCompiling) {
                 if (compilerDialog.isShowing()) {
@@ -107,11 +103,23 @@ public class DesignActivity extends AppCompatActivity {
             }
         });
 
+        compilerViewModel.getMessage().observe(this, message -> {
+            compilerDialog.getMessage().append(message + "\n");
+        });
+
         currentTab.observe(this, currentItem -> {
             viewPager.setCurrentItem(currentItem);
         });
 
         disableOverScroll();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        compilerDialog = null;
+        compilerViewModel = null;
+        project = null;
     }
 
     @Override

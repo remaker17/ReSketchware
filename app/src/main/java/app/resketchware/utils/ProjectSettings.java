@@ -23,11 +23,19 @@ public class ProjectSettings {
     }
 
     public int getMinSdkVersion() {
-        return settings.getMinSdk();
+        return settings.getMinSdk("21");
     }
 
     public int getTargetSdkVersion() {
-        return settings.getTargetSdk();
+        return settings.getTargetSdk("28");
+    }
+
+    public String getApplicationClass() {
+        return settings.getApplicationClass(".SketchApplication");
+    }
+
+    public boolean isEnableBridgelessThemes() {
+        return settings.isEnableBridgelessThemes();
     }
 
     private String getPath() {

@@ -10,7 +10,7 @@ gson = "2.10.1"
 leakCanary = "2.12"
 eclipseJdt = "3.13.0"
 r8 = "8.0.40"
-sdklib = "25.3.0"
+sdklib = "31.0.2"
 guava = "32.0.1-jre"
 
 [plugins]

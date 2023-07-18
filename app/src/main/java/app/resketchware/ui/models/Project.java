@@ -194,4 +194,12 @@ public final class Project implements Serializable {
     public File getCompiledClassesDirectory() {
         return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + "classes");
     }
+
+    public File getUnsignedUnalignedApkDirectory() {
+        return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + projectName + ".apk.unsigned");
+    }
+
+    public File getClassesDexDirectory() {
+        return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + "classes.dex");
+    }
 }

@@ -6,6 +6,8 @@
     <string name="compiler_extract_aapt2_message">Extracting AAPT2 binary file...</string>
     <string name="compiler_extract_libraries_message">Extracting built-in libraries...</string>
     <string name="compiler_d8_message">D8 is running...</string>
+    <string name="compiler_merge_dex_message">Merging DEX files...</string>
     <string name="compiler_java_message">Java is compiling...</string>
+    <string name="compiler_package_message">Building APK...</string>
     <string name="compiler_title">Your project is compiling...</string>
 </resources>

@@ -36,6 +36,12 @@ android {
 
 dependencies {
     implementation(libs.bundles.core)
+    implementation(libs.gson)
+    implementation(libs.eclipse.jdt)
+    implementation(libs.google.guava)
     implementation(libs.android.r8)
+    implementation(libs.android.sdklib) {
+        exclude(group = "com.intellij", module = "annotations")
+    }
     debugImplementation(libs.leakcanary)
 }

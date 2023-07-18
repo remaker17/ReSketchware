@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -92,6 +93,29 @@ public class FileUtil {
         }
 
         file.delete();
+    }
+
+    public static void listDir(String path, ArrayList<String> list) {
+        File[] listFiles;
+        File dir = new File(path);
+        if (dir.exists() && !dir.isFile() && (listFiles = dir.listFiles()) != null && listFiles.length > 0 && list != null) {
+            list.clear();
+            for (File file : listFiles) {
+                list.add(file.getAbsolutePath());
+            }
+        }
+    }
+
+    public static ArrayList<String> listFiles(String dir, String extension) {
+        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> files = new ArrayList<>();
+        listDir(dir, files);
+        for (String str : files) {
+            if (str.endsWith(extension) && new File(str).isFile()) {
+                list.add(str);
+            }
+        }
+        return list;
     }
 
     public static List<File> listFilesRecursively(File directory, String optionalFilenameExtension) {

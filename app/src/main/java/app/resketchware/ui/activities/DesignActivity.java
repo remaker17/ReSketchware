@@ -67,7 +67,7 @@ public class DesignActivity extends AppCompatActivity {
 
         compilerViewModel = new ViewModelProvider(this).get(CompilerViewModel.class);
         compilerViewModel.setProject(project);
-        compilerDialog = CompilerDialog.newInstance(null);
+        compilerDialog = CompilerDialog.newInstance();
         serviceConnection = new CompilerServiceConnection(compilerViewModel);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -85,17 +85,16 @@ public class DesignActivity extends AppCompatActivity {
             }
         });
 
+        int[] tabTitles = {R.string.view, R.string.event, R.string.component};
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            int[] tabTitles = {R.string.view, R.string.event, R.string.component};
             tab.setText(tabTitles[position]);
         }).attach();
 
         compilerViewModel.isCompiling().observe(this, isCompiling -> {
             if (isCompiling) {
-                if (compilerDialog.isShowing()) {
-                    return;
+                if (!compilerDialog.isShowing()) {
+                    compilerDialog.show(getSupportFragmentManager(), null);
                 }
-                compilerDialog.show(getSupportFragmentManager(), null);
             } else {
                 if (compilerDialog.isShowing()) {
                     compilerDialog.dismiss();
@@ -104,7 +103,9 @@ public class DesignActivity extends AppCompatActivity {
         });
 
         compilerViewModel.getMessage().observe(this, message -> {
-            compilerDialog.getMessage().append(message + "\n");
+            if (message != null) {
+                compilerDialog.getMessage().append(message + "\n");
+            }
         });
 
         currentTab.observe(this, currentItem -> {
@@ -117,8 +118,6 @@ public class DesignActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        compilerDialog = null;
-        compilerViewModel = null;
         project = null;
     }
 
@@ -173,12 +172,7 @@ public class DesignActivity extends AppCompatActivity {
     }
 
     private void compile() {
-        if (serviceConnection.isCompiling()) {
-            new AlertDialog.Builder(this)
-                .setTitle("Compiler")
-                .setMessage("The project is already compiling")
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
+        if (serviceConnection.isCompiling() || Boolean.TRUE.equals(compilerViewModel.isCompiling().getValue())) {
             return;
         }
 

@@ -12,43 +12,42 @@ import app.resketchware.ui.viewmodels.CompilerViewModel;
 
 public class CompilerServiceConnection implements ServiceConnection {
 
-    private final CompilerViewModel compilerViewModel;
+    private boolean mCompiling;
 
-    private CompilerService service;
-    private boolean isCompiling;
+    private final CompilerViewModel mCompilerViewModel;
+    private CompilerService mService;
 
-    public CompilerServiceConnection(@NonNull CompilerViewModel compilerViewModel) {
-        this.compilerViewModel = compilerViewModel;
+    public CompilerServiceConnection(@NonNull CompilerViewModel viewModel) {
+        mCompilerViewModel = viewModel;
     }
 
     public boolean isCompiling() {
-        return isCompiling;
+        return mCompiling;
     }
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder binder) {
-        service = ((CompilerService.CompilerBinder) binder).getCompilerService();
-        if (service == null) {
-            compilerViewModel.setMessage("CompilerService is null");
+        mService = ((CompilerService.CompilerBinder) binder).getCompilerService();
+        if (mService == null) {
+            mCompilerViewModel.setMessage("CompilerService is null");
             return;
         }
 
-        isCompiling = true;
-        service.setListener(ProgressListener.wrap(compilerViewModel));
-        service.setOnResultListener((success, message) -> {
+        mCompiling = true;
+        mService.setOnResultListener((success, message) -> {
             Log.d("CompilerServiceConnection", message);
-            compilerViewModel.setMessage(message);
-            // temporary set to true
-            compilerViewModel.setCompiling(true);
+            mCompilerViewModel.setMessage(message);
         });
-        service.compile(compilerViewModel.getProject().getValue());
+        mService.compile(mCompilerViewModel.getProject().getValue(), message -> {
+            mCompilerViewModel.setMessage(message);
+        });
     }
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
-        service = null;
-        // compilerViewModel.setMessage(null);
-        // compilerViewModel.setCompiling(false);
-        isCompiling = false;
+        mService = null;
+        // mCompilerViewModel.setMessage(null);
+        // mCompilerViewModel.setCompiling(false);
+        mCompiling = false;
     }
 }

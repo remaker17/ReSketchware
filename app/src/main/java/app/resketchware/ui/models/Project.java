@@ -129,10 +129,6 @@ public final class Project implements Serializable {
     }
 
     public void deleteTemporaryFiles() {
-        File file = new File(getResDirectory().getAbsolutePath() + File.separator + "values-v21");
-        if (FileUtil.isExists(file)) {
-            FileUtil.deleteFile(file);
-        }
         FileUtil.deleteFile(getBinDirectory());
         FileUtil.deleteFile(getMyscDirectory());
         FileUtil.deleteFile(getRJavaDirectory());

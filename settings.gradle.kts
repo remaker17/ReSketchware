@@ -18,4 +18,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ReSketchware"
-include(":app", ":materialdialogs")
+include(":app")

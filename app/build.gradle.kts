@@ -35,11 +35,6 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf(
-        "dir" to "libs",
-        "include" to listOf("*.jar", "*.aar")
-    )))
-
     implementation(libs.bundles.core)
     implementation(libs.gson)
     implementation(libs.eclipse.jdt)

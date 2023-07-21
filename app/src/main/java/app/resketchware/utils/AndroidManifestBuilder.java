@@ -8,7 +8,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class AndroidManifestBuilder {
-
     private Project project;
     private ProjectSettings projectSettings;
     private final ArrayList<ProjectFileBean> projectFileBeans;

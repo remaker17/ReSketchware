@@ -343,6 +343,8 @@ public class BuiltInLibraries {
                     "com.pierfrancescosoffritti.androidyoutubeplayer"),
     };
 
+    private BuiltInLibraries() {}
+
     public static File getLibraryPath(String libraryName) {
         return new File(EXTRACTED_BUILT_IN_LIBRARIES_PATH, libraryName);
     }
@@ -437,7 +439,6 @@ public class BuiltInLibraries {
                 listener.post("Extracting built-in libraries' DEX files...");
             }
 
-            FileUtil.createDirectory(dexsDirectoryPath, true);
             Decompress.unzipFromAssets(baseAssetsPath + dexsArchiveName, dexsDirectoryPath);
         }
 
@@ -447,7 +448,6 @@ public class BuiltInLibraries {
                 listener.post("Extracting built-in libraries' resources...");
             }
 
-            FileUtil.createDirectory(libsDirectoryPath, true);
             Decompress.unzipFromAssets(baseAssetsPath + libsArchiveName, libsDirectoryPath);
         }
 
@@ -458,7 +458,6 @@ public class BuiltInLibraries {
                 listener.post("Extracting built-in signing keys...");
             }
 
-            FileUtil.createDirectory(testkeyDirectoryPath, true);
             Decompress.unzipFromAssets(baseAssetsPath + testkeyArchiveName, testkeyDirectoryPath);
         }
     }

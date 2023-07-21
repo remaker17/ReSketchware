@@ -19,6 +19,8 @@ public class BuiltInLibraryManager {
     private static final ArrayList<String> libraryNames = new ArrayList<>();
     private static final ArrayList<BuiltInLibraryModel> libraries = new ArrayList<>();
 
+    private BuiltInLibraryManager() {}
+
     /**
      * Add a built-in library to the project libraries list.
      * Won't add a library if it's in the list already,
@@ -43,7 +45,6 @@ public class BuiltInLibraryManager {
     }
 
     public static ArrayList<BuiltInLibraryModel> getLibraries() {
-        Log.v("BuiltInLibraryManager", Arrays.toString(libraries.toArray()));
         return libraries;
     }
 }

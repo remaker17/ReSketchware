@@ -23,6 +23,8 @@ import kotlin.io.FilesKt;
 
 public class FileUtil {
 
+    private FileUtil() {}
+
     public static byte[] readBytes(File file) {
         return FilesKt.readBytes(file);
     }

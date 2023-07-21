@@ -41,8 +41,8 @@ public class Aapt2Task extends Task {
     @Override
     public void prepare() throws IOException {
         aaptBinary = new File(App.getContext().getCacheDir(), "aapt2");
-        outputPath = project.getBinDirectory().getAbsolutePath() + File.separator + "res";
         compiledBuiltInLibraryResourcesDirectory = new File(App.getContext().getCacheDir(), "compiledLibs");
+        outputPath = project.getBinDirectory().getAbsolutePath() + File.separator + "res";
         FileUtil.createDirectory(outputPath);
     }
 

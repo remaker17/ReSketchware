@@ -8,6 +8,8 @@ import java.nio.charset.StandardCharsets;
 public class SketchwareEncryptor {
     private static final byte[] encryptKey = "sketchwaresecure".getBytes(StandardCharsets.UTF_8);
 
+    private SketchwareEncryptor() {}
+
     /**
      * Decryption of the incoming [byteArray] by [encryptKey].
      * @return [byte[]] of decrypted [byteArray].

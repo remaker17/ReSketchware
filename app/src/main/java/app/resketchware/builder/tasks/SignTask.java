@@ -8,6 +8,9 @@ import app.resketchware.ui.models.Project;
 import app.resketchware.utils.ContextUtil;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+
+import kellinwood.security.zipsigner.ZipSigner;
 
 public class SignTask extends Task {
 
@@ -25,6 +28,18 @@ public class SignTask extends Task {
 
     @Override
     public void run() throws IOException, CompilationFailedException {
-        // no motivation :c
+        try {
+            ZipSigner zipSigner = new ZipSigner();
+            zipSigner.setKeymode(ZipSigner.KEY_TESTKEY);
+            zipSigner.signZip(project.getUnsignedUnalignedApkDirectory(), project.getFinalToInstallApkDirectory());
+        } catch (GeneralSecurityException e) {
+            throw new CompilationFailedException(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new CompilationFailedException(e.getMessage());
+        } catch (IllegalAccessException e) {
+            throw new CompilationFailedException(e.getMessage());
+        } catch (InstantiationException e) {
+            throw new CompilationFailedException(e.getMessage());
+        }
     }
 }

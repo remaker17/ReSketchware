@@ -17,6 +17,8 @@ public class Decompress {
     private static final int BUFFER_SIZE = 1024 * 10;
     private static final String TAG = "Decompress";
 
+    private Decompress() {}
+
     public static void unzipFromAssets(String zipFile, String destination) {
         unzipFromAssets(App.getContext(), zipFile, destination);
     }

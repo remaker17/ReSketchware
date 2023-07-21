@@ -11,8 +11,7 @@ import app.resketchware.ui.models.Project;
 public class CompilerViewModel extends ViewModel {
 
     private MutableLiveData<String> message;
-    private final MutableLiveData<Project> project = new MutableLiveData<>();
-
+    private MutableLiveData<Project> project;
     private MutableLiveData<Boolean> isCompiling;
 
     public void setMessage(@Nullable String value) {
@@ -35,12 +34,15 @@ public class CompilerViewModel extends ViewModel {
     }
 
     public LiveData<Project> getProject() {
+        if (project == null) {
+            project = new MutableLiveData<>();
+        }
         return project;
     }
 
     public MutableLiveData<Boolean> isCompiling() {
         if (isCompiling == null) {
-            isCompiling = new MutableLiveData<>(false);
+            isCompiling = new MutableLiveData<>();
         }
         return isCompiling;
     }

@@ -20,6 +20,8 @@ public class SketchwareUtil {
 
     private static File androidJar;
 
+    private SketchwareUtil() {}
+
     public static File getBootstrapFile() {
         if (androidJar == null) {
             Context context = App.getContext();

@@ -198,4 +198,8 @@ public final class Project implements Serializable {
     public File getClassesDexDirectory() {
         return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + "classes.dex");
     }
+
+    public File getFinalToInstallApkDirectory() {
+        return new File(SketchwarePath.MYSC + File.separator + id + File.separator + "bin" + File.separator + projectName + ".apk");
+    }
 }

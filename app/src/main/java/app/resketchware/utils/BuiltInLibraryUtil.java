@@ -2,6 +2,8 @@ package app.resketchware.utils;
 
 public class BuiltInLibraryUtil {
 
+    private BuiltInLibraryUtil() {}
+
     /**
      * Returns the known dependencies for a given built-in library.
      *

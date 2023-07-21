@@ -9,6 +9,7 @@ import app.resketchware.builder.tasks.D8Task;
 import app.resketchware.builder.tasks.JavaTask;
 import app.resketchware.builder.tasks.PackageTask;
 import app.resketchware.builder.tasks.SetupTask;
+import app.resketchware.builder.tasks.SignTask;
 import app.resketchware.ui.models.Project;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class ProjectBuilder extends BuilderImpl {
         tasks.add(new JavaTask(project, listener));
         tasks.add(new D8Task(project, listener));
         tasks.add(new PackageTask(project, listener));
+        tasks.add(new SignTask(project, listener));
         return tasks;
     }
 }

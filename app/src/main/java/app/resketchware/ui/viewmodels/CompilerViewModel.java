@@ -10,40 +10,31 @@ import app.resketchware.ui.models.Project;
 
 public class CompilerViewModel extends ViewModel {
 
-    private MutableLiveData<String> message;
-    private MutableLiveData<Project> project;
-    private MutableLiveData<Boolean> isCompiling;
+    private final MutableLiveData<String> mMessage = new MutableLiveData<>();
+    private final MutableLiveData<Project> mProject = new MutableLiveData<>();
+    private final MutableLiveData<Boolean> mCompiling = new MutableLiveData<>();
 
-    public void setMessage(@Nullable String value) {
-        message.setValue(value);
+    public void setMessage(@Nullable String message) {
+        mMessage.setValue(message);
     }
 
-    public void setProject(Project value) {
-        project.setValue(value);
+    public void setProject(Project project) {
+        mProject.setValue(project);
     }
 
-    public void setCompiling(boolean value) {
-        isCompiling.setValue(value);
+    public void setCompiling(boolean isCompiling) {
+        mCompiling.setValue(isCompiling);
     }
 
     public LiveData<String> getMessage() {
-        if (message == null) {
-            message = new MutableLiveData<>(null);
-        }
-        return message;
+        return mMessage;
     }
 
     public LiveData<Project> getProject() {
-        if (project == null) {
-            project = new MutableLiveData<>();
-        }
-        return project;
+        return mProject;
     }
 
     public MutableLiveData<Boolean> isCompiling() {
-        if (isCompiling == null) {
-            isCompiling = new MutableLiveData<>();
-        }
-        return isCompiling;
+        return mCompiling;
     }
 }

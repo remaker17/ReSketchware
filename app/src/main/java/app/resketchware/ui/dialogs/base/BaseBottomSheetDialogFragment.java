@@ -9,16 +9,16 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public abstract class BaseBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
-    protected Dialog dialog;
+    protected Dialog mDialog;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        dialog = super.onCreateDialog(savedInstanceState);
-        return dialog;
+        mDialog = super.onCreateDialog(savedInstanceState);
+        return mDialog;
     }
 
     public boolean isShowing() {
-        return dialog != null && dialog.isShowing();
+        return mDialog != null && mDialog.isShowing();
     }
 }

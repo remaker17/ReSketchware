@@ -28,6 +28,7 @@
         <item name="colorPrimaryDark">?attr/rsw_background0</item>
         <item name="colorOnPrimary">@color/rsw_color_blue_0</item>
         <item name="colorSurface">?attr/rsw_background1</item>
+        <item name="elevationOverlayEnabled">false</item>
 
         <!-- Component styles/themes -->
         <item name="alertDialogTheme">@style/Theme.RSW.Dialog.Dark.Alert</item>

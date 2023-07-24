@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.apksigner)
+
     implementation(libs.bundles.core)
     implementation(libs.gson)
     implementation(libs.eclipse.jdt)
@@ -43,5 +45,5 @@ dependencies {
     implementation(libs.android.sdklib) {
         exclude(group = "com.intellij", module = "annotations")
     }
-    debugImplementation(libs.leakcanary)
+    // debugImplementation(libs.leakcanary)
 }

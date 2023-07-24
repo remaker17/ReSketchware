@@ -32,15 +32,15 @@ import app.resketchware.ui.interfaces.ScrollableToTop;
 import app.resketchware.utils.ContextUtil;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int STORAGE_PERMISSION_CODE = 1;
+    private static final int STORAGE_PERMISSION_CODE = 1000;
     @IdRes private int currentNavId = R.id.menu_projects;
 
-    private BottomNavigationView bottomNav;
+    private BottomNavigationView mBottomNav;
 
-    private ProjectsFragment projectsFragment;
-    private SettingsFragment settingsFragment;
+    private ProjectsFragment mProjectsFragment;
+    private SettingsFragment mSettingsFragment;
 
-    private NavigationBarView.OnItemSelectedListener onItemSelectedListener =
+    private NavigationBarView.OnItemSelectedListener mOnItemSelectedListener =
             new NavigationBarView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -59,21 +59,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNav = findViewById(R.id.bottom_nav);
+        mBottomNav = findViewById(R.id.bottom_nav);
 
         if (savedInstanceState == null) {
-            projectsFragment = new ProjectsFragment();
-            settingsFragment = new SettingsFragment();
+            mProjectsFragment = new ProjectsFragment();
+            mSettingsFragment = new SettingsFragment();
         }
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, projectsFragment)
-                    .add(R.id.container, settingsFragment).hide(settingsFragment)
+                    .add(R.id.container, mProjectsFragment)
+                    .add(R.id.container, mSettingsFragment).hide(mSettingsFragment)
                     .commit();
         }
 
-        bottomNav.setOnItemSelectedListener(onItemSelectedListener);
+        mBottomNav.setOnItemSelectedListener(mOnItemSelectedListener);
 
         if (!ContextUtil.hasStoragePermissions(this)) {
             showPermissionDialog();
@@ -87,28 +87,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("selected_nav_id", currentNavId);
-        getSupportFragmentManager().putFragment(outState, "projectsFragment", projectsFragment);
-        getSupportFragmentManager().putFragment(outState, "settingsFragment", settingsFragment);
+        getSupportFragmentManager().putFragment(outState, "projectsFragment", mProjectsFragment);
+        getSupportFragmentManager().putFragment(outState, "settingsFragment", mSettingsFragment);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if (savedInstanceState == null || projectsFragment != null) {
+        if (savedInstanceState == null || mProjectsFragment != null) {
             return;
         }
 
-        projectsFragment = (ProjectsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "projectsFragment");
-        settingsFragment = (SettingsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "settingsFragment");
+        mProjectsFragment = (ProjectsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "projectsFragment");
+        mSettingsFragment = (SettingsFragment) getSupportFragmentManager().getFragment(savedInstanceState, "settingsFragment");
 
         currentNavId = savedInstanceState.getInt("selected_nav_id");
-        bottomNav.setSelectedItemId(currentNavId);
+        mBottomNav.setSelectedItemId(currentNavId);
 
         Fragment currentFragment = getFragment(currentNavId);
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
-                .hide(projectsFragment)
-                .hide(settingsFragment)
+                .hide(mProjectsFragment)
+                .hide(mSettingsFragment)
                 .show(currentFragment)
                 .commit();
     }
@@ -116,16 +116,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        onItemSelectedListener = null;
-        projectsFragment = null;
-        settingsFragment = null;
+        mOnItemSelectedListener = null;
+        mProjectsFragment = null;
+        mSettingsFragment = null;
     }
 
     private Fragment getFragment(@IdRes int navId) {
         if (navId == R.id.menu_projects) {
-            return projectsFragment;
+            return mProjectsFragment;
         } else if (navId == R.id.menu_settings) {
-            return settingsFragment;
+            return mSettingsFragment;
         }
         throw new IllegalArgumentException();
     }
@@ -133,8 +133,8 @@ public class MainActivity extends AppCompatActivity {
     private void onNavigationSelected(@IdRes int navId) {
         Fragment newFragment = getFragment(navId);
         if (navId == currentNavId) {
-            if (newFragment instanceof ScrollableToTop) {
-                ((ScrollableToTop) newFragment).scrollToTop();
+            if (newFragment instanceof ScrollableToTop newScrollableFragment) {
+                newScrollableFragment.scrollToTop();
             }
             return;
         }
@@ -174,8 +174,8 @@ public class MainActivity extends AppCompatActivity {
                 .setTitle(R.string.permission_ask_title)
                 .setMessage(R.string.permission_ask_message)
                 .setPositiveButton(android.R.string.ok, (d, which) -> {
-                    d.dismiss();
                     requestStoragePermissions();
+                    d.dismiss();
                 })
                 .setCancelable(false)
                 .create();

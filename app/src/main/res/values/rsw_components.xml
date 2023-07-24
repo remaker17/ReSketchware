@@ -23,9 +23,7 @@
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
     </style>
 
-    <style name="Widget.RSW.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.NotElevated</item>
-    </style>
+    <style name="Widget.RSW.AppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Surface" />
 
     <style name="Widget.RSW.AppBarLayout.AsBackground">
         <item name="android:background">?attr/rsw_background0</item>
@@ -37,7 +35,6 @@
     </style>
 
     <style name="Widget.RSW.BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.NotElevated</item>
         <item name="itemIconTint">?attr/rsw_itemIconTint</item>
         <item name="itemTextAppearanceActive">@style/TextAppearance.RSW.Caption.Dp.Brand</item>
         <item name="itemTextAppearanceInactive">@style/TextAppearance.RSW.Caption.Dp.Secondary</item>
@@ -101,7 +98,6 @@
 
     <style name="Widget.RSW.TabLayout" parent="Widget.Design.TabLayout">
         <item name="android:background">?attr/colorSurface</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.RSW.NotElevated</item>
         <item name="tabIndicator">@drawable/rsw_tabs_line_indicator</item>
         <item name="tabIndicatorAnimationMode">elastic</item>
         <item name="tabIndicatorColor">?attr/rsw_colorBrand</item>
@@ -110,10 +106,6 @@
         <item name="tabTextAppearance">@style/TextAppearance.RSW.Tab</item>
         <item name="tabTextColor">@color/rsw_tabs_text_color</item>
         <item name="tabUnboundedRipple">true</item>
-    </style>
-
-    <style name="ThemeOverlay.RSW.NotElevated" parent="ThemeOverlay.MaterialComponents">
-        <item name="elevationOverlayEnabled">false</item>
     </style>
 
     <style name="ThemeOverlay.RSW.SearchBar" parent="">

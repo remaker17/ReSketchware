@@ -23,6 +23,7 @@ import app.resketchware.ui.adapters.DesignPagerAdapter;
 import app.resketchware.ui.dialogs.CompilerDialog;
 import app.resketchware.ui.models.Project;
 import app.resketchware.ui.viewmodels.CompilerViewModel;
+import app.resketchware.ui.viewmodels.DesignViewModel;
 import app.resketchware.services.CompilerService;
 import app.resketchware.services.CompilerServiceConnection;
 import app.resketchware.utils.ContextUtil;
@@ -30,16 +31,16 @@ import app.resketchware.utils.SketchwareUtil;
 
 public class DesignActivity extends AppCompatActivity {
 
-    private Project project;
-    private MutableLiveData<Integer> currentTab = new MutableLiveData<>(0);
+    private Project mProject;
 
-    private CompilerDialog compilerDialog;
-    private CompilerViewModel compilerViewModel;
-    private CompilerServiceConnection serviceConnection;
+    private CompilerDialog mCompilerDialog;
+    private CompilerViewModel mCompilerViewModel;
+    private CompilerServiceConnection mServiceConnection;
+    private DesignViewModel mDesignViewModel;
 
-    private TabLayout tabLayout;
-    private Toolbar toolbar;
-    private ViewPager2 viewPager;
+    private TabLayout mTabLayout;
+    private Toolbar mToolbar;
+    private ViewPager2 mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,64 +53,68 @@ public class DesignActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_design);
 
-        tabLayout = findViewById(R.id.tab_layout);
-        toolbar = findViewById(R.id.toolbar);
-        viewPager = findViewById(R.id.pager);
-        setSupportActionBar(toolbar);
+        mTabLayout = findViewById(R.id.tab_layout);
+        mToolbar = findViewById(R.id.toolbar);
+        mViewPager = findViewById(R.id.pager);
+        setSupportActionBar(mToolbar);
 
         if (savedInstanceState == null) {
             Bundle args = new Bundle();
             args = getIntent().getBundleExtra("project");
-            project = (Project) args.getSerializable("project");
+            mProject = (Project) args.getSerializable("project");
         } else {
-            project = (Project) savedInstanceState.getSerializable("project");
+            mProject = (Project) savedInstanceState.getSerializable("project");
         }
 
-        compilerViewModel = new ViewModelProvider(this).get(CompilerViewModel.class);
-        compilerViewModel.setProject(project);
-        compilerDialog = CompilerDialog.newInstance();
-        serviceConnection = new CompilerServiceConnection(compilerViewModel);
+        mCompilerViewModel = new ViewModelProvider(this).get(CompilerViewModel.class);
+        mDesignViewModel = new ViewModelProvider(this).get(DesignViewModel.class);
+
+        mCompilerViewModel.setProject(mProject);
+        mCompilerDialog = CompilerDialog.newInstance();
+        mServiceConnection = new CompilerServiceConnection(mCompilerViewModel);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(project.getApplicationName());
-        toolbar.setSubtitle(project.getId());
-        toolbar.setNavigationOnClickListener(ignored -> onBackPressed());
+        getSupportActionBar().setTitle(mProject.getApplicationName());
+        mToolbar.setSubtitle(mProject.getId());
+        mToolbar.setNavigationOnClickListener(ignored -> onBackPressed());
 
-        viewPager.setAdapter(new DesignPagerAdapter(this));
-        viewPager.setOffscreenPageLimit(3);
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        mViewPager.setAdapter(new DesignPagerAdapter(this));
+        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                currentTab.setValue(position);
+                mDesignViewModel.setTabPosition(position);
             }
         });
 
         int[] tabTitles = {R.string.view, R.string.event, R.string.component};
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+        new TabLayoutMediator(mTabLayout, mViewPager, (tab, position) -> {
             tab.setText(tabTitles[position]);
         }).attach();
 
-        compilerViewModel.isCompiling().observe(this, isCompiling -> {
+        mCompilerViewModel.isCompiling().observe(this, isCompiling -> {
             if (isCompiling) {
-                if (!compilerDialog.isShowing()) {
-                    compilerDialog.show(getSupportFragmentManager(), null);
+                if (!mCompilerDialog.isShowing()) {
+                    mCompilerDialog.show(getSupportFragmentManager(), null);
                 }
             } else {
-                if (compilerDialog.isShowing()) {
-                    compilerDialog.dismiss();
+                if (mCompilerDialog.isShowing()) {
+                    mCompilerDialog.dismiss();
                 }
             }
         });
 
-        compilerViewModel.getMessage().observe(this, message -> {
+        mCompilerViewModel.getMessage().observe(this, message -> {
             if (message != null) {
-                compilerDialog.getMessage().append(message + "\n");
+                mCompilerDialog.getMessage().append(message + "\n");
             }
         });
 
-        currentTab.observe(this, currentItem -> {
-            viewPager.setCurrentItem(currentItem);
+        mDesignViewModel.getTabPosition().observe(this, position -> {
+            if (mViewPager.getCurrentItem() != position) {
+                mViewPager.setCurrentItem(position);
+            }
         });
 
         disableOverScroll();
@@ -118,7 +123,7 @@ public class DesignActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        project = null;
+        mProject = null;
     }
 
     @Override
@@ -139,8 +144,8 @@ public class DesignActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (currentTab.getValue() > 0) {
-            currentTab.setValue(currentTab.getValue() - 1);
+        if (mDesignViewModel.getTabPosition().getValue() > 0) {
+            mDesignViewModel.setTabPosition(mDesignViewModel.getTabPosition().getValue() - 1);
         } else {
             super.onBackPressed();
         }
@@ -149,11 +154,11 @@ public class DesignActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable("project", project);
+        outState.putSerializable("project", mProject);
     }
 
     private void disableOverScroll() {
-        View view = viewPager.getChildAt(0);
+        View view = mViewPager.getChildAt(0);
         if (view instanceof RecyclerView rv) {
             rv.setOverScrollMode(View.OVER_SCROLL_NEVER);
         }
@@ -172,13 +177,13 @@ public class DesignActivity extends AppCompatActivity {
     }
 
     private void compile() {
-        if (serviceConnection.isCompiling() || Boolean.TRUE.equals(compilerViewModel.isCompiling().getValue())) {
+        if (mServiceConnection.isCompiling() || Boolean.TRUE.equals(mCompilerViewModel.isCompiling().getValue())) {
             return;
         }
 
-        compilerViewModel.setCompiling(true);
+        mCompilerViewModel.setCompiling(true);
 
         startService(new Intent(this, CompilerService.class));
-        bindService(new Intent(this, CompilerService.class), serviceConnection, Context.BIND_IMPORTANT);
+        bindService(new Intent(this, CompilerService.class), mServiceConnection, Context.BIND_IMPORTANT);
     }
 }

@@ -21,11 +21,11 @@ import androidx.annotation.Nullable;
 import app.resketchware.R;
 
 public class NotImplementedView extends LinearLayout {
-    private final int titleTextAppearance;
-    private final int messageTextAppearance;
+    private final int mTitleTextAppearance;
+    private final int mMessageTextAppearance;
 
-    public final TextView titleTextView;
-    public final TextView messageTextView;
+    private final TextView mTitleText;
+    private final TextView mMessageText;
 
     public NotImplementedView(@NonNull Context context) {
         this(context, null);
@@ -43,19 +43,19 @@ public class NotImplementedView extends LinearLayout {
         setGravity(Gravity.CENTER);
         setOrientation(LinearLayout.VERTICAL);
 
-        titleTextView = findViewById(R.id.title);
-        messageTextView = findViewById(R.id.message);
+        mTitleText = findViewById(R.id.title);
+        mMessageText = findViewById(R.id.message);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.NotImplementedView, defStyleAttr, R.style.Widget_RSW_NotImplementedView);
-        titleTextAppearance = a.getResourceId(R.styleable.NotImplementedView_titleTextAppearance, -1);
-        messageTextAppearance = a.getResourceId(R.styleable.NotImplementedView_messageTextAppearance, -1);
+        mTitleTextAppearance = a.getResourceId(R.styleable.NotImplementedView_titleTextAppearance, -1);
+        mMessageTextAppearance = a.getResourceId(R.styleable.NotImplementedView_messageTextAppearance, -1);
         a.recycle();
 
-        if (titleTextAppearance != -1) {
-            titleTextView.setTextAppearance(titleTextAppearance);
+        if (mTitleTextAppearance != -1) {
+            mTitleText.setTextAppearance(mTitleTextAppearance);
         }
-        if (messageTextAppearance != -1) {
-            messageTextView.setTextAppearance(messageTextAppearance);
+        if (mMessageTextAppearance != -1) {
+            mMessageText.setTextAppearance(mMessageTextAppearance);
         }
 
         setDefaultText();
@@ -78,7 +78,15 @@ public class NotImplementedView extends LinearLayout {
         int endIndex = startIndex + "GitHub".length();
         spannableString.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        messageTextView.setText(spannableString);
-        messageTextView.setMovementMethod(LinkMovementMethod.getInstance());
+        mMessageText.setText(spannableString);
+        mMessageText.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    public void setTitle(@NonNull String title) {
+        mTitleText.setText(title);
+    }
+
+    public void setMessage(@Nullable String message) {
+        mMessageText.setText(message);
     }
 }

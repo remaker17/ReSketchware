@@ -34,7 +34,7 @@ public abstract class BuilderImpl implements Builder {
         List<Task> tasks = getTasks();
         for (int i = 0, tasksSize = tasks.size(); i < tasksSize; i++) {
             Task task = tasks.get(i);
-            mListener.post(task.getName());
+            mListener.onProgress(task.getName());
             try {
                 task.prepare();
                 task.run();

@@ -436,7 +436,7 @@ public class BuiltInLibraries {
         if (FileUtil.hasFileChanged(baseAssetsPath + dexsArchiveName, dexsArchivePath)) {
             for (ProgressListener listener : progressListeners) {
                 Log.v("BuiltInLibraries", "Extracting built-in libraries' DEX files...");
-                listener.post("Extracting built-in libraries' DEX files...");
+                listener.onProgress("Extracting built-in libraries' DEX files...");
             }
 
             Decompress.unzipFromAssets(baseAssetsPath + dexsArchiveName, dexsDirectoryPath);
@@ -445,7 +445,7 @@ public class BuiltInLibraries {
         if (FileUtil.hasFileChanged(baseAssetsPath + libsArchiveName, libsArchivePath)) {
             for (ProgressListener listener : progressListeners) {
                 Log.v("BuiltInLibraries", "Extracting built-in libraries' resources...");
-                listener.post("Extracting built-in libraries' resources...");
+                listener.onProgress("Extracting built-in libraries' resources...");
             }
 
             Decompress.unzipFromAssets(baseAssetsPath + libsArchiveName, libsDirectoryPath);
@@ -455,7 +455,7 @@ public class BuiltInLibraries {
         if (FileUtil.hasFileChanged(baseAssetsPath + testkeyArchiveName, testkeyArchivePath)) {
             for (ProgressListener listener : progressListeners) {
                 Log.v("BuiltInLibraries", "Extracting built-in signing keys...");
-                listener.post("Extracting built-in signing keys...");
+                listener.onProgress("Extracting built-in signing keys...");
             }
 
             Decompress.unzipFromAssets(baseAssetsPath + testkeyArchiveName, testkeyDirectoryPath);

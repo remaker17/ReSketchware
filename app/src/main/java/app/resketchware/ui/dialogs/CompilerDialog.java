@@ -11,14 +11,11 @@ import androidx.annotation.Nullable;
 
 import app.resketchware.R;
 import app.resketchware.ui.dialogs.base.BaseBottomSheetDialogFragment;
-import app.resketchware.ui.models.Project;
 
 public class CompilerDialog extends BaseBottomSheetDialogFragment {
 
-    private Project project;
-
-    private TextView titleTextView;
-    private TextView messageTextView;
+    private TextView mTitleText;
+    private TextView mMessageText;
 
     private String message;
 
@@ -42,8 +39,8 @@ public class CompilerDialog extends BaseBottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_compiler, container, false);
 
-        titleTextView = view.findViewById(R.id.title);
-        messageTextView = view.findViewById(R.id.message);
+        mTitleText = view.findViewById(R.id.title);
+        mMessageText = view.findViewById(R.id.message);
 
         return view;
     }
@@ -53,11 +50,15 @@ public class CompilerDialog extends BaseBottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (message != null) {
-            messageTextView.setText(message);
+            mMessageText.setText(message);
         }
     }
 
+    public TextView getTitle() {
+        return mTitleText;
+    }
+
     public TextView getMessage() {
-        return messageTextView;
+        return mMessageText;
     }
 }

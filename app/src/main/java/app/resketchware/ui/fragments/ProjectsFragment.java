@@ -35,32 +35,32 @@ import java.util.List;
 
 public class ProjectsFragment extends Fragment implements ProjectsAdapter.ProjectSelectionCallback, ScrollableToTop {
 
-    private ProjectsAdapter adapter;
+    private ProjectsAdapter mAdapter;
 
-    private FloatingActionButton fab;
-    private RecyclerView recyclerView;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private SearchBar searchBar;
+    private FloatingActionButton mFab;
+    private RecyclerView mRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private SearchBar mSearchBar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
 
-        fab = view.findViewById(R.id.fab);
-        recyclerView = view.findViewById(R.id.recycler_view);
-        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
-        searchBar = view.findViewById(R.id.search_bar);
+        mFab = view.findViewById(R.id.fab);
+        mRecyclerView = view.findViewById(R.id.recycler_view);
+        mSwipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        mSearchBar = view.findViewById(R.id.search_bar);
 
-        ((AppCompatActivity) requireActivity()).setSupportActionBar(searchBar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(mSearchBar);
 
-        adapter = new ProjectsAdapter(this);
+        mAdapter = new ProjectsAdapter(this);
 
         int horizontalMargin = ContextUtil.getDimenFromResources(requireContext(), R.dimen.rsw_margin_medium);
         int verticalMargin = ContextUtil.getDimenFromResources(requireContext(), R.dimen.rsw_margin_xxsmall);
 
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 outRect.left = horizontalMargin;
@@ -78,16 +78,16 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        swipeRefreshLayout.setOnRefreshListener(() -> {
+        mSwipeRefreshLayout.setOnRefreshListener(() -> {
             if (ContextUtil.hasStoragePermissions(requireContext())) {
                 refreshProjects(false);
             } else {
-                swipeRefreshLayout.setRefreshing(false);
+                mSwipeRefreshLayout.setRefreshing(false);
                 ((MainActivity) requireActivity()).showPermissionDialog();
             }
         });
 
-        fab.setOnClickListener(v -> {
+        mFab.setOnClickListener(v -> {
             NewProjectDialog.newInstance().show(getParentFragmentManager(), null);
         });
     }
@@ -95,7 +95,7 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        adapter = null;
+        mAdapter = null;
     }
 
     @Override
@@ -110,8 +110,8 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
 
     @Override
     public void scrollToTop() {
-        if (recyclerView != null) {
-            recyclerView.smoothScrollToPosition(0);
+        if (mRecyclerView != null) {
+            mRecyclerView.smoothScrollToPosition(0);
         }
     }
 
@@ -130,8 +130,8 @@ public class ProjectsFragment extends Fragment implements ProjectsAdapter.Projec
             ));
 
             getActivity().runOnUiThread(() -> {
-                adapter.changeProjectsDataset(projects);
-                swipeRefreshLayout.setRefreshing(false);
+                mAdapter.changeProjectsDataset(projects);
+                mSwipeRefreshLayout.setRefreshing(false);
             });
         }).start();
     }

@@ -143,7 +143,7 @@ public class Aapt2Task extends Task {
 
     private void linkResources() throws CompilationFailedException {
         String resourcesPath = project.getBinDirectory().getAbsolutePath() + File.separator + "res";
-        listener.post(ContextUtil.getString(R.string.compiler_aapt2_linking_message));
+        listener.onProgress(ContextUtil.getString(R.string.compiler_aapt2_linking_message));
 
         ArrayList<String> args = new ArrayList<>();
         args.add(aaptBinary.getAbsolutePath());

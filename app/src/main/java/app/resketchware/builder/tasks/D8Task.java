@@ -84,7 +84,7 @@ public class D8Task extends Task {
     }
 
     private void getDexFilesReady() {
-        listener.post(ContextUtil.getString(R.string.compiler_merge_dex_message));
+        listener.onProgress(ContextUtil.getString(R.string.compiler_merge_dex_message));
 
         List<File> dexes = new ArrayList<>();
 

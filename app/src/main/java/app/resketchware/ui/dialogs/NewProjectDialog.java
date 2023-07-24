@@ -27,12 +27,12 @@ import app.resketchware.ui.widgets.ThemeColorView;
 
 public class NewProjectDialog extends BottomSheetDialogFragment {
 
-    private LinearLayout themeColorsContainer;
-    private View advancedOptions;
-    private View cancelButton;
-    private View createButton;
-    private ViewGroup hiddenAdvancedOptions;
-    private TextView advancedOptionsTextView;
+    private LinearLayout mThemeColorsContainer;
+    private View mAdvancedOptions;
+    private View mCancelButton;
+    private View mCreateButton;
+    private ViewGroup mHiddenAdvancedOptions;
+    private TextView mAdvancedOptionsTextView;
 
     private final String[] themeColorKeys = {
             "color_accent",
@@ -77,7 +77,7 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
             final int index = i;
             ThemeColorView colorView = new ThemeColorView(view.getContext(), i);
             colorView.nameTextView.setText(themeColorLabels[i]);
-            themeColorsContainer.addView(colorView);
+            mThemeColorsContainer.addView(colorView);
             colorView.setOnClickListener(v -> pickColor(v, index));
         }
 
@@ -88,44 +88,44 @@ public class NewProjectDialog extends BottomSheetDialogFragment {
         for (int i = 0; i < projectThemeColors.length; i++) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 BlendModeColorFilter colorFilter = new BlendModeColorFilter(projectThemeColors[i], BlendMode.SRC_ATOP);
-                ((ThemeColorView) themeColorsContainer.getChildAt(i)).colorView.getBackground().setColorFilter(colorFilter);
+                ((ThemeColorView) mThemeColorsContainer.getChildAt(i)).colorView.getBackground().setColorFilter(colorFilter);
             } else {
                 PorterDuffColorFilter colorFilter = new PorterDuffColorFilter(projectThemeColors[i], PorterDuff.Mode.SRC_ATOP);
-                ((ThemeColorView) themeColorsContainer.getChildAt(i)).colorView.getBackground().setColorFilter(colorFilter);
+                ((ThemeColorView) mThemeColorsContainer.getChildAt(i)).colorView.getBackground().setColorFilter(colorFilter);
             }
         }
     }
 
     private void initViews(View view) {
-        themeColorsContainer = view.findViewById(R.id.colors_container);
-        advancedOptions = view.findViewById(R.id.advanced_options);
-        hiddenAdvancedOptions = view.findViewById(R.id.hidden_advanced_options);
-        advancedOptionsTextView = view.findViewById(R.id.advanced_options_text);
-        cancelButton = view.findViewById(R.id.cancel);
-        createButton = view.findViewById(R.id.create);
+        mThemeColorsContainer = view.findViewById(R.id.colors_container);
+        mAdvancedOptions = view.findViewById(R.id.advanced_options);
+        mHiddenAdvancedOptions = view.findViewById(R.id.hidden_advanced_options);
+        mAdvancedOptionsTextView = view.findViewById(R.id.advanced_options_text);
+        mCancelButton = view.findViewById(R.id.cancel);
+        mCreateButton = view.findViewById(R.id.create);
     }
 
     private void setListeners() {
-        advancedOptions.setOnClickListener(v -> toggleAdvancedOptions());
-        cancelButton.setOnClickListener(v -> dismiss());
-        createButton.setOnClickListener(v -> {
+        mAdvancedOptions.setOnClickListener(v -> toggleAdvancedOptions());
+        mCancelButton.setOnClickListener(v -> dismiss());
+        mCreateButton.setOnClickListener(v -> {
             Toast.makeText(requireContext(), "Not implemented yet", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void toggleAdvancedOptions() {
         ViewGroup dialogView = getDialog().findViewById(com.google.android.material.R.id.design_bottom_sheet);
-        int dropDrawableResId = hiddenAdvancedOptions.isShown() ? R.drawable.rsw_drop_down : R.drawable.rsw_drop_up;
-        advancedOptionsTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, dropDrawableResId, 0);
+        int dropDrawableResId = mHiddenAdvancedOptions.isShown() ? R.drawable.rsw_drop_down : R.drawable.rsw_drop_up;
+        mAdvancedOptionsTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, dropDrawableResId, 0);
 
         AutoTransition autoTransition = new AutoTransition();
         autoTransition.setDuration(300);
         TransitionManager.beginDelayedTransition(dialogView, autoTransition);
 
-        if (!hiddenAdvancedOptions.isShown()) {
-            hiddenAdvancedOptions.setVisibility(View.VISIBLE);
+        if (!mHiddenAdvancedOptions.isShown()) {
+            mHiddenAdvancedOptions.setVisibility(View.VISIBLE);
         } else {
-            hiddenAdvancedOptions.setVisibility(View.GONE);
+            mHiddenAdvancedOptions.setVisibility(View.GONE);
         }
     }
 

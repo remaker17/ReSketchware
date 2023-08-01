@@ -39,8 +39,8 @@ public class EventBean implements Parcelable {
             case EVENT_TYPE_DRAWER_VIEW:
                 return ViewBean.getViewTypeResId(targetType);
 
-            // case EVENT_TYPE_COMPONENT:
-                // return ComponentBean.getIconResource(targetType);
+            case EVENT_TYPE_COMPONENT:
+                return ComponentBean.getIconResource(targetType);
 
             default:
                 icon = R.drawable.widget_module;

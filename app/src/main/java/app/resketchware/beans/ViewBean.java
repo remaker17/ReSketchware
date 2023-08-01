@@ -114,7 +114,6 @@ public class ViewBean {
             case VIEW_TYPE_WIDGET_MAPVIEW:
                 return R.drawable.widget_google_map;
             
-            
             case VIEW_TYPE_WIDGET_RADIOBUTTON:
                 return R.drawable.widget_radio_button;
 
@@ -195,7 +194,7 @@ public class ViewBean {
             case VIEW_TYPE_WIDGET_CODEVIEW:
                 return R.drawable.widget_code_view;
             default:
-                return R.drawable.widget_module;
+                return type;
         }
     }
 }

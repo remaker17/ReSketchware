@@ -50,6 +50,8 @@ public class ProjectsViewHolder extends ViewHolder {
             String iconFolder = SketchwarePath.RESOURCES_ICONS + File.separator + project.getId() + File.separator + "icon.png";
             Uri uri = getUriForFile(iconFolder);
             projectIcon.setImageURI(uri);
+        } else {
+            projectIcon.setImageResource(R.drawable.android_icon);
         }
     }
 

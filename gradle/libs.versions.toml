@@ -11,7 +11,7 @@ leakCanary = "2.12"
 eclipseJdt = "3.34.0"
 r8 = "8.1.56"
 sdklib = "25.3.0"
-guava = "32.0.1-jre"
+guava = "32.1.2-jre"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

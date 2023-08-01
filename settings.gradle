@@ -1,0 +1,4 @@
+enableFeaturePreview('TYPESAFE_PROJECT_ACCESSORS')
+
+rootProject.name = 'ReSketchware'
+include ':app', ':apksigner'

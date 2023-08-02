@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import app.resketchware.ui.fragments.BlankFragment;
+import app.resketchware.ui.fragments.EventFragment;
 
 public class DesignPagerAdapter extends FragmentStateAdapter {
 
@@ -16,7 +17,11 @@ public class DesignPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return new BlankFragment();
+        if (position == 1) {
+            return new EventFragment();
+        } else {
+            return new BlankFragment();
+        }
     }
 
     @Override

@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.resketchware.ui.core.model.Project
+import app.resketchware.ui.theme.applyElevationOverlay
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -40,6 +41,8 @@ fun ProjectEntry(
     onEntryClick: () -> Unit = {}
 ) {
     val shape = RoundedCornerShape(12.dp)
+    val background = MaterialTheme.colors.surface
+        //.applyElevationOverlay(3.dp)
 
     // scale animation
     // val animatedProgress = remember {
@@ -63,7 +66,7 @@ fun ProjectEntry(
         modifier = modifier
             .fillMaxWidth()
             .clip(shape)
-            .background(color = MaterialTheme.colors.surface)
+            .background(color = background)
             .clickable { onEntryClick() }
     ) {
         Row(

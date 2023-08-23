@@ -42,25 +42,25 @@ fun ProjectEntry(
     val shape = RoundedCornerShape(12.dp)
 
     // scale animation
-    val animatedProgress = remember {
-        Animatable(initialValue = 1.15f)
-    }
-    LaunchedEffect(Unit) {
-        animatedProgress.animateTo(
-            targetValue = 1f,
-            animationSpec = tween(300, easing = FastOutSlowInEasing)
-        )
-    }
+    // val animatedProgress = remember {
+        // Animatable(initialValue = 1.15f)
+    // }
+    // LaunchedEffect(Unit) {
+        // animatedProgress.animateTo(
+            // targetValue = 1f,
+            // animationSpec = tween(300, easing = FastOutSlowInEasing)
+        // )
+    // }
 
-    val animatedModifier = modifier
-        .graphicsLayer(
-            scaleX = animatedProgress.value,
-            scaleY = animatedProgress.value
-        )
+    // val animatedModifier = modifier
+        // .graphicsLayer(
+            // scaleX = animatedProgress.value,
+            // scaleY = animatedProgress.value
+        // )
 
     Box(
         contentAlignment = Alignment.CenterStart,
-        modifier = animatedModifier
+        modifier = modifier
             .fillMaxWidth()
             .clip(shape)
             .background(color = MaterialTheme.colors.surface)

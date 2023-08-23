@@ -40,8 +40,8 @@ fun RsTopAppBar(
     modifier: Modifier = Modifier,
     navigationIcon: @Composable (() -> Unit)? = null,
     actions: @Composable RowScope.() -> Unit = {},
-    backgroundColor: Color = MaterialTheme.colors.surface,
-    contentColor: Color = contentColorFor(backgroundColor),
+    backgroundColor: Color = MaterialTheme.colors.surface.copy(alpha = 0.75f),
+    contentColor: Color = MaterialTheme.colors.onSurface,
     elevation: Dp = RsAppBarDefaults.elevation
 ) {
     RsAppBar(

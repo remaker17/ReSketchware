@@ -24,6 +24,7 @@ import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -36,6 +37,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import app.resketchware.R
@@ -116,7 +118,10 @@ fun ProjectsScreen(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(stringResource(R.string.app_name))
+                        Text(
+                            text = stringResource(R.string.app_name),
+                            style = LocalTextStyle.current.copy(fontSize = 22.sp)
+                        )
                     }
                 },
                 actions = {

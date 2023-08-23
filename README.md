@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/TheRemakerMan/ReSketchware/blob/main/docs/logo.png" width="40%" height="40%">
+  <img src="https://github.com/TheRemakerMan/ReSketchware/blob/main/art/logo.png" width="40%" height="40%">
 </p>
 
 <h2 align="center"><b>ReSketchware</b></h2>

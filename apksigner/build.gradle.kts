@@ -1,0 +1,14 @@
+plugins {
+    id("java-library")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation("com.google.guava:guava:32.0.1-jre")
+    api("com.android.tools.build:apksig:8.2.0-alpha02")
+    api("org.bouncycastle:bcprov-jdk15on:1.70")
+}

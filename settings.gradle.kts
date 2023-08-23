@@ -18,4 +18,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ReSketchware"
-include(":app", ":apksigner")
+
+include(":app")
+//include(":apksigner")

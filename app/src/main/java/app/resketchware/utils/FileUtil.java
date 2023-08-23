@@ -193,11 +193,6 @@ public class FileUtil {
             return false;
         } else {
             deleteFile(targetFilePath);
-            try {
-                copyFromAssets(context, assetPath, targetFilePath);
-            } catch (IOException io) {
-                // hmmm
-            }
             return true;
         }
     }

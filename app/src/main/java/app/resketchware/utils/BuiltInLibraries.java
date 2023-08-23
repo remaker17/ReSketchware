@@ -17,7 +17,7 @@ import java.util.Optional;
 
 public class BuiltInLibraries {
 
-    public static final File EXTRACTED_COMPILE_ASSETS_PATH = new File(App.getContext().getCacheDir(), "libs");
+    public static final File EXTRACTED_COMPILE_ASSETS_PATH = new File(App.getContext().getFilesDir(), "libs");
     public static final File EXTRACTED_BUILT_IN_LIBRARIES_PATH = new File(EXTRACTED_COMPILE_ASSETS_PATH, "libs");
     public static final File EXTRACTED_BUILT_IN_LIBRARY_DEX_FILES_PATH = new File(EXTRACTED_COMPILE_ASSETS_PATH, "dexs");
 
@@ -421,15 +421,12 @@ public class BuiltInLibraries {
         String dexsArchiveName = "dexs.zip";
         String coreLambdaStubsJarName = "core-lambda-stubs.jar";
         String libsArchiveName = "libs.zip";
-        String testkeyArchiveName = "testkey.zip";
 
         String dexsArchivePath = new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, dexsArchiveName).getAbsolutePath();
         String coreLambdaStubsJarPath = new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, coreLambdaStubsJarName).getAbsolutePath();
         String libsArchivePath = new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, libsArchiveName).getAbsolutePath();
-        String testkeyArchivePath = new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, testkeyArchiveName).getAbsolutePath();
         String dexsDirectoryPath = BuiltInLibraries.EXTRACTED_BUILT_IN_LIBRARY_DEX_FILES_PATH.getAbsolutePath();
         String libsDirectoryPath = BuiltInLibraries.EXTRACTED_BUILT_IN_LIBRARIES_PATH.getAbsolutePath();
-        String testkeyDirectoryPath = new File(BuiltInLibraries.EXTRACTED_COMPILE_ASSETS_PATH, "testkey").getAbsolutePath();
 
         String baseAssetsPath = "libs" + File.separator;
 
@@ -449,16 +446,6 @@ public class BuiltInLibraries {
             }
 
             Decompress.unzipFromAssets(baseAssetsPath + libsArchiveName, libsDirectoryPath);
-        }
-
-        FileUtil.hasFileChanged(baseAssetsPath + coreLambdaStubsJarName, coreLambdaStubsJarPath);
-        if (FileUtil.hasFileChanged(baseAssetsPath + testkeyArchiveName, testkeyArchivePath)) {
-            for (ProgressListener listener : progressListeners) {
-                Log.v("BuiltInLibraries", "Extracting built-in signing keys...");
-                listener.onProgress("Extracting built-in signing keys...");
-            }
-
-            Decompress.unzipFromAssets(baseAssetsPath + testkeyArchiveName, testkeyDirectoryPath);
         }
     }
 

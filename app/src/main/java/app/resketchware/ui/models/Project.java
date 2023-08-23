@@ -25,6 +25,8 @@ public final class Project implements Serializable {
     @SerializedName("sc_ver_code") private String versionCode;
     @SerializedName("custom_icon") private boolean hasCustomIcon;
 
+    private boolean isAppCompatEnabled;
+
     public Project(String id, String applicationName, String packageName, String projectName, String versionName, String versionCode) {
         this(id, applicationName, packageName, projectName, versionName, versionCode, false);
     }
@@ -69,6 +71,18 @@ public final class Project implements Serializable {
 
     public boolean hasCustomIcon() {
         return hasCustomIcon;
+    }
+
+    /**
+     * If the built-in library AppCompat (contains the Jetpack AppCompat artifacts and
+     * Material Design Components) is enabled.
+     */
+    public boolean isAppCompatEnabled() {
+        return isAppCompatEnabled;
+    }
+
+    public void setAppCompatEnabled(boolean enabled) {
+        isAppCompatEnabled = enabled;
     }
 
     public void generateProjectFiles() {

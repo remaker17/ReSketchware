@@ -16,6 +16,7 @@ import app.resketchware.builder.exceptions.CompilationFailedException;
 import app.resketchware.builder.listeners.ProgressListener;
 import app.resketchware.ui.models.Project;
 import app.resketchware.utils.ContextUtil;
+import app.resketchware.utils.Decompress;
 import app.resketchware.utils.FileUtil;
 
 import java.io.File;
@@ -49,6 +50,7 @@ public class ExtractAapt2Task extends Task {
         }
         try {
             if (FileUtil.hasFileChanged(aapt2PathInAssets, aaptBinary.getAbsolutePath())) {
+                Decompress.unzipFromAssets(aapt2PathInAssets, aaptBinary.getParentFile().getAbsolutePath());
                 Os.chmod(aaptBinary.getAbsolutePath(), S_IRUSR | S_IWUSR | S_IXUSR);
             }
         } catch (ErrnoException e) {

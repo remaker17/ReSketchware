@@ -1,49 +1,57 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+  id("com.android.application")
+  id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "app.resketchware"
-    compileSdk = 34
+  namespace = "app.resketchware"
+  compileSdk = 34
 
-    defaultConfig {
-        applicationId = "app.resketchware"
-        minSdk = 23
-        targetSdk = 28
-        versionCode = 1
-        versionName = "1.0"
-    }
+  defaultConfig {
+    applicationId = "app.resketchware"
+    minSdk = 23
+    targetSdk = 28
+    versionCode = 1
+    versionName = "1.0"
+  }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            )
-        }
+  buildTypes {
+    release {
+      isMinifyEnabled = true
+      isShrinkResources = true
     }
+  }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+  compileOptions {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
 
-    kotlinOptions {
-        jvmTarget = "17"
+  kotlinOptions {
+    jvmTarget = "17"
+  }
+
+  packaging {
+    resources {
+      excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
+  }
+
+  dependenciesInfo {
+    includeInApk = false
+  }
 }
 
 dependencies {
-    implementation(projects.apksigner)
+  implementation(projects.apksigner)
 
-    implementation(libs.bundles.core)
-    implementation(libs.gson)
-    implementation(libs.eclipse.jdt)
-    implementation(libs.google.guava)
-    implementation(libs.android.r8)
-    implementation(libs.android.sdklib) {
-        exclude(group = "com.intellij", module = "annotations")
-    }
-    // debugImplementation(libs.leakcanary)
+  implementation(libs.bundles.core)
+  implementation("androidx.core:core-splashscreen:1.0.1")
+  implementation(libs.gson)
+  implementation(libs.eclipse.jdt)
+  implementation(libs.google.guava)
+  implementation(libs.android.r8)
+  implementation(libs.android.sdklib) {
+    exclude(group = "com.intellij", module = "annotations")
+  }
 }

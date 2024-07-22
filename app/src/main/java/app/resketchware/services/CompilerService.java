@@ -17,62 +17,61 @@ import app.resketchware.ui.models.Project;
 import java.lang.ref.WeakReference;
 
 public class CompilerService extends Service {
+  private final CompilerBinder mBinder = new CompilerBinder(this);
+  private final Handler mMainHandler = new Handler(Looper.getMainLooper());
 
-    private final CompilerBinder mBinder = new CompilerBinder(this);
-    private final Handler mMainHandler = new Handler(Looper.getMainLooper());
+  private ProjectBuilder.OnResultListener mOnResultListener;
 
-    private ProjectBuilder.OnResultListener mOnResultListener;
+  public static class CompilerBinder extends Binder {
+    private final WeakReference<CompilerService> mServiceReference;
 
-    public static class CompilerBinder extends Binder {
-        private final WeakReference<CompilerService> mServiceReference;
-
-        public CompilerBinder(CompilerService service) {
-            mServiceReference = new WeakReference<>(service);
-        }
-
-        public CompilerService getCompilerService() {
-            return mServiceReference.get();
-        }
+    public CompilerBinder(CompilerService service) {
+      mServiceReference = new WeakReference<>(service);
     }
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return mBinder;
+    public CompilerService getCompilerService() {
+      return mServiceReference.get();
+    }
+  }
+
+  @Nullable
+  @Override
+  public IBinder onBind(Intent intent) {
+    return mBinder;
+  }
+
+  public void setOnResultListener(ProjectBuilder.OnResultListener onResultListener) {
+    mOnResultListener = onResultListener;
+  }
+
+  public void compile(Project project, ProgressListener listener) {
+    if (project == null) {
+      if (mOnResultListener != null) {
+        mMainHandler.post(() -> mOnResultListener.onComplete(false, "Unable to compile project"));
+      }
+      return;
     }
 
-    public void setOnResultListener(ProjectBuilder.OnResultListener onResultListener) {
-        mOnResultListener = onResultListener;
+    boolean success = true;
+
+    try {
+      ProjectBuilder projectBuilder = new ProjectBuilder(project, listener);
+      projectBuilder.build();
+    } catch (Throwable e) {
+      String message = Log.getStackTraceString(e);
+      mMainHandler.post(() -> mOnResultListener.onComplete(false, message));
+      success = false;
     }
 
-    public void compile(Project project, ProgressListener listener) {
-        if (project == null) {
-            if (mOnResultListener != null) {
-                mMainHandler.post(() -> mOnResultListener.onComplete(false, "Unable to compile project"));
-            }
-            return;
-        }
+    report(success);
+  }
 
-        boolean success = true;
-
-        try {
-            ProjectBuilder projectBuilder = new ProjectBuilder(project, listener);
-            projectBuilder.build();
-        } catch (Throwable e) {
-            String message = Log.getStackTraceString(e);
-            mMainHandler.post(() -> mOnResultListener.onComplete(false, message));
-            success = false;
-        }
-
-        report(success);
+  private void report(boolean success) {
+    if (success) {
+      mMainHandler.post(() -> mOnResultListener.onComplete(true, "Success"));
     }
 
-    private void report(boolean success) {
-        if (success) {
-            mMainHandler.post(() -> mOnResultListener.onComplete(true, "Success"));
-        }
-
-        stopSelf();
-        stopForeground(true);
-    }
+    stopSelf();
+    stopForeground(true);
+  }
 }

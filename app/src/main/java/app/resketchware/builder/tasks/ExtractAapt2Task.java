@@ -22,51 +22,50 @@ import java.io.File;
 import java.io.IOException;
 
 public class ExtractAapt2Task extends Task {
+  private File aaptBinary;
 
-    private File aaptBinary;
+  public ExtractAapt2Task(Project project, ProgressListener listener) {
+    super(project, listener);
+  }
 
-    public ExtractAapt2Task(Project project, ProgressListener listener) {
-        super(project, listener);
+  @Override
+  public String getName() {
+    return ContextUtil.getString(R.string.compiler_extract_aapt2_message);
+  }
+
+  @Override
+  public void prepare() throws IOException {
+    aaptBinary = new File(App.getContext().getCacheDir(), "aapt2");
+  }
+
+  @Override
+  public void run() throws IOException, CompilationFailedException {
+    String aapt2PathInAssets = "aapt" + File.separator;
+    if (getAbi().toLowerCase().contains("x86")) {
+      aapt2PathInAssets += "aapt2-x86";
+    } else {
+      aapt2PathInAssets += "aapt2-arm";
     }
-
-    @Override
-    public String getName() {
-        return ContextUtil.getString(R.string.compiler_extract_aapt2_message);
+    try {
+      if (FileUtil.hasFileChanged(aapt2PathInAssets, aaptBinary.getAbsolutePath())) {
+        Os.chmod(aaptBinary.getAbsolutePath(), S_IRUSR | S_IWUSR | S_IXUSR);
+      }
+    } catch (ErrnoException e) {
+      Log.d("ExtractAapt2Task", "Failed to extract AAPT2 binary");
+      throw new IOException(e);
+    } catch (Exception e) {
+      Log.d("ExtractAapt2Task", "Failed to extract AAPT2 binary");
+      throw new IOException(e);
     }
+  }
 
-    @Override
-    public void prepare() throws IOException {
-        aaptBinary = new File(App.getContext().getCacheDir(), "aapt2");
+  private String getAbi() {
+    if (Build.VERSION.SDK_INT >= 21) {
+      String[] supportedAbis = Build.SUPPORTED_ABIS;
+      if (supportedAbis != null) {
+        return supportedAbis[0];
+      }
     }
-
-    @Override
-    public void run() throws IOException, CompilationFailedException {
-        String aapt2PathInAssets = "aapt" + File.separator;
-        if (getAbi().toLowerCase().contains("x86")) {
-            aapt2PathInAssets += "aapt2-x86";
-        } else {
-            aapt2PathInAssets += "aapt2-arm";
-        }
-        try {
-            if (FileUtil.hasFileChanged(aapt2PathInAssets, aaptBinary.getAbsolutePath())) {
-                Os.chmod(aaptBinary.getAbsolutePath(), S_IRUSR | S_IWUSR | S_IXUSR);
-            }
-        } catch (ErrnoException e) {
-            Log.d("ExtractAapt2Task", "Failed to extract AAPT2 binary");
-            throw new IOException(e);
-        } catch (Exception e) {
-            Log.d("ExtractAapt2Task", "Failed to extract AAPT2 binary");
-            throw new IOException(e);
-        }
-    }
-
-    private String getAbi() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            String[] supportedAbis = Build.SUPPORTED_ABIS;
-            if (supportedAbis != null) {
-                return supportedAbis[0];
-            }
-        }
-        return Build.CPU_ABI;
-    }
+    return Build.CPU_ABI;
+  }
 }

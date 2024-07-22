@@ -9,32 +9,31 @@ import androidx.lifecycle.ViewModel;
 import app.resketchware.ui.models.Project;
 
 public class CompilerViewModel extends ViewModel {
+  private final MutableLiveData<String> mMessage = new MutableLiveData<>();
+  private final MutableLiveData<Project> mProject = new MutableLiveData<>();
+  private final MutableLiveData<Boolean> mCompiling = new MutableLiveData<>();
 
-    private final MutableLiveData<String> mMessage = new MutableLiveData<>();
-    private final MutableLiveData<Project> mProject = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> mCompiling = new MutableLiveData<>();
+  public void setMessage(@Nullable String message) {
+    mMessage.setValue(message);
+  }
 
-    public void setMessage(@Nullable String message) {
-        mMessage.setValue(message);
-    }
+  public void setProject(Project project) {
+    mProject.setValue(project);
+  }
 
-    public void setProject(Project project) {
-        mProject.setValue(project);
-    }
+  public void setCompiling(boolean isCompiling) {
+    mCompiling.setValue(isCompiling);
+  }
 
-    public void setCompiling(boolean isCompiling) {
-        mCompiling.setValue(isCompiling);
-    }
+  public LiveData<String> getMessage() {
+    return mMessage;
+  }
 
-    public LiveData<String> getMessage() {
-        return mMessage;
-    }
+  public LiveData<Project> getProject() {
+    return mProject;
+  }
 
-    public LiveData<Project> getProject() {
-        return mProject;
-    }
-
-    public MutableLiveData<Boolean> isCompiling() {
-        return mCompiling;
-    }
+  public MutableLiveData<Boolean> isCompiling() {
+    return mCompiling;
+  }
 }

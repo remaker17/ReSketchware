@@ -1,92 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <com.google.android.material.card.MaterialCardView
+    android:id="@+id/color_preview"
+    style="@style/Widget.RSW.CardView.ColorPicker"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/color_preview"
-        style="@style/Widget.RSW.CardView.ColorPicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingHorizontal="?attr/dialogPreferredPadding">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="?attr/dialogPreferredPadding">
-
-            <androidx.appcompat.widget.DialogTitle
-                android:id="@+id/title"
-                style="?android:attr/windowTitleStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
-                android:ellipsize="end"
-                android:text="@string/bg_color" />
-
-            <TextView
-                android:id="@+id/hex_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
-                android:textAppearance="?attr/textAppearanceOverline"
-                android:textAllCaps="true" />
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                app:tabGravity="center"
-                app:tabPaddingStart="16dp"
-                app:tabPaddingEnd="16dp" />
-
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <androidx.appcompat.widget.ButtonBarLayout
-        style="?attr/buttonBarStyle"
+      <androidx.appcompat.widget.DialogTitle
+        android:id="@+id/title"
+        style="?android:attr/windowTitleStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/rsw_margin_medium_small"
-        android:paddingTop="@dimen/rsw_margin_xxxsmall"
-        android:paddingBottom="@dimen/rsw_margin_xxsmall">
+        android:layout_marginTop="@dimen/abc_dialog_padding_top_material"
+        android:ellipsize="end"
+        android:text="@string/bg_color" />
 
-        <Button
-            android:id="@+id/reset"
-            style="?attr/buttonBarNeutralButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/common_word_reset"
-            android:visibility="gone" />
+      <TextView
+        android:id="@+id/hex_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
+        android:textAppearance="?attr/textAppearanceOverline"
+        android:textAllCaps="true" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+      <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:tabGravity="center"
+        app:tabPaddingStart="16dp"
+        app:tabPaddingEnd="16dp" />
 
-        <Button
-            android:id="@+id/cancel"
-            style="?attr/buttonBarNegativeButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/common_word_cancel" />
+    </LinearLayout>
+  </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/ok"
-            style="?attr/buttonBarPositiveButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@android:string/ok" />
+  <androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 
-    </androidx.appcompat.widget.ButtonBarLayout>
+  <androidx.appcompat.widget.ButtonBarLayout
+    style="?attr/buttonBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/rsw_margin_medium_small"
+    android:paddingTop="@dimen/rsw_margin_xxxsmall"
+    android:paddingBottom="@dimen/rsw_margin_xxsmall">
+
+    <Button
+      android:id="@+id/reset"
+      style="?attr/buttonBarNeutralButtonStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/common_word_reset"
+      android:visibility="gone" />
+
+    <Space
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1" />
+
+    <Button
+      android:id="@+id/cancel"
+      style="?attr/buttonBarNegativeButtonStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/common_word_cancel" />
+
+    <Button
+      android:id="@+id/ok"
+      style="?attr/buttonBarPositiveButtonStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@android:string/ok" />
+
+  </androidx.appcompat.widget.ButtonBarLayout>
 </LinearLayout>

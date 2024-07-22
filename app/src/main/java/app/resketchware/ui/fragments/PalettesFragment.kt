@@ -17,63 +17,62 @@ import app.resketchware.ui.adapters.TonesAdapter
 import app.resketchware.utils.ColorPickerUtil
 
 class PalettesFragment : Fragment() {
+  private lateinit var palettesRecyclerView: RecyclerView
+  private lateinit var selectedPaletteRecyclerView: RecyclerView
 
-    private lateinit var palettesRecyclerView: RecyclerView
-    private lateinit var selectedPaletteRecyclerView: RecyclerView
+  private var palettesAdapter: PalettesAdapter? = null
+  private var tonesAdapter: TonesAdapter? = null
+  var onColorSelect: ((Int) -> Unit)? = null
 
-    private var palettesAdapter: PalettesAdapter? = null
-    private var tonesAdapter: TonesAdapter? = null
-    var onColorSelect: ((Int) -> Unit)? = null
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    val view = inflater.inflate(R.layout.fragment_palettes, container, false)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater.inflate(R.layout.fragment_palettes, container, false)
+    palettesRecyclerView = view.findViewById(R.id.palettes)
+    selectedPaletteRecyclerView = view.findViewById(R.id.selected_palette)
 
-        palettesRecyclerView = view.findViewById(R.id.palettes)
-        selectedPaletteRecyclerView = view.findViewById(R.id.selected_palette)
+    tonesAdapter = TonesAdapter()
+    palettesAdapter = PalettesAdapter(ColorPickerUtil.colorsMap.keys.toList())
 
-        tonesAdapter = TonesAdapter()
-        palettesAdapter = PalettesAdapter(ColorPickerUtil.colorsMap.keys.toList())
-
-        palettesRecyclerView.adapter = palettesAdapter?.apply {
-            onPaletteClick = { position ->
-                tonesAdapter?.swapColors(position)
-            }
-        }
-        palettesRecyclerView.setHasFixedSize(true)
-
-        selectedPaletteRecyclerView.adapter = tonesAdapter?.apply {
-            onToneClick = { color ->
-                onColorSelect?.invoke(color)
-            }
-        }
-        selectedPaletteRecyclerView.setHasFixedSize(true)
-
-        return view
+    palettesRecyclerView.adapter = palettesAdapter?.apply {
+      onPaletteClick = { position ->
+        tonesAdapter?.swapColors(position)
+      }
     }
+    palettesRecyclerView.setHasFixedSize(true)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        selectedPaletteRecyclerView.doOnPreDraw {
-            palettesRecyclerView.updatePadding(left = it.left, right = it.right)
-            (palettesRecyclerView.layoutManager as LinearLayoutManager)
-                .scrollToPositionWithOffset(0, 0)
-        }
+    selectedPaletteRecyclerView.adapter = tonesAdapter?.apply {
+      onToneClick = { color ->
+        onColorSelect?.invoke(color)
+      }
     }
+    selectedPaletteRecyclerView.setHasFixedSize(true)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        palettesAdapter = null
-        tonesAdapter = null
-    }
+    return view
+  }
 
-    fun resetPalette() {
-        palettesAdapter?.resetSelectedPalette()
-        tonesAdapter?.resetColor()
-    }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = PalettesFragment()
+    selectedPaletteRecyclerView.doOnPreDraw {
+      palettesRecyclerView.updatePadding(left = it.left, right = it.right)
+      (palettesRecyclerView.layoutManager as LinearLayoutManager)
+        .scrollToPositionWithOffset(0, 0)
     }
+  }
+
+  override fun onDestroyView() {
+    super.onDestroyView()
+    palettesAdapter = null
+    tonesAdapter = null
+  }
+
+  fun resetPalette() {
+    palettesAdapter?.resetSelectedPalette()
+    tonesAdapter?.resetColor()
+  }
+
+  companion object {
+    @JvmStatic
+    fun newInstance() = PalettesFragment()
+  }
 }

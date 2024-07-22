@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Theme.RSW.Starting" parent="Theme.SplashScreen">
+    <item name="windowSplashScreenAnimationDuration">850</item>
+    <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_foreground</item>
+    <item name="windowSplashScreenBackground">@color/rsw_color_brand</item>
+    <item name="postSplashScreenTheme">@style/Theme.RSW.DayNight</item>
+
+    <item name="android:navigationBarColor">@color/rsw_color_brand</item>
+    <item name="android:statusBarColor">@color/rsw_color_brand</item>
+  </style>
+</resources>

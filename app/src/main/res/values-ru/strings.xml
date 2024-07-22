@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ReSketchware</string>
-    <!-- Common words -->
-    <string name="common_word_accept">Принять</string>
-    <string name="common_word_decline">Отклонить</string>
-    <string name="common_word_cancel">Отменить</string>
-    <string name="common_word_create">Создать</string>
-    <string name="common_word_icon">Иконка</string>
-    <string name="common_word_projects">Проекты</string>
-    <string name="common_word_settings">Настройки</string>
-    <!-- Not implemented view -->
-    <!-- Do not translate/edit the word "GitHub", it breaks the application -->
-    <string name="not_implemented_title">Еще не реализовано</string>
-    <string name="not_implemented_message">Следите за новостями в GitHub.</string>
-    <!-- Permissions -->
-    <string name="permission_all_files_ask_message">Начиная с Android 11, этому приложению требуется новое разрешение, чтобы на сборку проектов не ушло много времени.</string>
-    <string name="permission_ask_title">Требуется разрешение</string>
-    <string name="permission_ask_message">Этому приложению требуется разрешение на хранение для сохранения и загрузки проектов.</string>
-    <string name="permission_no_title">Нет разрешений</string>
-    <string name="permission_no_message">Пожалуйста, предоставьте разрешение на загрузку проектов.</string>
-    <!-- New project dialog -->
-    <string name="application_name">Название приложения</string>
-    <string name="new_project">Новый проект</string>
-    <string name="version_name">Имя версии</string>
-    <string name="version_code">Код версии</string>
-    <string name="package_name">Название пакета</string>
-    <string name="project_advanced_options">Расширенные параметры</string>
+  <string name="app_name">ReSketchware</string>
+  <!-- Common words -->
+  <string name="common_word_accept">Принять</string>
+  <string name="common_word_decline">Отклонить</string>
+  <string name="common_word_cancel">Отменить</string>
+  <string name="common_word_create">Создать</string>
+  <string name="common_word_icon">Иконка</string>
+  <string name="common_word_projects">Проекты</string>
+  <string name="common_word_settings">Настройки</string>
+  <!-- Not implemented view -->
+  <!-- Do not translate/edit the word "GitHub", it breaks the application -->
+  <string name="not_implemented_title">Еще не реализовано</string>
+  <string name="not_implemented_message">Следите за новостями в GitHub.</string>
+  <!-- Permissions -->
+  <string name="permission_all_files_ask_message">Начиная с Android 11, этому приложению требуется новое разрешение, чтобы на сборку проектов не ушло много времени.</string>
+  <string name="permission_ask_title">Требуется разрешение</string>
+  <string name="permission_ask_message">Этому приложению требуется разрешение на хранение для сохранения и загрузки проектов.</string>
+  <string name="permission_no_title">Нет разрешений</string>
+  <string name="permission_no_message">Пожалуйста, предоставьте разрешение на загрузку проектов.</string>
+  <!-- New project dialog -->
+  <string name="application_name">Название приложения</string>
+  <string name="new_project">Новый проект</string>
+  <string name="version_name">Имя версии</string>
+  <string name="version_code">Код версии</string>
+  <string name="package_name">Название пакета</string>
+  <string name="project_advanced_options">Расширенные параметры</string>
 </resources>

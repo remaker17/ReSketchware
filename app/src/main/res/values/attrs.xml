@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <attr name="notImplementedViewStyle" format="reference" />
 
-    <attr name="notImplementedViewStyle" format="reference" />
+  <declare-styleable name="NotImplementedView">
+    <attr name="titleTextAppearance" />
+    <attr name="messageTextAppearance" />
+  </declare-styleable>
 
-    <declare-styleable name="NotImplementedView">
-        <attr name="titleTextAppearance" />
-        <attr name="messageTextAppearance" />
-    </declare-styleable>
+  <attr name="searchBarStyle" format="reference " />
 
-    <attr name="searchBarStyle" format="reference " />
-
-    <declare-styleable name="SearchBar">
-        <attr name="android:textAppearance" />
-        <attr name="android:text" />
-        <attr name="android:hint" />
-        <attr name="backgroundTint" />
-        <attr name="hideNavigationIcon" />
-        <attr name="tintNavigationIcon" format="boolean" />
-        <attr name="navigationIconTint" />
-    </declare-styleable>
+  <declare-styleable name="SearchBar">
+    <attr name="android:textAppearance" />
+    <attr name="android:text" />
+    <attr name="android:hint" />
+    <attr name="backgroundTint" />
+    <attr name="hideNavigationIcon" />
+    <attr name="tintNavigationIcon" format="boolean" />
+    <attr name="navigationIconTint" />
+  </declare-styleable>
 
 </resources>

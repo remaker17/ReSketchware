@@ -7,8 +7,8 @@ import kotlin.math.roundToInt
 
 @ColorInt
 fun Int.toSurfaceColor(): Int {
-    if (ColorUtils.calculateLuminance(this) < 0.35) return Color.WHITE
-    return Color.BLACK
+  if (ColorUtils.calculateLuminance(this) < 0.35) return Color.WHITE
+  return Color.BLACK
 }
 
 fun Int.toHex() = String.format("#FF%06X", 0xFFFFFF and this)

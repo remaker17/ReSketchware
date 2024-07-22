@@ -16,29 +16,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectBuilder extends BuilderImpl {
+  public interface OnResultListener {
+    void onComplete(boolean success, String message);
+  }
 
-    public interface OnResultListener {
-        void onComplete(boolean success, String message);
-    }
+  public ProjectBuilder(Project project, ProgressListener listener) {
+    super(project, listener);
+  }
 
-    public ProjectBuilder(Project project, ProgressListener listener) {
-        super(project, listener);
-    }
+  @Override
+  public List<Task> getTasks() {
+    Project project = getProject();
+    ProgressListener listener = getProgressListener();
 
-    @Override
-    public List<Task> getTasks() {
-        Project project = getProject();
-        ProgressListener listener = getProgressListener();
-
-        List<Task> tasks = new ArrayList<>();
-        tasks.add(new SetupTask(project, listener));
-        tasks.add(new ExtractAapt2Task(project, listener));
-        tasks.add(new ExtractBuiltInLibrariesTask(project, listener));
-        tasks.add(new Aapt2Task(project, listener));
-        tasks.add(new JavaTask(project, listener));
-        tasks.add(new D8Task(project, listener));
-        tasks.add(new PackageTask(project, listener));
-        tasks.add(new SignTask(project, listener));
-        return tasks;
-    }
+    List<Task> tasks = new ArrayList<>();
+    tasks.add(new SetupTask(project, listener));
+    tasks.add(new ExtractAapt2Task(project, listener));
+    tasks.add(new ExtractBuiltInLibrariesTask(project, listener));
+    tasks.add(new Aapt2Task(project, listener));
+    tasks.add(new JavaTask(project, listener));
+    tasks.add(new D8Task(project, listener));
+    tasks.add(new PackageTask(project, listener));
+    tasks.add(new SignTask(project, listener));
+    return tasks;
+  }
 }

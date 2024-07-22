@@ -1,213 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <!-- BottomSheetDragHandleView not working with MaterialComponents style -->
+  <ImageView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/rsw_margin_xsmall"
+    android:paddingTop="@dimen/rsw_margin_xsmall"
+    android:src="@drawable/rsw_bottomsheet_pin"
+    android:visibility="gone"
+    app:tint="?attr/colorControlHighlight" />
 
-    <!-- BottomSheetDragHandleView not working with MaterialComponents style -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/rsw_margin_xsmall"
-        android:paddingTop="@dimen/rsw_margin_xsmall"
-        android:src="@drawable/rsw_bottomsheet_pin"
-        android:visibility="gone"
-        app:tint="?attr/colorControlHighlight" />
+  <androidx.appcompat.widget.DialogTitle
+    android:id="@+id/title"
+    style="?android:attr/windowTitleStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
+    android:layout_marginTop="?attr/dialogPreferredPadding"
+    android:layout_marginStart="?attr/dialogPreferredPadding"
+    android:ellipsize="end"
+    android:text="@string/new_project" />
 
-    <androidx.appcompat.widget.DialogTitle
-        android:id="@+id/title"
-        style="?android:attr/windowTitleStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
-        android:layout_marginTop="?attr/dialogPreferredPadding"
-        android:layout_marginStart="?attr/dialogPreferredPadding"
-        android:ellipsize="end"
-        android:text="@string/new_project" />
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="?attr/dialogPreferredPadding"
+      android:orientation="vertical">
+
+      <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/rsw_background_icon"
+        android:backgroundTint="?attr/rsw_textFieldBackground">
+
+        <ImageView
+          android:id="@+id/app_icon"
+          android:layout_width="@dimen/mtrl_min_touch_target_size"
+          android:layout_height="@dimen/mtrl_min_touch_target_size"
+          android:layout_gravity="center"
+          android:scaleType="centerInside"
+          app:srcCompat="@drawable/rsw_android"
+          app:tint="?android:attr/textColorHint" />
+      </FrameLayout>
+
+      <TextView
+        android:layout_width="56dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/abc_dialog_padding_top_material"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="?attr/dialogPreferredPadding"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="@drawable/rsw_background_icon"
-                android:backgroundTint="?attr/rsw_textFieldBackground">
-
-                <ImageView
-                    android:id="@+id/app_icon"
-                    android:layout_width="@dimen/mtrl_min_touch_target_size"
-                    android:layout_height="@dimen/mtrl_min_touch_target_size"
-                    android:layout_gravity="center"
-                    android:scaleType="centerInside"
-                    app:srcCompat="@drawable/rsw_android"
-                    app:tint="?android:attr/textColorHint" />
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/rsw_margin_xxxsmall"
-                android:text="@string/common_word_icon"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceCaption"
-                android:textSize="10sp"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_app_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="?attr/dialogPreferredPadding"
-            android:layout_marginStart="@dimen/rsw_margin_medium"
-            android:hint="@string/application_name">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginTop="@dimen/rsw_margin_xxxsmall"
+        android:text="@string/common_word_icon"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceCaption"
+        android:textSize="10sp"
+        android:visibility="gone" />
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/advanced_options"
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til_app_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="?attr/dialogPreferredPadding"
+      android:layout_marginStart="@dimen/rsw_margin_medium"
+      android:hint="@string/application_name">
+
+      <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
-        android:layout_marginHorizontal="?attr/dialogPreferredPadding">
+        android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/advanced_options_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/rsw_drop_down"
-            android:text="@string/project_advanced_options"
-            android:gravity="center_vertical"
-            android:textAppearance="?attr/textAppearanceBody2" />
-    </FrameLayout>
+  </LinearLayout>
+
+  <FrameLayout
+    android:id="@+id/advanced_options"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
+    android:layout_marginHorizontal="?attr/dialogPreferredPadding">
+
+    <TextView
+      android:id="@+id/advanced_options_text"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:drawableEnd="@drawable/rsw_drop_down"
+      android:text="@string/project_advanced_options"
+      android:gravity="center_vertical"
+      android:textAppearance="?attr/textAppearanceBody2" />
+  </FrameLayout>
+
+  <LinearLayout
+    android:id="@+id/hidden_advanced_options"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/rsw_margin_tiny"
+    android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
+    android:layout_marginHorizontal="?attr/dialogPreferredPadding"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <HorizontalScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/rsw_background_textfield"
+      android:fillViewport="true"
+      android:overScrollMode="never"
+      android:scrollbars="none">
+
+      <LinearLayout
+        android:id="@+id/colors_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/rsw_margin_xsmall"
+        android:orientation="horizontal" />
+
+    </HorizontalScrollView>
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/til_package_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/rsw_margin_medium"
+      android:hint="@string/package_name"
+      app:placeholderText="com.my.newproject">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
-        android:id="@+id/hidden_advanced_options"
-        android:layout_width="match_parent"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/rsw_margin_medium"
+      android:orientation="horizontal">
+
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_version_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/rsw_margin_tiny"
-        android:layout_marginBottom="@dimen/rsw_margin_xmedium_small"
-        android:layout_marginHorizontal="?attr/dialogPreferredPadding"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:layout_marginEnd="@dimen/rsw_margin_xxxsmall"
+        android:layout_weight="1"
+        android:hint="@string/version_name"
+        app:placeholderText="1.0">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rsw_background_textfield"
-            android:fillViewport="true"
-            android:overScrollMode="never"
-            android:scrollbars="none">
+        <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:maxLines="1"
+          android:digits="0123456789."
+          android:inputType="numberDecimal" />
+      </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:id="@+id/colors_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingHorizontal="@dimen/rsw_margin_xsmall"
-                android:orientation="horizontal" />
+      <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_version_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/rsw_margin_xxxsmall"
+        android:layout_weight="1"
+        android:hint="@string/version_code">
 
-        </HorizontalScrollView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_package_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/rsw_margin_medium"
-            android:hint="@string/package_name"
-            app:placeholderText="com.my.newproject">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/rsw_margin_medium"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_version_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/rsw_margin_xxxsmall"
-                android:layout_weight="1"
-                android:hint="@string/version_name"
-                app:placeholderText="1.0">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:digits="0123456789."
-                    android:inputType="numberDecimal" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_version_code"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/rsw_margin_xxxsmall"
-                android:layout_weight="1"
-                android:hint="@string/version_code">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:digits="0123456789"
-                    android:maxLines="1"
-                    android:inputType="number" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
+        <com.google.android.material.textfield.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:digits="0123456789"
+          android:maxLines="1"
+          android:inputType="number" />
+      </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.ButtonBarLayout
-        style="?attr/buttonBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom|end"
-        android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/rsw_margin_medium_small"
-        android:paddingTop="@dimen/rsw_margin_xxxsmall"
-        android:paddingBottom="@dimen/rsw_margin_xxsmall">
+  </LinearLayout>
 
-        <Button
-            android:id="@+id/cancel"
-            style="?attr/buttonBarNegativeButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/common_word_cancel" />
+  <androidx.appcompat.widget.ButtonBarLayout
+    style="?attr/buttonBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom|end"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/rsw_margin_medium_small"
+    android:paddingTop="@dimen/rsw_margin_xxxsmall"
+    android:paddingBottom="@dimen/rsw_margin_xxsmall">
 
-        <Button
-            android:id="@+id/create"
-            style="?attr/buttonBarPositiveButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/common_word_create" />
+    <Button
+      android:id="@+id/cancel"
+      style="?attr/buttonBarNegativeButtonStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/common_word_cancel" />
 
-    </androidx.appcompat.widget.ButtonBarLayout>
+    <Button
+      android:id="@+id/create"
+      style="?attr/buttonBarPositiveButtonStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/common_word_create" />
+
+  </androidx.appcompat.widget.ButtonBarLayout>
 </LinearLayout>

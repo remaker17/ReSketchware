@@ -19,47 +19,46 @@ import app.resketchware.utils.SketchwarePath;
 import app.resketchware.utils.SketchwareUtil;
 
 public class ProjectsViewHolder extends ViewHolder {
+  private final ImageView projectIcon;
+  private final TextView projectId;
+  private final TextView projectTitle;
+  private final TextView projectPackageName;
+  private final TextView projectVersion;
 
-    private final ImageView projectIcon;
-    private final TextView projectId;
-    private final TextView projectTitle;
-    private final TextView projectPackageName;
-    private final TextView projectVersion;
+  private final Context context;
 
-    private final Context context;
+  public ProjectsViewHolder(View view) {
+    super(view);
 
-    public ProjectsViewHolder(View view) {
-        super(view);
+    context = view.getContext();
 
-        context = view.getContext();
+    projectIcon = view.findViewById(R.id.project_icon);
+    projectId = view.findViewById(R.id.project_id);
+    projectTitle = view.findViewById(R.id.project_title);
+    projectPackageName = view.findViewById(R.id.project_package_name);
+    projectVersion = view.findViewById(R.id.project_version);
+  }
 
-        projectIcon = view.findViewById(R.id.project_icon);
-        projectId = view.findViewById(R.id.project_id);
-        projectTitle = view.findViewById(R.id.project_title);
-        projectPackageName = view.findViewById(R.id.project_package_name);
-        projectVersion = view.findViewById(R.id.project_version);
+  public void bind(Project project) {
+    projectId.setText(project.getId());
+    projectTitle.setText(project.getApplicationName());
+    projectPackageName.setText(project.getPackageName());
+    projectVersion.setText(project.getCombinedVersion());
+
+    if (project.hasCustomIcon()) {
+      String iconFolder = SketchwarePath.RESOURCES_ICONS + File.separator + project.getId() + File.separator + "icon.png";
+      Uri uri = getUriForFile(iconFolder);
+      projectIcon.setImageURI(uri);
     }
+  }
 
-    public void bind(Project project) {
-        projectId.setText(project.getId());
-        projectTitle.setText(project.getApplicationName());
-        projectPackageName.setText(project.getPackageName());
-        projectVersion.setText(project.getCombinedVersion());
-
-        if (project.hasCustomIcon()) {
-            String iconFolder = SketchwarePath.RESOURCES_ICONS + File.separator + project.getId() + File.separator + "icon.png";
-            Uri uri = getUriForFile(iconFolder);
-            projectIcon.setImageURI(uri);
-        }
+  private Uri getUriForFile(String filePath) {
+    File file = new File(filePath);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+      String authority = context.getPackageName() + ".fileprovider";
+      return FileProvider.getUriForFile(context, authority, file);
+    } else {
+      return Uri.fromFile(file);
     }
-
-    private Uri getUriForFile(String filePath) {
-        File file = new File(filePath);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            String authority = context.getPackageName() + ".fileprovider";
-            return FileProvider.getUriForFile(context, authority, file);
-        } else {
-            return Uri.fromFile(file);
-        }
-    }
+  }
 }

@@ -15,24 +15,23 @@ import app.resketchware.R
 import app.resketchware.ui.extensions.toSurfaceColor
 
 class TonesViewHolder(private val view: View) : ViewHolder(view) {
+  private val cardView: MaterialCardView
+    get() = view.findViewById(R.id.tone)
+  private val check: ImageView
+    get() = view.findViewById(R.id.check)
+  private var selectedColor = 0
 
-    private val cardView: MaterialCardView
-        get() = view.findViewById(R.id.tone)
-    private val check: ImageView
-        get() = view.findViewById(R.id.check)
-    private var selectedColor = 0
+  fun bind(colorInt: Int, selectedColor: Int) {
+    this.selectedColor = selectedColor
+    cardView.setCardBackgroundColor(colorInt)
 
-    fun bind(colorInt: Int, selectedColor: Int) {
-        this.selectedColor = selectedColor
-        cardView.setCardBackgroundColor(colorInt)
-
-        if (absoluteAdapterPosition != selectedColor) {
-            check.visibility = View.GONE
-        } else {
-            check.visibility = View.VISIBLE
-            check.drawable.mutate().setTint(
-                ColorUtils.setAlphaComponent(colorInt.toSurfaceColor(), 125)
-            )
-        }
+    if (absoluteAdapterPosition != selectedColor) {
+      check.visibility = View.GONE
+    } else {
+      check.visibility = View.VISIBLE
+      check.drawable.mutate().setTint(
+        ColorUtils.setAlphaComponent(colorInt.toSurfaceColor(), 125)
+      )
     }
+  }
 }

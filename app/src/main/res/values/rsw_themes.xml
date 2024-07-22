@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.RSW.Design" parent="Theme.RSW.DayNight">
-        <item name="android:statusBarColor">?attr/colorSurface</item>
-        <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.Flat</item>
-        <item name="toolbarStyle">@style/Widget.RSW.Toolbar.NoInset</item>
-    </style>
+  <style name="Theme.RSW.Design" parent="Theme.RSW.DayNight">
+    <item name="android:statusBarColor">?attr/colorSurface</item>
+    <item name="appBarLayoutStyle">@style/Widget.RSW.AppBarLayout.Flat</item>
+    <item name="toolbarStyle">@style/Widget.RSW.Toolbar.NoInset</item>
+  </style>
 </resources>

@@ -8,19 +8,18 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import app.resketchware.ui.fragments.BlankFragment;
 
 public class DesignPagerAdapter extends FragmentStateAdapter {
+  public DesignPagerAdapter(FragmentActivity fa) {
+    super(fa);
+  }
 
-    public DesignPagerAdapter(FragmentActivity fa) {
-        super(fa);
-    }
+  @NonNull
+  @Override
+  public Fragment createFragment(int position) {
+    return new BlankFragment();
+  }
 
-    @NonNull
-    @Override
-    public Fragment createFragment(int position) {
-        return new BlankFragment();
-    }
-
-    @Override
-    public int getItemCount() {
-        return 3;
-    }
+  @Override
+  public int getItemCount() {
+    return 3;
+  }
 }

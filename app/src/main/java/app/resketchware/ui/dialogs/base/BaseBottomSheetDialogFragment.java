@@ -8,17 +8,16 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public abstract class BaseBottomSheetDialogFragment extends BottomSheetDialogFragment {
+  protected Dialog mDialog;
 
-    protected Dialog mDialog;
+  @NonNull
+  @Override
+  public Dialog onCreateDialog(Bundle savedInstanceState) {
+    mDialog = super.onCreateDialog(savedInstanceState);
+    return mDialog;
+  }
 
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        mDialog = super.onCreateDialog(savedInstanceState);
-        return mDialog;
-    }
-
-    public boolean isShowing() {
-        return mDialog != null && mDialog.isShowing();
-    }
+  public boolean isShowing() {
+    return mDialog != null && mDialog.isShowing();
+  }
 }

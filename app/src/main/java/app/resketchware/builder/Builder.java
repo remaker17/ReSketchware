@@ -11,12 +11,13 @@ import java.util.List;
 
 public interface Builder {
 
-    @NonNull
-    Project getProject();
+  @NonNull
+  Project getProject();
 
-    void build() throws CompilationFailedException, IOException;
+  void build() throws CompilationFailedException, IOException;
 
-    ProgressListener getProgressListener();
+  ProgressListener getProgressListener();
 
-    List<Task> getTasks();
+  List<Task> getTasks();
+
 }

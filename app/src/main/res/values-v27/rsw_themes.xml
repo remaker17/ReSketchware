@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <style name="Theme.RSW.Light" parent="Theme.RSW.Api27.Light" />
 
-    <style name="Theme.RSW.Light" parent="Theme.RSW.Api27.Light" />
-
-    <style name="Theme.RSW.Api27.Light" parent="Theme.RSW.Api21.Light">
-        <item name="android:windowLightNavigationBar">true</item>
-    </style>
-
+  <style name="Theme.RSW.Api27.Light" parent="Theme.RSW.Api21.Light">
+    <item name="android:windowLightNavigationBar">true</item>
+  </style>
 </resources>

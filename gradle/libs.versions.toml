@@ -1,17 +1,17 @@
 [versions]
-androidGradlePlugin = "8.2.0-beta03"
-androidMaterial = "1.10.0-beta01"
-androidxAppCompat = "1.7.0-alpha03"
-androidxCoreKtx = "1.12.0"
-androidxRecyclerView = "1.3.1"
-androidxSwipeRefreshLayout = "1.2.0-alpha01"
-kotlin = "1.9.10"
-gson = "2.10.1"
+androidGradlePlugin = "8.5.1"
+androidMaterial = "1.13.0-alpha02"
+androidxAppCompat = "1.7.0"
+androidxCoreKtx = "1.13.1"
+androidxRecyclerView = "1.3.2"
+androidxSwipeRefreshLayout = "1.1.0"
+kotlin = "2.0.0"
+gson = "2.11.0"
 leakCanary = "2.12"
-eclipseJdt = "3.34.0"
-r8 = "8.1.56"
-sdklib = "25.3.0"
-guava = "32.1.2-jre"
+eclipseJdt = "3.38.0"
+r8 = "8.3.37"
+sdklib = "31.5.1"
+guava = "33.2.1-jre"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -33,9 +33,9 @@ google-guava = { group = "com.google.guava", name = "guava", version.ref="guava"
 
 [bundles]
 core = [
-    "android-material",
-    "androidx-appcompat",
-    "androidx-core-ktx",
-    "androidx-recyclerview",
-    "androidx-swiperefreshlayout"
+  "android-material",
+  "androidx-appcompat",
+  "androidx-core-ktx",
+  "androidx-recyclerview",
+  "androidx-swiperefreshlayout"
 ]

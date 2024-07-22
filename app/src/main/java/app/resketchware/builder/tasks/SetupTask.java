@@ -10,24 +10,23 @@ import app.resketchware.utils.ContextUtil;
 import java.io.IOException;
 
 public class SetupTask extends Task {
+  public SetupTask(Project project, ProgressListener listener) {
+    super(project, listener);
+  }
 
-    public SetupTask(Project project, ProgressListener listener) {
-        super(project, listener);
-    }
+  @Override
+  public String getName() {
+    return ContextUtil.getString(R.string.compiler_delete_temporary_files_message);
+  }
 
-    @Override
-    public String getName() {
-        return ContextUtil.getString(R.string.compiler_delete_temporary_files_message);
-    }
+  @Override
+  public void prepare() throws IOException {}
 
-    @Override
-    public void prepare() throws IOException {}
-
-    @Override
-    public void run() throws IOException, CompilationFailedException {
-        project.deleteTemporaryFiles();
-        project.createNeededDirectories();
-        project.extractResFromAssets();
-        project.generateProjectFiles();
-    }
+  @Override
+  public void run() throws IOException, CompilationFailedException {
+    project.deleteTemporaryFiles();
+    project.createNeededDirectories();
+    project.extractResFromAssets();
+    project.generateProjectFiles();
+  }
 }

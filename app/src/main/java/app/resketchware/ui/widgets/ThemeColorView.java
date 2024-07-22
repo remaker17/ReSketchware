@@ -11,25 +11,24 @@ import android.widget.TextView;
 import app.resketchware.R;
 
 public class ThemeColorView extends LinearLayout {
+  public final View colorView;
+  public final TextView nameTextView;
 
-    public final View colorView;
-    public final TextView nameTextView;
+  public ThemeColorView(Context context, int tag) {
+    super(context);
 
-    public ThemeColorView(Context context, int tag) {
-        super(context);
+    LayoutInflater inflater = LayoutInflater.from(context);
+    inflater.inflate(R.layout.view_theme_color, this, true);
 
-        LayoutInflater inflater = LayoutInflater.from(context);
-        inflater.inflate(R.layout.view_theme_color, this, true);
+    TypedValue outValue = new TypedValue();
+    context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
 
-        TypedValue outValue = new TypedValue();
-        context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
+    setBackgroundResource(outValue.resourceId);
+    setGravity(Gravity.CENTER);
+    setOrientation(LinearLayout.VERTICAL);
+    setTag(tag);
 
-        setBackgroundResource(outValue.resourceId);
-        setGravity(Gravity.CENTER);
-        setOrientation(LinearLayout.VERTICAL);
-        setTag(tag);
-
-        colorView = findViewById(R.id.color_view);
-        nameTextView = findViewById(R.id.name_text);
-    }
+    colorView = findViewById(R.id.color_view);
+    nameTextView = findViewById(R.id.name_text);
+  }
 }

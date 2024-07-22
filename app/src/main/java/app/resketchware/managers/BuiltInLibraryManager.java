@@ -16,35 +16,35 @@ import app.resketchware.utils.BuiltInLibraryUtil;
  */
 public class BuiltInLibraryManager {
 
-    private static final ArrayList<String> libraryNames = new ArrayList<>();
-    private static final ArrayList<BuiltInLibraryModel> libraries = new ArrayList<>();
+  private static final ArrayList<String> libraryNames = new ArrayList<>();
+  private static final ArrayList<BuiltInLibraryModel> libraries = new ArrayList<>();
 
-    private BuiltInLibraryManager() {}
+  private BuiltInLibraryManager() {}
 
-    /**
-     * Add a built-in library to the project libraries list.
-     * Won't add a library if it's in the list already,
-     *
-     * @param libraryName The built-in library's name, e.g. material-1.0.0
-     */
-    public static void addLibrary(String libraryName) {
-        if (libraryNames.contains(libraryName)) {
-            Log.v("BuiltInLibraryManager", "Didn't add built-in library: " + libraryName + " to project's dependencies again");
-        } else {
-            Log.d("BuiltInLibraryManager", "Added built-in library: " + libraryName + " to project's dependencies");
-            libraryNames.add(libraryName);
-            libraries.add(new BuiltInLibraryModel(libraryName));
-            addDependencies(libraryName);
-        }
+  /**
+   * Add a built-in library to the project libraries list.
+   * Won't add a library if it's in the list already,
+   *
+   * @param libraryName The built-in library's name, e.g. material-1.0.0
+   */
+  public static void addLibrary(String libraryName) {
+    if (libraryNames.contains(libraryName)) {
+      Log.v("BuiltInLibraryManager", "Didn't add built-in library: " + libraryName + " to project's dependencies again");
+    } else {
+      Log.d("BuiltInLibraryManager", "Added built-in library: " + libraryName + " to project's dependencies");
+      libraryNames.add(libraryName);
+      libraries.add(new BuiltInLibraryModel(libraryName));
+      addDependencies(libraryName);
     }
+  }
 
-    private static void addDependencies(String libraryName) {
-        for (String libraryDependency : BuiltInLibraryUtil.getKnownDependencies(libraryName)) {
-            addLibrary(libraryDependency);
-        }
+  private static void addDependencies(String libraryName) {
+    for (String libraryDependency : BuiltInLibraryUtil.getKnownDependencies(libraryName)) {
+      addLibrary(libraryDependency);
     }
+  }
 
-    public static ArrayList<BuiltInLibraryModel> getLibraries() {
-        return libraries;
-    }
+  public static ArrayList<BuiltInLibraryModel> getLibraries() {
+    return libraries;
+  }
 }

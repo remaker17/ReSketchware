@@ -22,6 +22,10 @@ android {
     }
   }
 
+  buildFeatures {
+    buildConfig = true
+  }
+
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -43,7 +47,7 @@ android {
 }
 
 dependencies {
-  implementation(projects.apksigner)
+  implementation(project(":apksigner"))
 
   implementation(libs.bundles.core)
   implementation("androidx.core:core-splashscreen:1.0.1")

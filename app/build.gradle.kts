@@ -52,11 +52,11 @@ dependencies {
   implementation(libs.bundles.core)
   implementation("androidx.core:core-splashscreen:1.0.1")
   implementation(libs.gson)
-  implementation(libs.eclipse.jdt) {
+  implementation(libs.eclipse.jdt)
+  implementation(libs.google.guava)
+  implementation(libs.android.r8) {
     isTransitive = true
   }
-  implementation(libs.google.guava)
-  implementation(libs.android.r8)
   implementation(libs.android.sdklib) {
     exclude(group = "com.intellij", module = "annotations")
   }

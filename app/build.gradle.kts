@@ -54,10 +54,9 @@ dependencies {
   implementation(libs.gson)
   implementation(libs.eclipse.jdt)
   implementation(libs.google.guava)
-  implementation(libs.android.r8) {
-    isTransitive = true
-  }
+  implementation(libs.android.r8)
   implementation(libs.android.sdklib) {
     exclude(group = "com.intellij", module = "annotations")
+    exclude(group = "jakarta.activation", module = "jakarta.activation-api")
   }
 }

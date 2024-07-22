@@ -13,7 +13,7 @@ public class AndroidManifestBuilder {
   private final ArrayList<ProjectFileBean> projectFileBeans;
   private final XmlBuilder xmlBuilder = new XmlBuilder("manifest");
   private final String packageName;
-  private final boolean targetsSdkVersion31OrHigher = false;
+  private boolean targetsSdkVersion31OrHigher = false;
 
   public AndroidManifestBuilder(Project project, ArrayList<ProjectFileBean> projectFileBeans) {
     this.project = project;

@@ -8,13 +8,13 @@ public final class ProjectSettingsModel implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @SerializedName("min_sdk")
-  private final String minSdk;
+  private String minSdk;
   @SerializedName("enable_bridgeless_themes")
   private final String enableBridgelessThemes;
   @SerializedName("app_class")
-  private final String applicationClass;
+  private String applicationClass;
   @SerializedName("target_sdk")
-  private final String targetSdk;
+  private String targetSdk;
   @SerializedName("disable_old_methods")
   private final String disableOldMethods;
   @SerializedName("disable_large_heap")

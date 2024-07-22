@@ -13,7 +13,7 @@ public class XmlBuilder {
   private String textContent;
   private String lineBreak;
 
-  private final int indentationLevel = 0;
+  private int indentationLevel = 0;
   private final boolean isSelfClosing;
 
   public XmlBuilder(String tagName) {

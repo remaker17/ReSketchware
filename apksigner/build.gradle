@@ -9,6 +9,6 @@ java {
 
 dependencies {
   implementation 'com.google.guava:guava:33.2.1-jre'
-  api 'com.android.tools.build:apksig:8.5.1'
+  api 'com.android.tools.build:apksig:8.5.2'
   api 'org.bouncycastle:bcprov-jdk18on:1.78.1'
 }
